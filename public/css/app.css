@@ -1,0 +1,49 @@
+.carta{
+    background-color: #322727; 
+    color: white;
+    font-weight: 600;
+    text-align: start;
+}
+.link{
+    text-decoration: none;
+}
+
+.text{
+    font-size: 13;
+    font-weight: 600;
+}
+.text2{
+    font-size: 18;
+    font-weight: 600;
+}
+
+.form-register {
+    background-color: #12181f;
+    width: 400px;
+    padding: 30px;
+    /*background-color:  #12181f;*/
+    margin: auto;
+    margin-top: 40px;
+    border-radius: 4px;
+    color: white;
+}
+
+.register{
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    border: 1px solid #000;
+}
+
+.file
+{
+    margin-bottom: 16px;
+}
+
+.bRegister{
+    height: 40px;
+    text-align: center;
+}
+
+
