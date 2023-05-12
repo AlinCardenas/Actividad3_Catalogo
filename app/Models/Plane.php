@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Plane extends Model
 {
     use HasFactory;
+    protected $fillable = [
+            'cant',
+            'model', 
+            'type', 
+            'class', 
+        ];
 
     public function flights()
     {
