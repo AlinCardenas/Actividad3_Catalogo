@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\SendEmailController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,6 @@ Route::middleware([
 });
 
 Route::post('enviar', [SendEmailController::class, 'envio'])->name('enviar');
+
+// Ruta de destinos
+Route::resource('destinations', DestinationsController::class);
