@@ -12,7 +12,9 @@ class HotelsController extends Controller
      */
     public function index()
     {
-        //
+        $hotels = Hotel::all()->paginate();
+
+        return view('hotels.index',compact('hotels'));
     }
 
     /**
@@ -20,7 +22,7 @@ class HotelsController extends Controller
      */
     public function create()
     {
-        //
+        return view('hotels.create');
     }
 
     /**
@@ -28,7 +30,7 @@ class HotelsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('productos.show');
     }
 
     /**
@@ -36,15 +38,16 @@ class HotelsController extends Controller
      */
     public function show(Hotel $hotel)
     {
-        //
+        return view('hotels.show',compact('hotel'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
+
     public function edit(Hotel $hotel)
     {
-        //
+        return view('hotels.edit',compact('hotel'));
     }
 
     /**
