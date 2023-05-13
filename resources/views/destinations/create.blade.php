@@ -1,5 +1,5 @@
 <x-layout>
-    <form class="max-w-6xl mx-auto mt-9 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 " method="POST" action="{{route('destinations.store')}}" >
+    <form class="w-5/12 mx-auto mt-9" method="POST" action="{{route('destinations.store')}}" enctype="multipart/form-data">
         @csrf
         <h1 class="font-bold text-4xl text-center " >Registro de destinos</h1>
       
@@ -19,19 +19,24 @@
         </div>
     
         <div class="mb-4">
-            <label for="ranking" class="block mb-2 font-bold">Descripción</label>
+            <label for="ranking" class="block mb-2 font-bold">Descripción:</label>
             <textarea name="description" id="" class="w-full px-3 py-2 border rounded-md">
 
             </textarea>
         </div>
 
         <div class="mb-4">
-                <label for="destino" class="block mb-2 font-bold">Idiomas</label>
+            <label for="destino" class="block mb-2 font-bold">Idiomas:</label>
             <input type="text" name="languages"  class="w-full px-3 py-2 border rounded-md" >
         </div>
+
+        <div class="mb-4">
+            <label for="destino" class="block mb-2 font-bold">Imagenes: </label>
+            <input type="file" name="images[]"  class="w-full px-3 py-2 border rounded-md" multiple>
+        </div>
     
-        <div>
-            <button type="submit" class="w-full px-4 py-2 text-white bg-purple-600 hover:bg-purple-700 rounded-md">Crear registro</button>
+        <div class="grid justify-items-center">
+            <button type="submit" class="w-3/12 py-2  text-white bg-purple-600 rounded-md">Crear registro</button>
         </div>
     </form>
 </x-layout>
