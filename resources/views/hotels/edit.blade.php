@@ -21,12 +21,12 @@
     
         <div class="mb-4">
             <label for="ranking" class="block mb-2 font-bold">Puntuación</label>
-            <input type="number" name="ranking"  class="w-full px-3 py-2 border rounded-md" value="{{$hotel->address}}" required>
+            <input type="number" name="ranking"  class="w-full px-3 py-2 border rounded-md" value="{{$hotel->ranking}}" required>
         </div>
     
         <div class="mb-4">
             <label for="description" class="block mb-2 font-bold">Descripcion</label>
-            <textarea name="description" class="w-full px-3 py-2 border rounded-md" >value="{{$hotel->description}}"</textarea>
+            <textarea name="description" class="w-full px-3 py-2 border rounded-md" >{{$hotel->description}}</textarea>
         </div>
 
         <div class="mb-4">
@@ -41,7 +41,7 @@
 
         <div class="mb-4">
                 <label for="destino" class="block mb-2 font-bold">Destino</label>
-            <input type="text" name="destino"  class="w-full px-3 py-2 border rounded-md" value="{{$hotel->destino}}"required>
+            <input type="text" name="destino_id"  class="w-full px-3 py-2 border rounded-md" value="{{$hotel->destino_id}}"required>
         </div>
     
         <div>

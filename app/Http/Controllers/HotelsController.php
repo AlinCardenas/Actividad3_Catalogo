@@ -12,7 +12,7 @@ class HotelsController extends Controller
      */
     public function index()
     {
-        $hotels = Hotel::paginate(20);
+        $hotels = Hotel::orderByDesc('id')->paginate(5);
         return view('hotels.index',compact('hotels'));
     }
 
@@ -29,7 +29,17 @@ class HotelsController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('productos.show');
+        $hotel= new Hotel();
+        $hotel->name =$request->name;
+        $hotel->price =$request->price;
+        $hotel->address =$request->address;
+        $hotel->ranking =$request->ranking;
+        $hotel->description =$request->description;
+        $hotel->logo =$request->logo;
+        $hotel->image =$request->image;
+        $hotel->destino_id =$request->destino_id;
+        $hotel->save();
+        return redirect()->route('hotels.show',compact('hotel'));
     }
 
     /**
@@ -46,6 +56,7 @@ class HotelsController extends Controller
 
     public function edit(Hotel $hotel)
     {
+        // SHOW TRAE TOODO EL OBJETO
         return view('hotels.edit',compact('hotel'));
     }
 
@@ -54,14 +65,26 @@ class HotelsController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
-        //
+        $hotel= new Hotel();
+        $hotel->name =$request->name;
+        $hotel->price =$request->price;
+        $hotel->address =$request->address;
+        $hotel->ranking =$request->ranking;
+        $hotel->description =$request->description;
+        $hotel->logo =$request->logo;
+        $hotel->image =$request->image;
+        $hotel->destino_id =$request->destino_id;
+        $hotel->save();
+        return redirect()->route('hotels.show',compact('hotel'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Hotel $hotel)
+    public function destroy($hotel)
     {
-        //
+        // SOLO CON EL ID PUEDO BRRAR TODO
+        $hotel= Hotel::find($hotel)->delete();
+        return redirect()->route('hotels.index');
     }
 }

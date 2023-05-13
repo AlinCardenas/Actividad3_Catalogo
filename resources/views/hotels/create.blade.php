@@ -1,6 +1,6 @@
 <x-guest-layout>
     <form class="max-w-6xl mx-auto mt-8 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 " action="{{route('hotels.store')}}" method="POST"  >
-        
+        @csrf
         <h1 class="font-bold text-4xl text-center " >Registro de hotel</h1>
         <div class="mb-4 mt-6">
             <label for="name" class="block mb-2 font-bold">Nombre</label>
@@ -9,7 +9,7 @@
     
         <div class="mb-4">
             <label for="price" class="block mb-2 font-bold">Precio</label>
-            <input type="double"  name="price" class="w-full px-3 py-2 border rounded-md" required>
+            <input type="number"  name="price" class="w-full px-3 py-2 border rounded-md" required>
         </div>
     
         <div class="mb-4">
@@ -39,7 +39,7 @@
 
         <div class="mb-4">
                 <label for="destino" class="block mb-2 font-bold">Destino</label>
-            <input type="text" name="destino"  class="w-full px-3 py-2 border rounded-md" required>
+            <input type="text" name="destino_id"  class="w-full px-3 py-2 border rounded-md" required>
         </div>
     
         <div>
