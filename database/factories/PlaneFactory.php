@@ -21,6 +21,7 @@ class PlaneFactory extends Factory
             'model' => $this->faker->word(),
             'type' => $this->faker->word(),
             'class' => $this->faker->word(),
+
         ];
     }
 }

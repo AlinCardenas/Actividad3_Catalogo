@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\HotelsController;
+use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\SendEmailController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +38,4 @@ Route::resource('destinations', DestinationsController::class);
 
 //Ruta para crud de hoteles
 Route::resource('hotels', HotelsController::class);
+Route::resource('planes',PlaneController::class);

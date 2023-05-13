@@ -25,10 +25,5 @@ class DatabaseSeeder extends Seeder
         Flight::factory(45)->create();
         Airline::factory(45)->create();
         Airport::factory(45)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
