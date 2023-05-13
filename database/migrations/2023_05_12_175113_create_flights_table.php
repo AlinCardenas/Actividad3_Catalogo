@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('arrive_date');
             $table->integer('count_clients');
             $table->time('duration');
-            $table->tinyInteger('price');
+            $table->integer('price');
             $table->string('type');
             $table->string('type_lunggage');
             

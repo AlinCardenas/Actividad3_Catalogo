@@ -19,7 +19,7 @@ return new class extends Migration
             $table->tinyInteger('ranking');
             $table->text('description');
             $table->string('languages');
-            $table->json('images');
+            $table->string('images');
             $table->timestamps();
         });
     }

@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hotel;
+use App\Models\Destination;
 use Illuminate\Http\Request;
 
-class HotelsController extends Controller
+class DestinationsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $hotels = Hotel::paginate(20);
-        return view('hotels.index',compact('hotels'));
+        $registers = Destination::all();
+        return view('destinations.index', compact('registers'));
     }
 
     /**
@@ -21,7 +21,7 @@ class HotelsController extends Controller
      */
     public function create()
     {
-        return view('hotels.create');
+        //
     }
 
     /**
@@ -29,30 +29,29 @@ class HotelsController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('productos.show');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Hotel $hotel)
+    public function show(Destination $destination)
     {
-        return view('hotels.show',compact('hotel'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-
-    public function edit(Hotel $hotel)
+    public function edit(Destination $destination)
     {
-        return view('hotels.edit',compact('hotel'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(Request $request, Destination $destination)
     {
         //
     }
@@ -60,7 +59,7 @@ class HotelsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Hotel $hotel)
+    public function destroy(Destination $destination)
     {
         //
     }
