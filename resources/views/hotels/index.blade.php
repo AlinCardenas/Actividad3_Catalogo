@@ -1,6 +1,6 @@
 <x-guest-layout>
     <h1 class="text-xl text-center font-bold">Lista de hoteles</h1>
-    <div class="mt-4 ml-4">
+    <div class="mt-4 ml-4 flex justify-end ">
         <a href="{{ route('hotels.create') }}" class="text-purple-600 hover:text-purple-600  px-4"> Agregar hotel</a>
     </div>
     <div class="mx-auto w-max-content">

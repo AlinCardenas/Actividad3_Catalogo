@@ -1,55 +1,55 @@
 <x-layout title="Register">
-    <div class="container">
-        <h1 class="text-3xl text-center font-bold mt-3 text-gray-700">Formulario</h1>
-
+    <div class="container max-w-6xl mx-auto mt-10">
+        
         <form action="" method="POST">
+            <h1 class="text-3xl text-center font-bold mt-3 text-gray-700">Formulario</h1>
             @csrf
-            <div class="flex justify-center h-screen ">
+            <div class="">
                 <div class="grid grid-cols-3 gap-3 mt-6">
     
                     <div class="col-span-3 ">
-                        <label class="font-bold text-gray-600"  for="">Nombre</label>
-                        <input class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " type="text" name="nombre" id="" required>
+                        <label class="font-bold text-gray-600"  for="nombre">Nombre</label>
+                        <input class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " type="text" name="nombre" required>
                     </div>
                     
     
                     <div class="col-span-2">
-                        <label class="font-bold text-gray-600" for="">Calle</label>
+                        <label class="font-bold text-gray-600" for="calle">Calle</label>
                         <input  class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " type="text" name="calle" id="" required>
                     </div>
     
                     <div>
-                        <label class="font-bold text-gray-600" for="">CP</label>
-                        <input class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " type="text" name="" id="" required>
+                        <label class="font-bold text-gray-600" >Código postal</label>
+                        <input class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " type="text" name="" required>
                     </div>
     
                     <div>
-                        <label class="font-bold text-gray-600" for="">Num Ext</label>
-                        <input class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " type="text" name="" id="" required>
+                        <label class="font-bold text-gray-600" >Número interior</label>
+                        <input class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " type="text" name=""required>
                     </div>
     
                     <div>
-                        <label class="font-bold text-gray-600" for="">Num Int</label>
-                        <input class="shadow-2xl rounded-lg p-2 w-full border-slate-300 "  type="text" name="" id="" required>
+                        <label class="font-bold text-gray-600" >Número exterior</label>
+                        <input class="shadow-2xl rounded-lg p-2 w-full border-slate-300 "  type="text" name=""required>
                     </div>
     
                     <div>
-                        <label class="font-bold text-gray-600" for="">Pais</label>
-                        <input class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " type="text" name="" id="" required>
+                        <label class="font-bold text-gray-600" for="">País</label>
+                        <input class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " type="text" name="" required>
                     </div>
 
                     <div class="col-span-2">
                         <label class="font-bold text-gray-600" for="">Descripcion</label>
-                        <textarea class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " name="" id="" required></textarea>
+                        <textarea class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " name="" required></textarea>
                     </div>
     
                     <div>
-                        <label class="font-bold text-gray-600 " for="">Imagen</label>
-                        <input class=" w-full appearance-none rounded-lg bg-white" type="file" name="" id="" >
+                        <label class="font-bold text-gray-600" for="imagen">Imagen</label>
+                        <input class="w-full shadow-2xl appearance-none rounded-lg bg-white border border-gray-300 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="file" name="imagen" >
                     </div>
+                    
                     <div>
-                        <button class="bg-purple-500 py-2 px-5 hover:bg-purple-600 text-white font-bold  rounded-lg" type="submit ">Enviar</button>
-
+                        <button class="bg-purple-500  py-2 px-5 hover:bg-purple-600 text-white font-bold  rounded-lg" type="submit ">Enviar</button>
                     </div>
 
                     

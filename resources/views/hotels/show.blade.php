@@ -1,7 +1,11 @@
 <x-guest-layout>
+    
    
 
     <div class="max-w-md mx-auto mt-10">
+        <div class="flex justify-end  mt-4">
+            <a href="{{ route('hotels.index') }}" class="text-purple-600 hover:text-purple-600 px-4"> Ir a inicio</a>
+        </div>
         @php
             // 1.Rempazar nombre imagen
 
@@ -9,10 +13,8 @@
             $ruta_logo = str_replace('public/img/', '', $hotel->logo);
              
         @endphp
-        <div class="bg-white shadow-md rounded px-8 py-6 mb-4">
-        
-            
 
+        <div class="bg-white shadow-md rounded px-8 py-6 mb-4">
             <p>
                 {{-- Llamar imagen --}}
                 <img src="{{asset('storage/img/'.$ruta_image)}}" width="400" height="200">
