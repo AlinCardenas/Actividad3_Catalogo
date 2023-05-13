@@ -21,7 +21,7 @@ class DestinationsController extends Controller
      */
     public function create()
     {
-        //
+        return view('destinations.create');
     }
 
     /**
@@ -29,7 +29,8 @@ class DestinationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Destination::create($request->all());
+        dump("Registro generado");
     }
 
     /**
@@ -37,7 +38,8 @@ class DestinationsController extends Controller
      */
     public function show(Destination $destination)
     {
-        //
+        return view('destinations.show', compact('destination'));
+        
     }
 
     /**
