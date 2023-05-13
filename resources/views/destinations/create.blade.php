@@ -31,7 +31,7 @@
         </div>
     
         <div>
-            <button type="submit" class="w-full px-4 py-2 text-white bg-purple-600 hover:bg-purple-700 rounded-md">Registra</button>
+            <button type="submit" class="w-full px-4 py-2 text-white bg-purple-600 hover:bg-purple-700 rounded-md">Crear registro</button>
         </div>
     </form>
 </x-layout>
