@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form class="max-w-6xl mx-auto mt-8 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 " action="{{route('hotels.store')}}" method="POST"  >
+    <form class="max-w-6xl mx-auto mt-8 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 " action="{{route        ('hotels.store')}}" method="POST" enctype="multipart/form-data" >
         @csrf
         <h1 class="font-bold text-4xl text-center " >Registro de hotel</h1>
         <div class="mb-4 mt-6">

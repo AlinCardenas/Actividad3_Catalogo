@@ -19,7 +19,7 @@
             <tbody>
                 @foreach ($hotels as $hotel)
                     <tr>
-                        <td class="py-4 px-6 text-center">{{ $hotel->name }}</td>
+                        <td class="py-4 px-6 text-center"><a href="{{route('hotels.show', $hotel->id)}}">{{$hotel->name}} </a></td>
                         <td class="py-4 px-6 text-center">{{ $hotel->price }}</td>
                         <td class="py-4 px-6 text-center">{{ $hotel->address }}</td>
                         <td class="py-4 px-6 text-center">{{ $hotel->ranking }}</td>
