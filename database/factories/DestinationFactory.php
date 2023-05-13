@@ -17,9 +17,8 @@ class DestinationFactory extends Factory
     public function definition(): array
     {
         $metadata = [
-            'nombre' => 'imagen',
-            'size' => '21kb',
-            'extension' => '.jpg',
+            'public/images/nombre_imagen1.jpg',
+            'public/images/nombre_imagen2.jpg',
         ];
         $valor = json_encode($metadata);
 
