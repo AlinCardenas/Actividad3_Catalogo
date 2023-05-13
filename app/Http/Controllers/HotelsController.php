@@ -80,17 +80,25 @@ class HotelsController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
+        $name_img=[];
         $route_logo = $request->logo->store('public/img');
-        $route_image = $request->image->store('public/img');
-
+        
         $hotel= new Hotel();
+
+        // genera el nombre de la imagen y las guarda
+        foreach ($request->file('image') as $file) {
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/img', $filename);
+            $name_img[] = $path;
+        }
+
         $hotel->name =$request->name;
         $hotel->price =$request->price;
         $hotel->address =$request->address;
         $hotel->ranking =$request->ranking;
         $hotel->description =$request->description;
         $hotel->logo = $route_logo;
-        $hotel->image =$route_image;
+        $hotel->image =json_encode($name_img);
         $hotel->destino_id =$request->destino_id;
         $hotel->save();
         return redirect()->route('hotels.show',compact('hotel'));
