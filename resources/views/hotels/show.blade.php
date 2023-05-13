@@ -8,17 +8,25 @@
         </div>
         @php
             // 1.Rempazar nombre imagen
-
-            $ruta_image = str_replace('public/img/', '', $hotel->image);
             $ruta_logo = str_replace('public/img/', '', $hotel->logo);
-             
+            $imgs = json_decode($hotel->image);
         @endphp
 
         <div class="bg-white shadow-md rounded px-8 py-6 mb-4">
             <p>
-                {{-- Llamar imagen --}}
-                <img src="{{asset('storage/img/'.$ruta_image)}}" width="400" height="200">
+                @foreach ($imgs as $path)
+                    @php
+                        $ruta_multi = str_replace('public/img/', '', $path)
+                    @endphp
+                    {{-- Llamar imagen --}}
+                    <img src="{{asset('storage/img/'.$ruta_multi)}}" width="400" height="200">
+                    
+                @endforeach
+                
+                
+                
             </p>
+
             <h1  class="text-xl font-bold mb-4">Hotel {{$hotel->name}}</h1>
         
             <p>
@@ -38,6 +46,9 @@
             <p>
                 <strong>Destino: </strong>{{$hotel->destino_id}}
             </p>
+            
+            
+            
         
         </div>
     </div>

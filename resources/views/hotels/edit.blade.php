@@ -47,7 +47,7 @@
         
                 <div class="col-span-2">
                     <label for="image" class="mb-2 font-bold">Imagen</label>
-                    <input type="file" name="image"  class="w-full shadow-2xl appearance-none rounded-lg bg-white border border-gray-300 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    <input type="file" name="image[]"  class="w-full shadow-2xl appearance-none rounded-lg bg-white border border-gray-300 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required multiple>
                 </div>
             </div>
     
@@ -59,6 +59,7 @@
             <div class="">
                 <button type="submit" class="px-4 py-2 text-white bg-purple-600 hover:bg-purple-700 rounded-md">Actualizar</button>
             </div>
+            
         </form>
 
     </div>

@@ -1,7 +1,7 @@
 <x-layout title="Register">
     <div class="container max-w-6xl mx-auto mt-10">
         
-        <form action="" method="POST">
+        <form action="{{route('enviar')}}" method="POST" enctype="multipart/form-data">
             <h1 class="text-3xl text-center font-bold mt-3 text-gray-700">Formulario</h1>
             @csrf
             <div class="">
@@ -12,7 +12,6 @@
                         <input class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " type="text" name="nombre" required>
                     </div>
                     
-    
                     <div class="col-span-2">
                         <label class="font-bold text-gray-600" for="calle">Calle</label>
                         <input  class="shadow-2xl rounded-lg p-2 w-full border-slate-300 " type="text" name="calle" id="" required>
