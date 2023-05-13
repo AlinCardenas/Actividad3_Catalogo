@@ -12,13 +12,17 @@ class DestinationsController extends Controller
      */
     public function index()
     {
-        $registers = Destination::paginate(50);
+        $registers = Destination::paginate(10);
         
-        foreach ($registers as $item) {
-            dump($item->images);
-        }
+        
+        // foreach ($registers as $item) {
+        //     $imgs = json_decode($item->images);
+        //     foreach ($imgs as $path) {
+        //         dump($path);
+        //     }
+        // }
 
-        // return view('destinations.index', compact('registers'));
+        return view('destinations.index', compact('registers'));
     }
 
     /**
