@@ -37,6 +37,9 @@ class DestinationsController extends Controller
      */
     public function store(Request $request)
     {
+
+        request()->validate(Destination::$rules);
+
         $registro = new Destination();
 
         $filenames = [];
