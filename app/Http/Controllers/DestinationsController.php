@@ -90,6 +90,9 @@ class DestinationsController extends Controller
      */
     public function update(Request $request, Destination $destination)
     {
+
+        request()->validate(Destination::$rules);
+
         $filenames = [];
 
         foreach ($request->file('images') as $file) {

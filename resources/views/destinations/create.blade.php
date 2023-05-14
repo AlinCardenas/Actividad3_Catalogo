@@ -2,41 +2,15 @@
     <form class="w-5/12 mx-auto mt-9" method="POST" action="{{route('destinations.store')}}" enctype="multipart/form-data">
         @csrf
         <h1 class="font-bold text-4xl text-center " >Registro de destinos</h1>
-      
-        <div class="mb-4 mt-6">
-            <label for="name" class="block mb-2 font-bold">Nombre:</label>
-            <input type="text" name="name" class="w-full px-3 py-2 border rounded-md"  >
-        </div>
-    
-        <div class="mb-4">
-            <label for="price" class="block mb-2 font-bold">Dirección:</label>
-            <input type="text"  name="address" class="w-full px-3 py-2 border rounded-md" >
-        </div>
-    
-        <div class="mb-4">
-            <label for="address" class="block mb-2 font-bold">Calificación:</label>
-            <input type="number" name="ranking"  class="w-full px-3 py-2 border rounded-md" max="10" min="1">
-        </div>
-    
-        <div class="mb-4">
-            <label for="ranking" class="block mb-2 font-bold">Descripción:</label>
-            <textarea name="description" id="" class="w-full px-3 py-2 border rounded-md">
-
-            </textarea>
-        </div>
-
-        <div class="mb-4">
-            <label for="destino" class="block mb-2 font-bold">Idiomas:</label>
-            <input type="text" name="languages"  class="w-full px-3 py-2 border rounded-md" >
-        </div>
-
-        <div class="mb-4">
-            <label for="destino" class="block mb-2 font-bold">Imagenes: </label>
-            <input type="file" name="images[]"  class="w-full px-3 py-2 border rounded-md" multiple>
-        </div>
+        <x-input-txt nombre="name" tipo="text" etiqueta="Nombre: " />
+        <x-input-txt nombre="address" tipo="text" etiqueta="Dirección: " />
+        <x-input-txt nombre="ranking" tipo="number" etiqueta="Calificación: " />
+        <x-input-txt nombre="languages" tipo="text" etiqueta="Idiomas: " />
+        <x-text-area nombre="description" etiqueta="Descrición" />
+        <x-input-txt nombre="images[]" tipo="file" etiqueta="Imagenes: " multiple  class="border-none px-0"/>
     
         <div class="grid justify-items-center">
-            <button type="submit" class="w-3/12 py-2  text-white bg-purple-600 rounded-md">Crear registro</button>
+            <button type="submit" class="w-3/12 py-2 text-white bg-purple-600 rounded-md mb-4">Crear registro</button>
         </div>
     </form>
 </x-layout>

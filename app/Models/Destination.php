@@ -15,7 +15,8 @@ class Destination extends Model
         'ranking' => 'required',
         'description' => 'required',
         'languages' => 'required',
-        'images' => 'required|mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+        'images' => 'required|array',
+        'images.*' => 'mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
     ];
 
     protected $fillable = [
