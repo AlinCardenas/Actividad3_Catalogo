@@ -26,7 +26,7 @@
     
         <div class="mb-4">
             <label for="description" class="block mb-2 font-bold">Descripcion</label>
-            <textarea name="description" class="w-full px-3 py-2 border rounded-md" >{{$hotel->description}}</textarea>
+            <textarea name="description" class="w-full px-3 py-2 border rounded-md" >value="{{$hotel->description}}"</textarea>
         </div>
 
             <div class="grid grid-cols-4 gap-3">
