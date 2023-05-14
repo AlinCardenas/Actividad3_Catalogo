@@ -1,43 +1,33 @@
 <x-guest-layout>
-    <div class="container max-w-6xl mx-auto mt-4">
-        <form action="{{route('hotels.update', $hotel)}}" method="POST" enctype="multipart/form-data">
-
-            <h1 class="font-bold text-4xl text-center " >Editar hotel</h1>
-
-            @csrf
-
-            <div class="flex justify-end  mt-4">
-                <a href="{{ route('hotels.index') }}" class="font-bold text-purple-500 hover:text-purple-600 px-4"> Ir a inicio</a>
-            </div>
-
-            @method('put')
-
-            <div class="">
-                <label for="name" class="mb-2 font-bold">Nombre</label>
-                <input type="text" name="name" class="shadow-2xl rounded-lg p-2 w-full border-slate-300"  value="{{$hotel->name}}" required >
-            </div>
-
-            <div class="grid grid-cols-4 gap-3 mt-6">
-                <div class="col-span-3">
-                    <label for="price" class="mb-2 font-bold">Precio</label>
-                    <input type="number"  name="price" class="shadow-2xl rounded-lg p-2 w-full border-slate-300" value="{{$hotel->price}}" required>
-                </div>
-                <div class="">
-                    <label for="ranking" class="mb-2 font-bold">Puntuación</label>
-                    <input type="number" name="ranking"  class="shadow-2xl rounded-lg p-2 w-full border-slate-300" value="{{$hotel->ranking}}" required>
-                </div>
-
-            </div>
+    <form class="max-w-6xl mx-auto mt-8 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 " action="{{route('hotels.update', $hotel)}}" method="POST"  >
         
-            <div class="">
-                <label for="address" class="mb-2 font-bold">Dirección</label>
-                <input type="text" name="address"  class="shadow-2xl rounded-lg p-2 w-full border-slate-300" value="{{$hotel->address}}" required>
-            </div>
-        
-            <div class="">
-                <label for="description" class="mb-2 font-bold">Descripcion</label>
-                <textarea name="description" class="shadow-2xl rounded-lg p-2 w-full border-slate-300" >{{$hotel->description}}</textarea>
-            </div>
+        @csrf
+        <h1 class="font-bold text-4xl text-center " >Editar hotel</h1>
+        @method('put')
+        <div class="mb-4 mt-6">
+            <label for="name" class="block mb-2 font-bold">Nombre</label>
+            <input type="text" name="name" class="w-full px-3 py-2 border rounded-md"  value="{{$hotel->name}}" required >
+        </div>
+    
+        <div class="mb-4">
+            <label for="price" class="block mb-2 font-bold">Precio</label>
+            <input type="double"  name="price" class="w-full px-3 py-2 border rounded-md" value="{{$hotel->price}}" required>
+        </div>
+    
+        <div class="mb-4">
+            <label for="address" class="block mb-2 font-bold">Dirección</label>
+            <input type="text" name="address"  class="w-full px-3 py-2 border rounded-md" value="{{$hotel->address}}" required>
+        </div>
+    
+        <div class="mb-4">
+            <label for="ranking" class="block mb-2 font-bold">Puntuación</label>
+            <input type="number" name="ranking"  class="w-full px-3 py-2 border rounded-md" value="{{$hotel->address}}" required>
+        </div>
+    
+        <div class="mb-4">
+            <label for="description" class="block mb-2 font-bold">Descripcion</label>
+            <textarea name="description" class="w-full px-3 py-2 border rounded-md" >{{$hotel->description}}</textarea>
+        </div>
 
             <div class="grid grid-cols-4 gap-3">
                 <div class="col-span-2">
