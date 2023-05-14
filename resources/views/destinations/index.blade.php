@@ -16,7 +16,6 @@
               <th class="border-4  border-blue-400 bg-blue-400 text-black font-mono text-xl ">Valoración</th>
               <th class="border-4  border-blue-400 bg-blue-400 text-black font-mono text-xl ">Descripción</th>
               <th class="border-4  border-blue-400 bg-blue-400 text-black font-mono text-xl ">Idiomas</th>
-              <th class="border-4  border-blue-400 bg-blue-400 text-black font-mono text-xl ">Imagenes</th>
               <th class="border-4  border-blue-400 bg-blue-400 text-black font-mono text-xl ">Ver</th>
               <th class="border-4  border-blue-400 bg-blue-400 text-black font-mono text-xl ">Editar</th>
               <th class="border-4  border-blue-400 bg-blue-400 text-black font-mono text-xl ">Eliminar</th>
@@ -24,55 +23,22 @@
           </thead>
           <tbody>
             @foreach ($registers as $item)
-
-            {{-- @php
-                $imgs = json_decode($item->images);
-            @endphp --}}
-            
                 <tr>
-                  <td class="border-4 w-screen px-4 py-2 text-center border-blue-400 font-semibold">
-                    {{$item->name}}
-                  </td>
-
-                  <td class="border-4 w-screen px-4 py-2 text-center border-blue-400 font-semibold">
-                    {{$item->address}}
-                  </td>
-
-                  <td class="border-4 w-screen px-4 py-2 text-center border-blue-400 font-semibold">
-                    {{$item->ranking}}
-                  </td>
-
-                  <td class="border-4 w-screen px-4 py-2 text-center border-blue-400 font-semibold">
-
-                    {{-- @foreach ($imgs as $path)  
-                      @php
-                        $ruta = str_replace('public/images/', '', $path)  ;
-                      @endphp
-                      <img src="{{asset('storage/images/' . $ruta)}}" alt="" width="50" height="50">
-                    @endforeach --}}
-
-                      {{Str::limit($item->description, 20)}}
-                  </td>
-                  <td class="border-4 w-screen px-4 py-2 text-center border-blue-400 font-semibold">
-                    {{$item->languages}}
-                  </td>
-
-                  <td class="border-4 w-screen px-4 py-2 text-center border-blue-400 font-semibold">{{$item->languages}}
-                  </td>
+                  <x-table-row :item="$item->name" />
+                  <x-table-row :item="$item->address" />
+                  <x-table-row :item="$item->ranking" />
+                  <x-table-row :item="Str::limit($item->description, 30)" />
+                  <x-table-row :item="$item->languages" />
                   
-                  <td class="border-4 w-screen border-blue-400	px-4 py-2 text-center">
-                    <a href="{{route('destinations.show', $item->id)}}" class="border-2 p-2 rounded-3xl bg-blue-700	 text-white font-bold">Mostrar</a>
-                  </td>
-                  <td class="border-4 w-screen border-blue-400	px-4 py-2 text-center">
-                    <a href="{{route('destinations.edit', $item->id)}}" class="border-2 p-2 rounded-3xl bg-green-600 text-white font-bold">Editar</a>
-                  </td>
-                  <td class="border-4 w-screen border-blue-400	px-4 py-2 text-center">
-                    <form action="{{route('destinations.destroy', $item->id)}}" method="POST">
-                      @csrf
-                      @method('delete')
-                      <button type="submit" class="border-2 p-2 rounded-3xl bg-red-700 text-white font-bold">Eliminar</button>
-                    </form>
-                  </td>
+                  <x-table-row-link>
+                      <x-link-id href="{{route('destinations.show', $item->id)}}" mensaje="Mostrar"/>
+                  </x-table-row-link>
+                  <x-table-row-link>
+                      <x-link-id href="{{route('destinations.edit', $item->id)}}" mensaje="Editar" class="bg-green-600"/>
+                  </x-table-row-link>
+                  <x-table-row-link>
+                    <x-table-row-delete action="{{route('destinations.destroy', $item->id)}}" />
+                  </x-table-row-link>
                 </tr>
             @endforeach
             
