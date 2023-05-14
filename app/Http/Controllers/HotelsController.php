@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Destination;
 use App\Models\Hotel;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class HotelsController extends Controller
      */
     public function index()
     {
-        $hotels = Hotel::paginate(20);
+        $hotels = Hotel::orderByDesc('id')->paginate(12);
         return view('hotels.index',compact('hotels'));
     }
 
@@ -21,7 +22,10 @@ class HotelsController extends Controller
      */
     public function create()
     {
-        return view('hotels.create');
+        $object = new Hotel();
+        $list= Destination::pluck('name','id');
+
+        return view('hotels.create', compact('object','list'));
     }
 
     /**
@@ -29,7 +33,28 @@ class HotelsController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('productos.show');
+        $name_img=[];
+        $route_logo = $request->logo->store('public/img');
+        
+        $hotel= new Hotel();
+
+        // genera el nombre de la imagen y las guarda
+        foreach ($request->file('image') as $file) {
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/img', $filename);
+            $name_img[] = $path;
+        }
+
+        $hotel->name =$request->name;
+        $hotel->price =$request->price;
+        $hotel->address =$request->address;
+        $hotel->ranking =$request->ranking;
+        $hotel->description =$request->description;
+        $hotel->logo = $route_logo;
+        $hotel->image = json_encode($name_img);
+        $hotel->destino_id =$request->destino_id;
+        $hotel->save();
+        return redirect()->route('hotels.show',compact('hotel'));
     }
 
     /**
@@ -46,7 +71,11 @@ class HotelsController extends Controller
 
     public function edit(Hotel $hotel)
     {
-        return view('hotels.edit',compact('hotel'));
+        $object = new Hotel();
+        $list= Destination::pluck('name','id');
+
+        
+        return view('hotels.edit',compact('hotel','object','list'));
     }
 
     /**
@@ -54,14 +83,67 @@ class HotelsController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
-        //
+        $name_img=[];
+        $route_logo = $request->logo->store('public/img');
+        
+        $hotel= new Hotel();
+
+        // genera el nombre de la imagen y las guarda
+        foreach ($request->file('image') as $file) {
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/img', $filename);
+            $name_img[] = $path;
+        }
+
+        $hotel->name =$request->name;
+        $hotel->price =$request->price;
+        $hotel->address =$request->address;
+        $hotel->ranking =$request->ranking;
+        $hotel->description =$request->description;
+        $hotel->logo = $route_logo;
+        $hotel->image =json_encode($name_img);
+        $hotel->destino_id =$request->destino_id;
+        $hotel->save();
+        return redirect()->route('hotels.show',compact('hotel'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Hotel $hotel)
+    public function destroy($hotel)
     {
-        //
+        // SOLO CON EL ID PUEDO BRRAR TODO
+        $hotel= Hotel::find($hotel)->delete();
+        return redirect()->route('hotels.index');
     }
+
+  /*   public function skip($id){
+        $skip=($id+1);
+        $hotel=Hotel::find($skip);
+        
+
+        if ($hotel) {
+            
+            return view('hotels.show',compact('hotel'));
+        } else {
+            do{
+                $skip=($skip+1);
+                $hotel=Hotel::find($skip);
+            }
+            while($hotel);
+           // $hotel=Hotel::first();
+            return view('hotels.show',compact('hotel'));
+        }
+    }
+
+    public function back($id){
+        $back=($id-1);
+        $hotel=Hotel::find($back);
+        if ($hotel) {
+            return view('hotels.show',compact('hotel'));
+        } else {
+            $hotel= Hotel::latest();
+            return view('hotels.show',compact('hotel'));
+        }
+    } */
 }

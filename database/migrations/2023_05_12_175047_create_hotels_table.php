@@ -15,12 +15,12 @@ return new class extends Migration
             $table->engine='InnoDB';
             $table->id();
             $table->string('name');
-            $table->tinyInteger('price');
+            $table->Integer('price');
             $table->string('address');
             $table->tinyInteger('ranking');
             $table->text('description');
             $table->string('logo');
-            $table->string('image');
+            $table->json('image');
             $table->bigInteger('destino_id')->unsigned();
             $table->timestamps();
 

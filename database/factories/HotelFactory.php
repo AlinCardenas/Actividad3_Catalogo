@@ -16,6 +16,12 @@ class HotelFactory extends Factory
      */
     public function definition(): array
     {
+        $metadata = [
+            'public/images/nombre_imagen1.jpg',
+            'public/images/nombre_imagen2.jpg',
+        ];
+        $valor = json_encode($metadata);
+        
         return [
             'name' => $this->faker->word(),
             'price' => $this->faker->numberBetween(80, 120),
@@ -23,7 +29,7 @@ class HotelFactory extends Factory
             'ranking' => $this->faker->numberBetween(1,10),
             'description' => $this->faker->paragraph(),
             'logo' => $this->faker->imageUrl(640, 480, 'cats'),
-            'image' => $this->faker->imageUrl(640, 480, 'cats'),
+            'image' => $valor,
             'destino_id' => $this->faker->numberBetween(1, 45),
         ];
     }
