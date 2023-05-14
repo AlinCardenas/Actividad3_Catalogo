@@ -24,9 +24,11 @@
           </thead>
           <tbody>
             @foreach ($registers as $item)
+
             {{-- @php
                 $imgs = json_decode($item->images);
             @endphp --}}
+            
                 <tr>
                   <td class="border-4 w-screen px-4 py-2 text-center border-blue-400 font-semibold">
                     {{$item->name}}
@@ -41,12 +43,14 @@
                   </td>
 
                   <td class="border-4 w-screen px-4 py-2 text-center border-blue-400 font-semibold">
+
                     {{-- @foreach ($imgs as $path)  
                       @php
                         $ruta = str_replace('public/images/', '', $path)  ;
                       @endphp
                       <img src="{{asset('storage/images/' . $ruta)}}" alt="" width="50" height="50">
                     @endforeach --}}
+
                       {{Str::limit($item->description, 20)}}
                   </td>
                   <td class="border-4 w-screen px-4 py-2 text-center border-blue-400 font-semibold">
