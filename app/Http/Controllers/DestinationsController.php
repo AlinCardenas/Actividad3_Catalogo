@@ -8,13 +8,12 @@ use Illuminate\Http\Request;
 class DestinationsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Lista registros paginados
      */
     public function index()
     {
         $registers = Destination::paginate(10);
-        
-        
+           
         // foreach ($registers as $item) {
         //     $imgs = json_decode($item->images);
         //     foreach ($imgs as $path) {
@@ -26,7 +25,7 @@ class DestinationsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Ir a la ruta del formulario de creación
      */
     public function create()
     {
@@ -34,7 +33,7 @@ class DestinationsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Generar el registro
      */
     public function store(Request $request)
     {
@@ -57,11 +56,11 @@ class DestinationsController extends Controller
 
         $registro->save();
         
-        dump("Registro generado");
+        return redirect()->route('destinations.index');
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar un registro especifico
      */
     public function show(Destination $destination)
     {
@@ -76,26 +75,44 @@ class DestinationsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostrar el formulario de actualización de registro
      */
     public function edit(Destination $destination)
     {
-        //
+        return view('destinations.edit', compact('destination'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar registro
      */
     public function update(Request $request, Destination $destination)
     {
-        //
+        $filenames = [];
+
+        foreach ($request->file('images') as $file) {
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/images', $filename);
+            $filenames[] = $path;
+        }
+
+        $destination->name = $request->name;
+        $destination->address = $request->address;
+        $destination->ranking = $request->ranking;
+        $destination->description = $request->description;
+        $destination->languages = $request->languages;
+        $destination->images = json_encode($filenames);
+
+        $destination->update();
+        
+        return redirect()->route('destinations.index');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar registro
      */
-    public function destroy(Destination $destination)
+    public function destroy($destination)
     {
-        //
+        Destination::find($destination)->delete();
+        return redirect()->route('destinations.index');
     }
 }
