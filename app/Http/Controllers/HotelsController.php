@@ -13,7 +13,7 @@ class HotelsController extends Controller
      */
     public function index()
     {
-        $hotels = Hotel::orderByDesc('id')->paginate(5);
+        $hotels = Hotel::orderByDesc('id')->paginate(12);
         return view('hotels.index',compact('hotels'));
     }
 
@@ -71,8 +71,11 @@ class HotelsController extends Controller
 
     public function edit(Hotel $hotel)
     {
-        // SHOW TRAE TOODO EL OBJETO
-        return view('hotels.edit',compact('hotel'));
+        $object = new Hotel();
+        $list= Destination::pluck('name','id');
+
+        
+        return view('hotels.edit',compact('hotel','object','list'));
     }
 
     /**
