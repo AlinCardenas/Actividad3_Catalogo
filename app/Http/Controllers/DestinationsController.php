@@ -65,7 +65,13 @@ class DestinationsController extends Controller
      */
     public function show(Destination $destination)
     {
-        return view('destinations.show', compact('destination'));
+        $ruta = null;
+        $imgs = json_decode($destination->images);
+        foreach ($imgs as $path) {
+            $ruta = str_replace('public/images/', '', $path);
+        }
+
+        return view('destinations.show', compact('destination', 'ruta'));
         
     }
 
