@@ -13,4 +13,4 @@
             <button type="submit" class="w-3/12 py-2 text-white bg-purple-600 rounded-md mb-4">Crear registro</button>
         </div>
     </form>
-</x-layout>
+</x-layout> 

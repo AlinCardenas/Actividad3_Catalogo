@@ -11,20 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hotels', function (Blueprint $table) {
+        Schema::create('airports', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->id();
             $table->string('name');
-            $table->Integer('price');
-            $table->string('address');
-            $table->tinyInteger('ranking');
-            $table->text('description');
-            $table->string('logo');
-            $table->json('image');
-            $table->bigInteger('destino_id')->unsigned();
+            $table->string('cant');
+            $table->bigInteger('address_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('destino_id')->references('id')->on('destinations')->onDelete('cascade');
+            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
         });
     }
 
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hotels');
+        Schema::dropIfExists('airports');
     }
 };
