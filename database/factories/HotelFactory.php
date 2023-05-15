@@ -25,12 +25,12 @@ class HotelFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'price' => $this->faker->numberBetween(80, 120),
-            'address' => $this->faker->sentence(3),
+            'address_id' => $this->faker->numberBetween(1,45),
             'ranking' => $this->faker->numberBetween(1,10),
             'description' => $this->faker->paragraph(),
             'logo' => $this->faker->imageUrl(640, 480, 'cats'),
             'image' => $valor,
-            'destino_id' => $this->faker->numberBetween(1, 45),
+            'service_id' => $this->faker->numberBetween(1, 45),
         ];
     }
 }
