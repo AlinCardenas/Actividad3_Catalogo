@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Airport>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Service>
  */
-class AirportFactory extends Factory
+class ServiceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,8 @@ class AirportFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'address_ID' => $this->faker->numberBetween(1,45),
-            'cant' => $this->faker->numberBetween(1, 10),
+            'price' => $this->faker->numberBetween(10, 1200),
+            'description' => $this->faker->paragraph(),
         ];
     }
 }
