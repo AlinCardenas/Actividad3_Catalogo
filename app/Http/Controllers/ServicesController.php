@@ -41,7 +41,7 @@ class ServicesController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return view('services.show',compact('service'));
     }
 
     /**
@@ -49,7 +49,7 @@ class ServicesController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('services.edit', compact('service'));
     }
 
     /**
@@ -57,7 +57,9 @@ class ServicesController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $service->update($request->all());
+        
+        return redirect()->route('services.show',compact('service'));
     }
 
     /**
