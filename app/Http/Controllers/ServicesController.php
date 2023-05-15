@@ -21,7 +21,8 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        //
+        $object= new Service();
+        return view('services.create', compact('object'));
     }
 
     /**
@@ -29,7 +30,10 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $service= Service::create($request->all());
+        
+        return redirect()->route('services.show',compact('service'));
     }
 
     /**

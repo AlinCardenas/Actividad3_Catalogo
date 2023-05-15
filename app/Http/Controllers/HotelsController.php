@@ -27,9 +27,6 @@ class HotelsController extends Controller
         $object = new Hotel();
         $list= Service::pluck('name','id');
         $listados= Address::pluck('street','id');
-        
-        
-
         return view('hotels.create', compact('object','list','listados'));
     }
 
