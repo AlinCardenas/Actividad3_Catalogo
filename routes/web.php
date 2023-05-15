@@ -50,3 +50,7 @@ Route::get('skip/{id}',[HotelsController::class,'skip'])->name('hotel.skip');
 Route::get('back/{id}',[HotelsController::class,'back'])->name('hotel.back');
 
 Route::resource('planes',PlaneController::class);
+
+Route::get('/old', function () {
+    return view('olddashboard');
+});
