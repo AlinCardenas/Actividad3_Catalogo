@@ -1,8 +1,5 @@
 <x-layout title="Dashboard">
 <x-Navbar>
-<x-menu-nav>
-
-</x-menu-nav>
 </x-Navbar>
 
  <x-menu-nav>

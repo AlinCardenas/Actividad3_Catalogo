@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\PlaneController;
@@ -50,6 +51,8 @@ Route::get('skip/{id}',[HotelsController::class,'skip'])->name('hotel.skip');
 Route::get('back/{id}',[HotelsController::class,'back'])->name('hotel.back');
 
 Route::resource('planes',PlaneController::class);
+
+Route::resource('addresses', AddressController::class);
 
 Route::get('/old', function () {
     return view('olddashboard');
