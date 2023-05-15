@@ -1,8 +1,9 @@
 <x-guest-layout>
     <div class="container max-w-6xl mx-auto mt-4">
+        <h1 class="font-bold text-4xl text-center " >Editar hotel</h1>
         <form action="{{route('hotels.update', $hotel)}}" method="POST" enctype="multipart/form-data">
 
-            <h1 class="font-bold text-4xl text-center " >Editar hotel</h1>
+            
 
             @csrf
 
