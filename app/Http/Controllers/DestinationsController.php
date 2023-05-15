@@ -121,4 +121,33 @@ class DestinationsController extends Controller
         Destination::find($destination)->delete();
         return redirect()->route('destinations.index');
     }
+
+    public function skip($id)
+    {    
+        $ultimo = Destination::max('id');
+        $destination=null;
+
+        if ($ultimo==$id) {
+            $destination = Destination::first();
+        }else{
+            $destination = Destination::where('id', '>', $id)->firstOrFail();
+        }
+        return redirect()->route('destinations.show', compact('destination'));
+    }
+
+    public function back($id)
+    {    
+        $primero = Destination::min('id');
+        $destination=null;
+
+        // dump($destination = );
+        if ($primero==$id) {
+            $destination = Destination::latest()->get()->first();
+        }else{
+            $destination = Destination::where('id', '<', $id)->orderBy('id', 'desc')->first();
+        }
+        return redirect()->route('destinations.show', compact('destination'));
+    }
+        
+    
 }
