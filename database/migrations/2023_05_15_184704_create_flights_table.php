@@ -19,8 +19,7 @@ return new class extends Migration
             $table->integer('count_clients');
             $table->time('duration');
             $table->integer('price');
-            $table->string('type_lunggage');
-            
+                        
             $table->bigInteger('plane_id')->unsigned();
             $table->bigInteger('airline_destination_id')->unsigned();
 

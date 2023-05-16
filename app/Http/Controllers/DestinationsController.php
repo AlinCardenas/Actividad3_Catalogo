@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DestinatioRequest;
 use App\Models\Destination;
 use Illuminate\Http\Request;
 
@@ -14,13 +15,6 @@ class DestinationsController extends Controller
     {
         $registers = Destination::paginate(10);
            
-        // foreach ($registers as $item) {
-        //     $imgs = json_decode($item->images);
-        //     foreach ($imgs as $path) {
-        //         dump($path);
-        //     }
-        // }
-
         return view('destinations.index', compact('registers'));
     }
 
@@ -35,10 +29,8 @@ class DestinationsController extends Controller
     /**
      * Generar el registro
      */
-    public function store(Request $request)
+    public function store(DestinatioRequest $request)
     {
-
-        // request()->validate(Destination::$rules);
 
         $registro = new Destination();
 
@@ -51,7 +43,6 @@ class DestinationsController extends Controller
         }
 
         $registro->name = $request->name;
-        $registro->address = $request->address;
         $registro->ranking = $request->ranking;
         $registro->description = $request->description;
         $registro->languages = $request->languages;
@@ -88,10 +79,8 @@ class DestinationsController extends Controller
     /**
      * Actualizar registro
      */
-    public function update(Request $request, Destination $destination)
+    public function update(DestinatioRequest $request, Destination $destination)
     {
-
-        // request()->validate(Destination::$rules);
 
         $filenames = [];
 
@@ -102,7 +91,6 @@ class DestinationsController extends Controller
         }
 
         $destination->name = $request->name;
-        $destination->address = $request->address;
         $destination->ranking = $request->ranking;
         $destination->description = $request->description;
         $destination->languages = $request->languages;
@@ -148,6 +136,5 @@ class DestinationsController extends Controller
         }
         return redirect()->route('destinations.show', compact('destination'));
     }
-        
     
 }

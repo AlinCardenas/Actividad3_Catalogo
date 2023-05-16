@@ -35,7 +35,7 @@ class HotelsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(HotelsRequest $request)
     {
         $name_img=[];
         $route_logo = $request->logo->store('public/img');
@@ -84,7 +84,7 @@ class HotelsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(HotelsRequest $request, Hotel $hotel)
     {
         $name_img=[];
         $route_logo = $request->logo->store('public/img');

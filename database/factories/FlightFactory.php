@@ -23,7 +23,7 @@ class FlightFactory extends Factory
             'count_clients' => $this->faker->numberBetween(50, 200),
             'duration' => $this->faker->numberBetween(1,20),
             'price' => $this->faker->numberBetween(1000, 15000),
-            'type_lunggage' => $this->faker->word(),
+            // 'type_lunggage' => $this->faker->word(),
             'plane_id' => $this->faker->numberBetween(1, 45),
             'airline_destination_id' => $this->faker->numberBetween(1, 45),
         ];

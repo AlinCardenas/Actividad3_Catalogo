@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AeroDesController;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\DestinationsController;
+use App\Http\Controllers\FlightController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\SendEmailController;
@@ -46,6 +48,9 @@ Route::middleware([
     })->name('dashboard');
     Route::post('enviar', [SendEmailController::class, 'envio'])->name('enviar');
 
+    // Ruta de vuelos
+    Route::resource('flights', FlightController::class);
+
     // Ruta de destinos
     Route::resource('destinations', DestinationsController::class);
     Route::get('destination/show-skip/{id}', [DestinationsController::class, 'skip'])->name('destinations.skip');
@@ -63,10 +68,17 @@ Route::middleware([
 
     //Ruta para servicios
     Route::resource('services', ServicesController::class);
-    
-    
-});
 
+    // Ruta de aviones 
+    Route::resource('planes',PlaneController::class);
+
+    // Ruta de direcciones
+    Route::resource('addresses', AddressController::class);
+
+    Route::get('/old', function () {
+        return view('olddashboard');
+    });
+});
 
 
 

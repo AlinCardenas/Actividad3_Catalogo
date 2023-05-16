@@ -9,12 +9,24 @@
     
     <label for="" class="block">Capacidad:</label>
     <input class="form-input w-full mb-4 rounded-lg px-4 py-2" type="text" name="cant" id="cant">
+    @error('cant')
+      <span class="text-red-600 font-semibold">{{$message}}</span>
+    @enderror
     <label for="" class="block">Modelo:</label>
     <input class="form-input w-full mb-4 rounded-lg px-4 py-2" type="text" name="model" id="model">
+    @error('model')
+      <span class="text-red-600 font-semibold">{{$message}}</span>
+    @enderror
     <label for="" class="block">Tipo de vuelo:</label>
     <input class="form-input w-full mb-4 rounded-lg px-4 py-2" type="text" name="type" id="type">
+    @error('type')
+      <span class="text-red-600 font-semibold">{{$message}}</span>
+    @enderror
     <label for="" class="block">Clase:</label>
     <input class="form-input w-full mb-4 rounded-lg px-4 py-2" type="text" name="class" id="class">
+    @error('class')
+      <span class="text-red-600 font-semibold">{{$message}}</span>
+    @enderror
     <div class="flex justify-start">
       <a class="bg-red-500 m-3" href="/planes">Cancelar</a>
       <button class="bg-green-500 m-3" >Guardar</button>
