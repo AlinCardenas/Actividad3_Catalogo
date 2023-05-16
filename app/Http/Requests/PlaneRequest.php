@@ -22,7 +22,10 @@ class PlaneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'cant' => 'required|integer|min:1',
+            'model' => 'required|string|max:255',
+            'type' => 'required|string|max:255',
+            'class' => 'required|string|max:255',
         ];
     }
 }
