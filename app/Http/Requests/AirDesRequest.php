@@ -25,6 +25,7 @@ class AirDesRequest extends FormRequest
             'destination_id' => 'required|exists:destinations,id',
             'airport_id' => 'required|exists:airports,id',
             'airline_id' => 'required|exists:airlines,id',
+            
         ];
     }
 }

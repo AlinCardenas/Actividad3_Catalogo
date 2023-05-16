@@ -30,6 +30,7 @@ class FlightRequest extends FormRequest
             'type_lunggage' => 'required|string|max:255',
             'plane_id' => 'required|exists:planes,id',
             'airline_destination_id' => 'required|exists:airline_destinations,id',
+            
         ];
     }
 }

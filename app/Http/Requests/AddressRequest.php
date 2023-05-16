@@ -27,6 +27,7 @@ class AddressRequest extends FormRequest
             'cp' => 'required|string|max:10',
             'state' => 'required|string|max:255',
             'phone' => 'required|string|max:10',
+            
         ];
     }
 }

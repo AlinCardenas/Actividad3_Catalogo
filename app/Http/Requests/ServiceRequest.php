@@ -25,6 +25,7 @@ class ServiceRequest extends FormRequest
             'name' => 'required|string|max:255',
             'price' => 'required|integer|min:0',
             'description' => 'required|text',
+            
         ];
     }
 }

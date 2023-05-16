@@ -26,6 +26,7 @@ class PlaneRequest extends FormRequest
             'model' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'class' => 'required|string|max:255',
+            
         ];
     }
 }

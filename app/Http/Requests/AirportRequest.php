@@ -25,6 +25,7 @@ class AirportRequest extends FormRequest
             'name' => 'required|string|max:255',
             'cant' => 'required|string|max:10',
             'address_id' => 'required|exists:addresses,id',
+            
         ];
     }
 }
