@@ -8,6 +8,7 @@ use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\VistaController;
 use App\Models\Airline_Destination;
 use App\Models\Destination;
 use App\Models\Hotel;
@@ -24,9 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('users.index');
-}); 
+Route::get('/', [VistaController::class, 'showh']); 
 
 Route::get('/login',function(){
     return redirect()->route('dashboard');
@@ -78,6 +77,14 @@ Route::middleware([
     Route::get('/old', function () {
         return view('olddashboard');
     });
+
+    // Rutas de vistas para usuario
+    Route::get('destinos/', [DestinationsController::class, 'list'])->name('destinos.list');
+    
+});
+
+Route::get('/flightsview', function () {
+    return view('catalogue.flightsview');
 });
 
 

@@ -20,6 +20,14 @@ class FlightController extends Controller
         return view('flights.index', compact('registers'));
     }
 
+    public function flightsview()
+    {
+
+        $registers = Flight::paginate(10);
+        return view('catalogue.flightsview', compact('registers'));
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      */
