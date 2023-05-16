@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\AeroDesController;
-=======
 use App\Http\Controllers\AddressController;
->>>>>>> 08654dd835e5253007f7a85169613371d2d339ab
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\PlaneController;
