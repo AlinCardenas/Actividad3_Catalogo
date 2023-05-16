@@ -43,6 +43,7 @@ Route::resource('destinations', DestinationsController::class);
 
 //Ruta para crud de hoteles
 Route::resource('hotels', HotelsController::class);
+
 Route::get('skip/{id}',[HotelsController::class,'skip'])->name('hotel.skip');
 Route::get('back/{id}',[HotelsController::class,'back'])->name('hotel.back');
 
