@@ -32,3 +32,22 @@
     </div>
 
 </x-guest-layout>
+
+
+{{-- 
+    
+    @error('name')
+        <span class="text-red-600 font-semibold">{{$message}}</span>
+    @enderror
+    @error('price')
+        <span class="text-red-600 font-semibold">{{$message}}</span>
+    @enderror
+    @error('description')
+        <span class="text-red-600 font-semibold">{{$message}}</span>
+    @enderror
+    
+    
+    
+    
+    
+--}}
