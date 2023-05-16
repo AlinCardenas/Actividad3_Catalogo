@@ -70,6 +70,9 @@ Route::middleware([
     Route::get('/old', function () {
         return view('olddashboard');
     });
+    Route::get('/flightsview', function () {
+         return view('catalogue.flightsview');
+    });
 });
 
 
