@@ -15,8 +15,8 @@ return new class extends Migration
             $table->engine='InnoDB';
             $table->id();
             $table->string('street');
-            $table->integer('number');
-            $table->integer('cp');
+            $table->string('number');
+            $table->string('cp');
             $table->string('state');
             $table->string('phone');
             $table->timestamps();
