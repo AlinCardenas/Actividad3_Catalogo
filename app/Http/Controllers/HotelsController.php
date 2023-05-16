@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HotelsRequest;
 use App\Models\Address;
 use App\Models\Destination;
 use App\Models\Hotel;
 use App\Models\Service;
 use Illuminate\Http\Request;
+
 
 class HotelsController extends Controller
 {
@@ -46,15 +48,14 @@ class HotelsController extends Controller
             $path = $file->storeAs('public/img', $filename);
             $name_img[] = $path;
         }
-
         $hotel->name =$request->name;
         $hotel->price =$request->price;
-        $hotel->address =$request->address;
         $hotel->ranking =$request->ranking;
         $hotel->description =$request->description;
         $hotel->logo = $route_logo;
         $hotel->image = json_encode($name_img);
-        $hotel->destino_id =$request->destino_id;
+        $hotel->service_id =$request->service_id;
+        $hotel->address_id =$request->address_id;
         $hotel->save();
         return redirect()->route('hotels.show',compact('hotel'));
     }
@@ -99,7 +100,6 @@ class HotelsController extends Controller
 
         $hotel->name =$request->name;
         $hotel->price =$request->price;
-        $hotel->address =$request->address;
         $hotel->ranking =$request->ranking;
         $hotel->description =$request->description;
         $hotel->logo = $route_logo;
@@ -118,33 +118,37 @@ class HotelsController extends Controller
         return redirect()->route('hotels.index');
     }
 
-  /*   public function skip($id){
-        $skip=($id+1);
-        $hotel=Hotel::find($skip);
-        
+    public function skip($id)
+    {    
+        $ultimo = Hotel::max('id');
+        $hotel=null;
 
-        if ($hotel) {
-            
-            return view('hotels.show',compact('hotel'));
-        } else {
-            do{
-                $skip=($skip+1);
-                $hotel=Hotel::find($skip);
-            }
-            while($hotel);
-           // $hotel=Hotel::first();
-            return view('hotels.show',compact('hotel'));
+        if ($ultimo==$id) {
+            $hotel = Hotel::first();
+        }else{
+            $hotel = Hotel::where('id', '>', $id)->firstOrFail();
         }
+        return redirect()->route('hotels.show', compact('hotel'));
     }
 
-    public function back($id){
-        $back=($id-1);
-        $hotel=Hotel::find($back);
-        if ($hotel) {
-            return view('hotels.show',compact('hotel'));
-        } else {
-            $hotel= Hotel::latest();
-            return view('hotels.show',compact('hotel'));
+    public function back($id)
+    {    
+        $primero = Hotel::min('id');
+        $hotel=null;
+
+        // dump($destination = );
+        if ($primero==$id) {
+            $hotel = Hotel::latest()->get()->first();
+        }else{
+            $hotel = Hotel::where('id', '<', $id)->orderBy('id', 'desc')->first();
         }
-    } */
+        return redirect()->route('hotels.show', compact('hotel'));
+    }
+
+    public function showAll()
+    {
+        $hotels= Hotel::paginate(12);
+        return view('hotels.showAll',compact('hotels'));
+    }
+
 }

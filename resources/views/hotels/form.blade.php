@@ -15,9 +15,9 @@
                 <x-input-hotels nombre="Puntuación" name="ranking" type="number"  />
             </div>
         </div>
-        {{--     <x-textarea-hotels nombre="Descripción" name="description" />
-        {{$hotel->description}}
-        </x-textarea-hotels> --}}
+        <label for="description" class="mb-2 font-bold">Descripcion</label>
+        <textarea name="description" class="shadow-2xl rounded-lg p-2 w-full border-slate-300" >
+        </textarea>
 
         <x-input-hotels nombre="Dirección" name="address" type="text"  />
 
@@ -49,7 +49,11 @@
                 @endforeach
             </select>
         </div>
+        @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
         <button type="submit"
             class="px-4 py-2 text-white bg-purple-600 hover:bg-purple-700 rounded-md">Registrar</button>
     </form>
+
 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Airline_Destination;
 use Illuminate\Http\Request;
+use App\Http\Requests\AirDesRequest;
 
 class AeroDesController extends Controller
 {
@@ -29,7 +30,7 @@ class AeroDesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AirDesRequest $request)
     {
         Airline_Destination::create($request->all());
 
