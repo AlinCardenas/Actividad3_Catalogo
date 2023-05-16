@@ -60,9 +60,11 @@ class AeroDesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Airline_Destination $airline_Destination)
+    public function update(Request $request, $id)
     {
-        $airline_Destination->update($request->all());
+        // dump($id);
+        $registro = Airline_Destination::find($id);
+        $registro->update($request->all());
 
         return redirect()->route('aero_des.index');
     }
