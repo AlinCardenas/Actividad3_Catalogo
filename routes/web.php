@@ -83,6 +83,10 @@ Route::middleware([
     
 });
 
+Route::get('/flightsview', function () {
+    return view('catalogue.flightsview');
+});
+
 
 
 
