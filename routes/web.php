@@ -70,6 +70,10 @@ Route::middleware([
     Route::get('/old', function () {
         return view('olddashboard');
     });
+
+    // Rutas de vistas para usuario
+    Route::get('destinos/', [DestinationsController::class, 'list'])->name('destinos.list');
+    
 });
 
 
