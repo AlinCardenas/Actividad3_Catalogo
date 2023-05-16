@@ -30,6 +30,9 @@
 {{-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --}}
 {{-- Aviones --}}
 <x-select-id-norm nombre="plane_id" etiqueta="Selecciona un avión" valor="model" :registro="$registro" :eleccion="$flight->plane_id"/>
+@error('plane_id')
+    <span class="text-red-600 font-semibold">{{$message}}</span>
+@enderror
 
 <hr>
 {{-- Destino... --}}
