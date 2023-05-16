@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FlightRequest;
+use App\Models\Flight;
 use Illuminate\Http\Request;
 
 class FlightController extends Controller
@@ -12,7 +13,8 @@ class FlightController extends Controller
      */
     public function index()
     {
-        //
+        $registers = Flight::paginate(10);
+        return view('flights.index', compact('registers'));
     }
 
     /**

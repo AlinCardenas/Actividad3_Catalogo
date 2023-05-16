@@ -3,6 +3,7 @@
 use App\Http\Controllers\AeroDesController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\DestinationsController;
+use App\Http\Controllers\FlightController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\SendEmailController;
@@ -40,6 +41,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::post('enviar', [SendEmailController::class, 'envio'])->name('enviar');
+
+    // Ruta de vuelos
+    Route::resource('flights', FlightController::class);
 
     // Ruta de destinos
     Route::resource('destinations', DestinationsController::class);
