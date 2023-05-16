@@ -114,7 +114,6 @@ class HotelsController extends Controller
      */
     public function destroy($hotel)
     {
-        // SOLO CON EL ID PUEDO BRRAR TODO
         $hotel= Hotel::find($hotel)->delete();
         return redirect()->route('hotels.index');
     }

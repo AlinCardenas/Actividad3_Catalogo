@@ -9,16 +9,11 @@
         <div class="grid grid-cols-4 gap-4 mb-6 mx-auto mt-5">
             @foreach ($services as $service)
                 <div class="col-span-1">
-                    <div class="bg-white rounded-lg shadow-2xl p-[10px] h-[500px]">
-                        {{-- @php
-                            // 1.Rempazar nombre imagen
-                            $ruta_logo = str_replace('public/img/', '', $hotel->logo);
-                        @endphp --}}
-                        <img class="mx-auto mt-3" src="{{-- {{asset('storage/img/'.$ruta_logo)}} --}}" width="250" height="250">
+                    <div class="bg-white rounded-lg shadow-2xl p-[10px] h-[350px]">
                         <div class="p-4">
                             <a class="text-xl font-bold mb-4 hover:text-purple-500" href="{{route('services.show', $service->id)}}">Servicios {{$service->name}} </a>
                             <p class="text-gray-600 mb-2">Precio: ${{ $service->price }}</p>
-                            <p class="text-gray-600 mb-2">Descripcion: ${{ $service->description }}</p>
+                            <p class="text-gray-600 mb-2 text-justify">Descripcion: {{ $service->description }}</p>
                             <div class="mt-2">
                                 <a href="{{ route('services.edit', $service->id) }}" class="font-bold text-blue-600 hover:text-blue-700">Editar</a>
                             </div>

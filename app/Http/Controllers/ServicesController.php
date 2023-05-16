@@ -65,8 +65,9 @@ class ServicesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Service $service)
+    public function destroy($service)
     {
-        //
+        $service= Service::find($service)->delete();
+        return redirect()->route('services.index');
     }
 }
