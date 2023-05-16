@@ -14,12 +14,18 @@ class Create extends Component
     public $descripcion;
     public $valoracion;
     public $logo;
+    public $identificador;
+    // public $image;
+
+    public function mount(){
+        $this->identificador = rand();
+    }
 
     protected $rules = [
         'nombre' => 'required',
         'descripcion' => 'required',
         'valoracion' => 'required',
-        'logo' => 'image|required',
+        'logo' => 'image|required|max:2048',
         
     ];
 
@@ -34,7 +40,7 @@ class Create extends Component
 
         try {
 
-            $imageName = $this->logo->store("airlines",'public');
+            $imageName = $this->logo->store("airlines");
             $airline = new Airline();
             $airline->name = $this->nombre;
             $airline->description = $this->descripcion;
@@ -43,6 +49,7 @@ class Create extends Component
             $airline->save();
 
             $this->reset();
+            $this->identificador = rand();
             $this->emit('saved');
         } catch (\Throwable $th) {
             $this->emit('error');

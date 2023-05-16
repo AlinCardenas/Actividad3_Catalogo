@@ -9,6 +9,7 @@ use App\Http\Controllers\SendEmailController;
 use App\Http\Livewire\Airline\Create;
 use App\Http\Livewire\Airline\Edit;
 use App\Http\Livewire\Airline\Index;
+
 use App\Models\Airport;
 use App\Models\Destination;
 use App\Models\Hotel;
@@ -62,5 +63,14 @@ Route::resource('planes',PlaneController::class);
 Route::get('/airlines/create', Create::class)->name('airlines.create');
 Route::get('/airlines/index', Index::class)->name('airlines.index');
 Route::get('/airlines/edit/{slug}', Edit::class)->name('airlines.edit');
+
+//Rutas para aeropuertos
+
+Route::get('/airports/create', App\Http\Livewire\Airports\Create::class)->name('airports.create');
+Route::get('/airports', App\Http\Livewire\Airports\Index::class)->name('airports.index');
+Route::get('/airports/edit/{slug}', App\Http\Livewire\Airports\Edit::class)->name('airports.edit');
+
+
+
 
 

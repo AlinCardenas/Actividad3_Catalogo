@@ -11,5 +11,5 @@ class Airline extends Model
     use HasFactory;
     use SoftDeletes;
 
-
+    
 }

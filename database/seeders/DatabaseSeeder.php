@@ -11,6 +11,7 @@ use App\Models\Flight;
 use App\Models\Hotel;
 use App\Models\Plane;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +20,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        //Crear carpeta posts donde se guardaran las imagenes
+        Storage::deleteDirectory('airlines');
+        Storage::makeDirectory('airlines');
+
         Plane::factory(45)->create();
         Destination::factory(45)->create();
         Hotel::factory(45)->create();

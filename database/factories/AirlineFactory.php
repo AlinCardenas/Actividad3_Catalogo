@@ -20,7 +20,7 @@ class AirlineFactory extends Factory
             'name' => $this->faker->word(),
             'description' => $this->faker->paragraph(),
             'ranking' => $this->faker->numberBetween(1,10),
-            'logo' => $this->faker->imageUrl(640, 480, 'cats'),
+            'logo' => 'airlines/'. $this->faker->image('public/storage/airlines',640, 480, null, false),
         ];
     }
 }

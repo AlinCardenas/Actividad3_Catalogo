@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Aerolineas
+            Aeropuertos
         </h2>
     </x-slot>
 
@@ -9,44 +9,29 @@
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <x-form-section submit="store">
                 <x-slot name="title">
-                    Registro de Aerolineas
+                    Registro de Aeropuertos
                 </x-slot>
             
                 <x-slot name="description">
-                    Formulario para el registro para una nueva Aerolineas
+                    Formulario para el registro de un nuevo Aeropuerto
                 </x-slot>
             
                 <x-slot name="form">
                     <!-- Name -->
-
-                    <div wire:loading wire:target="image" class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                        <strong class="font-bold">Imagen cargando!</strong>
-                        <span class="block sm:inline">Espere un momento hasta que la imagen se haya procesado.</span>
-                      </div>
-
-                    @if ($logo)
-                        <img class="mb-4" src="{{$logo->temporaryUrl()}}">
-                    @endif
-
                     <div class="col-span-6 ">
                         <x-label for="nombre" value="Nombre" />
                         <x-input id="nombre" type="text" class="mt-1 block w-full" wire:model.defer="nombre" autocomplete="nombre" />
                         <x-input-error for="nombre" class="mt-2" />
                     </div>
                     <div class="col-span-6 ">
-                        <x-label for="descripcion" value="Descripcion" />
-                        <x-input id="descripcion" type="text" class="mt-1 block w-full" wire:model.defer="descripcion" autocomplete="descripcion" />
-                        <x-input-error for="descripcion" class="mt-2" />
+                        <x-label for="direccion" value="Direccion" />
+                        <x-input id="direccion" type="text" class="mt-1 block w-full" wire:model.defer="direccion" autocomplete="direccion" />
+                        <x-input-error for="direccion" class="mt-2" />
                     </div>
                     <div class="col-span-6 ">
-                        <x-label for="valoracion" value="Valoracion" />
-                        <x-input id="valoracion" type="text" class="mt-1 block w-full" wire:model.defer="valoracion" autocomplete="valoracion" />
-                        <x-input-error for="valoracion" class="mt-2" />
-                    </div>
-                    <div class="col-span-6 ">
-                        <x-label for="logo" value="Logo" />
-                        <x-input id="{{$identificador}}" type="file" class="mt-1 block w-full" wire:model.defer="logo" autocomplete="logo" />
-                        <x-input-error for="logo" class="mt-2" />
+                        <x-label for="cant" value="Cantidad de pasajeros" />
+                        <x-input id="cant" type="text" class="mt-1 block w-full" wire:model.defer="cant" autocomplete="cant" />
+                        <x-input-error for="cant" class="mt-2" />
                     </div>
                 </x-slot>
             
@@ -61,7 +46,7 @@
                     <x-button wire:loading.attr="disabled" class="mr-3" wire:target="photo">
                         Guardar
                     </x-button>
-                    <a href="{{route('airlines.index')}}" type="button">
+                    <a href="{{route('airports.index')}}" type="button">
                         Cancelar
                     </a>
                 </x-slot>
@@ -70,3 +55,4 @@
         </div>
     </div>
 </div>
+
