@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('planes', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->id();
-            $table->tinyInteger('cant');
+            $table->integer('cant');
             $table->string('model');
             $table->string('type');
             $table->string('class');

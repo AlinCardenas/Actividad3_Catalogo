@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PlaneRequest;
 use Illuminate\Http\Request;
 use App\Models\Plane;
 
@@ -28,7 +29,7 @@ class PlaneController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PlaneRequest $request)
     {
         $input=$request->all();
         plane::create($input);
@@ -57,7 +58,7 @@ class PlaneController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PlaneRequest $request, string $id)
     {
         $plane = plane::findOrFail($id);
         $input=$request->all();

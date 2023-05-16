@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FlightRequest;
 use Illuminate\Http\Request;
 
 class FlightController extends Controller
@@ -25,7 +26,7 @@ class FlightController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FlightRequest $request)
     {
         //
     }
@@ -49,7 +50,7 @@ class FlightController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FlightRequest $request, string $id)
     {
         //
     }
