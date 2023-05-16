@@ -53,11 +53,6 @@ Route::middleware([
     Route::resource('hotels', HotelsController::class);
     Route::get('skip/{id}',[HotelsController::class,'skip'])->name('hotel.skip');
     Route::get('back/{id}',[HotelsController::class,'back'])->name('hotel.back');
-
-    Route::resource('planes',PlaneController::class);
-
-    //Ruta para servicios
-    Route::resource('services', ServicesController::class);
     
     //Ruta para servicios
     Route::resource('services', ServicesController::class);
