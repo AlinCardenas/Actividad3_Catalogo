@@ -1,15 +1,12 @@
 <?php
 
-use App\Http\Controllers\AeroDesController;
-use App\Http\Controllers\AddressController;
+
+use App\Http\Controllers\AirportController;
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\SendEmailController;
-use App\Http\Controllers\ServicesController;
-use App\Http\Controllers\VistaController;
-use App\Models\Airline_Destination;
 use App\Models\Destination;
 use App\Models\Hotel;
 use Illuminate\Support\Facades\Route;
@@ -65,31 +62,17 @@ Route::middleware([
 
     Route::resource('planes',PlaneController::class);
 
-    //Ruta para servicios
-    Route::resource('services', ServicesController::class);
+//Rutas para aerolinieas
 
-    // Ruta de aviones 
-    Route::resource('planes',PlaneController::class);
+Route::get('/airlines/create', Create::class)->name('airlines.create');
+Route::get('/airlines/index', Index::class)->name('airlines.index');
+Route::get('/airlines/edit/{slug}', Edit::class)->name('airlines.edit');
 
-    // Ruta de direcciones
-    Route::resource('addresses', AddressController::class);
+//Rutas para aeropuertos
 
-    Route::get('/old', function () {
-        return view('olddashboard');
-    });
+Route::get('/airports/create', App\Http\Livewire\Airports\Create::class)->name('airports.create');
+Route::get('/airports', App\Http\Livewire\Airports\Index::class)->name('airports.index');
+Route::get('/airports/edit/{slug}', App\Http\Livewire\Airports\Edit::class)->name('airports.edit');
 
-    // Rutas de vistas para usuario
-    Route::get('destinos/', [DestinationsController::class, 'list'])->name('destinos.list');
-    
+
 });
-
-Route::get('/flightsview', function () {
-    return view('catalogue.flightsview');
-});
-
-
-
-
-
-
-
