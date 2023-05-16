@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Destination;
 use App\Models\Hotel;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class HotelsController extends Controller
@@ -23,9 +25,9 @@ class HotelsController extends Controller
     public function create()
     {
         $object = new Hotel();
-        $list= Destination::pluck('name','id');
-
-        return view('hotels.create', compact('object','list'));
+        $list= Service::pluck('name','id');
+        $listados= Address::pluck('street','id');
+        return view('hotels.create', compact('object','list','listados'));
     }
 
     /**
@@ -112,7 +114,6 @@ class HotelsController extends Controller
      */
     public function destroy($hotel)
     {
-        // SOLO CON EL ID PUEDO BRRAR TODO
         $hotel= Hotel::find($hotel)->delete();
         return redirect()->route('hotels.index');
     }

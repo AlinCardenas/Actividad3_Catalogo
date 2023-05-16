@@ -12,14 +12,14 @@
                 <x-input-hotels nombre="Precio" name="price" type="number" />
             </div>
             <div>
-                <x-input-hotels nombre="Puntuación" name="ranking" type="number"  />
+                <x-input-hotels nombre="Puntuación" name="ranking" type="number" />
             </div>
         </div>
         {{--     <x-textarea-hotels nombre="Descripción" name="description" />
         {{$hotel->description}}
         </x-textarea-hotels> --}}
 
-        <x-input-hotels nombre="Dirección" name="address" type="text"  />
+        <x-input-hotels nombre="Dirección" name="address" type="text"/>
 
         <div class="grid grid-cols-4 gap-3">
             <div class="col-span-2">
