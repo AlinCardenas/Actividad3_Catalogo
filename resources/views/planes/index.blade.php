@@ -1,9 +1,15 @@
 <x-layout title="Vuelos">
 <x-Navbar></x-Navbar>
     <x-Container1>
-        <h1>Tabla vuelos</h1>
-    <div>
-    <table class="border-collapse">
+
+          <div class="flex justify-between">
+            <span><h1 class="text-4xl font-bold text-center text-[#ffffff]">Tabla vuelos</h1></span>
+            <span><x-button-redirect route="http://127.0.0.1:8000/planes/create" message="Agregar" /></span>
+          </div>
+        
+
+    <table class=" border-[#b0c2f2] border-2">
+      <br>
   <thead>
     <tr>
       <th class="border px-4 py-2">Id</th>
