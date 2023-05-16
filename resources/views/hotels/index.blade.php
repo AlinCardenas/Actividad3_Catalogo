@@ -1,5 +1,4 @@
 <x-guest-layout>
-
     <div class="container max-w-[7xl] mx-auto mt-4">
         <h1 class="text-3xl text-center font-bold ">Lista de hoteles</h1>
         <div class="flex justify-end mt-2">
@@ -40,7 +39,4 @@
         {{$hotels->links()}}
 
     </div>
-
-    
-
 </x-guest-layout>

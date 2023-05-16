@@ -136,5 +136,11 @@ class DestinationsController extends Controller
         }
         return redirect()->route('destinations.show', compact('destination'));
     }
+
+    public function list(){
+        $registros = Destination::paginate(15);
+        // dump($registros);
+        return view('catalogo.index_des', compact('registros'));
+    }
     
 }
