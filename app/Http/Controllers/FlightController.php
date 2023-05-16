@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FlightRequest;
+use App\Models\Airline_Destination;
 use App\Models\Flight;
+use App\Models\Plane;
 use Illuminate\Http\Request;
 
 class FlightController extends Controller
@@ -22,7 +24,10 @@ class FlightController extends Controller
      */
     public function create()
     {
-        //
+        $registro = Plane::all();
+        $registro1 = Airline_Destination::all();
+
+        return view('flights.create', compact('registro', 'registro1'));
     }
 
     /**
@@ -30,7 +35,24 @@ class FlightController extends Controller
      */
     public function store(FlightRequest $request)
     {
-        //
+        $airlineDes = new Airline_Destination();
+        $airlineDes->destination_id = $request->destination_id;
+        $airlineDes->airport_id = $request->airport_id;
+        $airlineDes->airline_id = $request->airline_id;
+
+        $airlineDes->save();
+
+        $vuelo = new Flight();
+        $vuelo->leave_date = $request->leave_date;
+        $vuelo->arrive_date = $request->arrive_date;
+        $vuelo->count_clients = $request->count_clients;
+        $vuelo->duration = $request->duration;
+        $vuelo->price = $request->price;
+        $vuelo->plane_id = $request->plane_id;
+        $vuelo->airline_destination_id = $airlineDes->id;
+        $vuelo->save();
+        dump("Generado");
+        return redirect()->route('flights.index');
     }
 
     /**
