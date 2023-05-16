@@ -14,7 +14,7 @@
                     <x-table-head mensaje="Precio" />
                     <x-table-head mensaje="Destino" />
                     <x-table-head mensaje="Aeroperto" />
-                    <x-table-head mensaje="Aerolinea" />
+                    {{-- <x-table-head mensaje="Aerolinea" /> --}}
                     <x-table-head mensaje="Mostrar" />
                     <x-table-head mensaje="Editar" />
                     <x-table-head mensaje="Eliminar" />
@@ -31,7 +31,7 @@
                     {{-- <x-table-row :item="$item->planes->model" /> --}}
                     <x-table-row :item="$item->airline__destinations->destinations->name" />
                     <x-table-row :item="$item->airline__destinations->airports->name" />
-                    <x-table-row :item="$item->airline__destinations->airlines->name" />
+                    {{-- <x-table-row :item="$item->airline__destinations->airlines->name" /> --}}
                     {{-- !!!!! --}}
 
                     <x-table-row-link>

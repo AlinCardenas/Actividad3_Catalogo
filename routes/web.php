@@ -88,3 +88,7 @@ Route::get('/airports/edit/{slug}', App\Http\Livewire\Airports\Edit::class)->nam
     Route::get('/flightsview', [FlightController::class, 'list'])->name('flights.list');
 
 });
+
+Route::get('/old', function () {
+    return view('olddashboard');
+});
