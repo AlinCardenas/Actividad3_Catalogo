@@ -79,7 +79,7 @@ class DestinationsController extends Controller
     /**
      * Actualizar registro
      */
-    public function update(Request $request, Destination $destination)
+    public function update(DestinatioRequest $request, Destination $destination)
     {
 
         $filenames = [];
