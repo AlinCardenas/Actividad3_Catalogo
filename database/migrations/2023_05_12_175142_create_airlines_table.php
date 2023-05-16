@@ -19,6 +19,7 @@ return new class extends Migration
             $table->tinyInteger('ranking');
             $table->string('logo');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -1,9 +1,15 @@
 <?php
 
+use App\Http\Controllers\AirlineController;
+use App\Http\Controllers\AirportController;
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\SendEmailController;
+use App\Http\Livewire\Airline\Create;
+use App\Http\Livewire\Airline\Edit;
+use App\Http\Livewire\Airline\Index;
+use App\Models\Airport;
 use App\Models\Destination;
 use App\Models\Hotel;
 use Illuminate\Support\Facades\Route;
@@ -50,3 +56,11 @@ Route::get('skip/{id}',[HotelsController::class,'skip'])->name('hotel.skip');
 Route::get('back/{id}',[HotelsController::class,'back'])->name('hotel.back');
 
 Route::resource('planes',PlaneController::class);
+
+//Rutas para aerolinieas
+
+Route::get('/airlines/create', Create::class)->name('airlines.create');
+Route::get('/airlines/index', Index::class)->name('airlines.index');
+Route::get('/airlines/edit/{slug}', Edit::class)->name('airlines.edit');
+
+
