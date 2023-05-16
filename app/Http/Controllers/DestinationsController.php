@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DestinatioRequest;
 use App\Models\Destination;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class DestinationsController extends Controller
     /**
      * Generar el registro
      */
-    public function store(Request $request)
+    public function store(DestinatioRequest $request)
     {
 
         $registro = new Destination();

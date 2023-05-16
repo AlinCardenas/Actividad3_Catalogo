@@ -11,7 +11,7 @@ class DestinatioRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,12 +22,23 @@ class DestinatioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:30',
             'ranking' => 'required|integer|min:1|max:2',
-            'description' => 'required|text',
+            'description' => 'required|string',
             'languages' => 'required|string',
             'images' => 'required|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+        ];
+
+    }
+
+    public function messages()
+    {
+        return[
+            'name.max' => "El campo debe tener menos de 30 caracteres",
+            'name.string' => "El campo debe ser de tipo texto",
+            'name.required' => "El campo debe ser completado",
+            
         ];
     }
 }

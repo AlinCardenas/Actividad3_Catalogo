@@ -10,3 +10,4 @@
 </x-text-area>
 
 <x-input-txt nombre="images[]" tipo="file" etiqueta="Imagenes: " multiple  class="border-none px-0"  />
+
