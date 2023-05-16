@@ -4,6 +4,7 @@ use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\ServicesController;
 use App\Models\Destination;
 use App\Models\Hotel;
 use Illuminate\Support\Facades\Route;
@@ -50,3 +51,7 @@ Route::get('skip/{id}',[HotelsController::class,'skip'])->name('hotel.skip');
 Route::get('back/{id}',[HotelsController::class,'back'])->name('hotel.back');
 
 Route::resource('planes',PlaneController::class);
+
+//Ruta para servicios
+Route::resource('services', ServicesController::class);
+
