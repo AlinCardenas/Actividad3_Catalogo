@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class inputText extends Component
+class FormHotels extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class inputText extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.input-text');
+        return view('components.form-hotels');
     }
 }

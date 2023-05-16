@@ -11,20 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hotels', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->id();
             $table->string('name');
-            $table->Integer('price');
-            $table->string('address');
-            $table->tinyInteger('ranking');
+            $table->integer('price');
             $table->text('description');
-            $table->string('logo');
-            $table->json('image');
-            $table->bigInteger('destino_id')->unsigned();
             $table->timestamps();
-
-            $table->foreign('destino_id')->references('id')->on('destinations')->onDelete('cascade');
         });
     }
 
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hotels');
+        Schema::dropIfExists('services');
     }
 };
