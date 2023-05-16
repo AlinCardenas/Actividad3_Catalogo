@@ -22,7 +22,9 @@ class AirportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'cant' => 'required|string|max:10',
+            'address_id' => 'required|exists:addresses,id',
         ];
     }
 }
