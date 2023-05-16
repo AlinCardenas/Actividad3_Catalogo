@@ -19,11 +19,11 @@
         </div>
         <div>
             <div class="mb-8 mt-[100px]">
-                <h1 class="text-5xl text-center"><a href="" class="hover:text-blue-700">Vuelos 🛫</a></h1>
+                <h1 class="text-5xl text-center"><a href="{{route('flights.list')}}" class="hover:text-blue-700">Vuelos 🛫</a></h1>
             </div>
             <div class="grid grid-cols-3 gap-4 mb-6 mx-auto mt-5 w-10/12">
-                @foreach ($aerolineas as $aeroline)
-                <x-cardaerolinea :valor="$aeroline" />
+                @foreach ($flights as $flight)
+                <x-cardaerolinea :valor="$flight" />
             
                 @endforeach
             </div>

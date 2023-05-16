@@ -122,4 +122,10 @@ class FlightController extends Controller
         Flight::find($id)->delete();
         return redirect()->route('flights.index');
     }
+
+    public function list(){
+        $registros = Flight::paginate(15);
+        // dump($registros);
+        return view('catalogue.flightsview', compact('registros'));
+    }
 }

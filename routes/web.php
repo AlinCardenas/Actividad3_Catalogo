@@ -7,9 +7,13 @@ use App\Http\Controllers\FlightController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\VistaController;
 use App\Models\Destination;
 use App\Models\Hotel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Airline\Create;
+use App\Http\Livewire\Airline\Edit;
+use App\Http\Livewire\Airline\Index;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,5 +78,13 @@ Route::get('/airports/create', App\Http\Livewire\Airports\Create::class)->name('
 Route::get('/airports', App\Http\Livewire\Airports\Index::class)->name('airports.index');
 Route::get('/airports/edit/{slug}', App\Http\Livewire\Airports\Edit::class)->name('airports.edit');
 
+    // Rutas de vistas para usuario
+    Route::get('destinos/', [DestinationsController::class, 'list'])->name('destinos.list');
+
+    // Route::get('/flightsview', function () {
+    //     return view('catalogue.flightsview');
+    // });
+
+    Route::get('/flightsview', [FlightController::class, 'list'])->name('flights.list');
 
 });
