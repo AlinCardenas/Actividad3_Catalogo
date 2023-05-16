@@ -1,25 +1,32 @@
 <div>
-    <form class="" action="{{route('hotels.store')}}" method="POST" enctype="multipart/form-data">
-        @csrf
+        
         <div class="flex justify-end  mt-4">
             <a href="{{ route('hotels.index') }}" class="font-bold text-purple-500 hover:text-purple-600 px-4"> Ir a
                 inicio</a>
         </div>
 
-        <x-input-hotels nombre="Nombre" name="name" type="text"  />
+        <x-input-hotels nombre="Nombre" name="name" type="text" :value="(isset($hotel)) ? $hotel->name : null"  />
         <div class="grid grid-cols-4 gap-3 mt-6">
             <div class="col-span-3">
-                <x-input-hotels nombre="Precio" name="price" type="number" />
+                <x-input-hotels nombre="Precio" name="price" type="number" :value="(isset($hotel)) ? $hotel->price : null"/>
+                @error('name')
+                    <span class="text-red-600 font-semibold">{{$message}}</span>
+                @enderror  
             </div>
             <div>
-                <x-input-hotels nombre="Puntuación" name="ranking" type="number"  />
+                <x-input-hotels nombre="Puntuación" name="ranking" type="number" :value="(isset($hotel)) ? $hotel->ranking : null"  />
+                @error('price')
+                    <span class="text-red-600 font-semibold">{{$message}}</span>
+                @enderror    
             </div>
         </div>
         <label for="description" class="mb-2 font-bold">Descripcion</label>
-        <textarea name="description" class="shadow-2xl rounded-lg p-2 w-full border-slate-300" >
-        </textarea>
+        <textarea name="description" class="shadow-2xl rounded-lg p-2 w-full border-slate-300"  ></textarea>
 
-        <x-input-hotels nombre="Dirección" name="address" type="text"  />
+        @error('description')
+            <span class="text-red-600 font-semibold">{{$message}}</span>
+        @enderror   
+
 
         <div class="grid grid-cols-4 gap-3">
             <div class="col-span-2">
@@ -52,8 +59,7 @@
         @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
-        <button type="submit"
-            class="px-4 py-2 text-white bg-purple-600 hover:bg-purple-700 rounded-md">Registrar</button>
-    </form>
+        <button type="submit" class="px-4 py-2 text-white bg-purple-600 hover:bg-purple-700 rounded-md">Registrar</button>
 
 </div>
+
