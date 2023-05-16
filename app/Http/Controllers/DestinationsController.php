@@ -38,7 +38,7 @@ class DestinationsController extends Controller
     public function store(Request $request)
     {
 
-        request()->validate(Destination::$rules);
+        // request()->validate(Destination::$rules);
 
         $registro = new Destination();
 
@@ -91,7 +91,7 @@ class DestinationsController extends Controller
     public function update(Request $request, Destination $destination)
     {
 
-        request()->validate(Destination::$rules);
+        // request()->validate(Destination::$rules);
 
         $filenames = [];
 
