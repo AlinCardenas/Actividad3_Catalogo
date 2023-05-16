@@ -6,8 +6,5 @@
         <div class="grid justify-items-center">
             <button type="submit" class="w-3/12 py-2 text-white bg-purple-600 rounded-md mb-4">Crear registro</button>
         </div>
-        @error('name')
-            {{$message}}
-        @enderror
     </form>
 </x-layout> 
