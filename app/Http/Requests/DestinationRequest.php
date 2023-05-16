@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HotelsRequest extends FormRequest
+class DestinationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,10 @@ class HotelsRequest extends FormRequest
     {
         return [
             'name' => 'required|string|alpha',
-            'price' => 'required|numeric|min:0',
-            'ranking' => 'required|integer|between:1,10',
+            'ranking' => 'required|integer',
             'description' => 'required|text',
-            'logo' => 'required|string|mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
-            'image' => 'required|json|mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
-            'address_id' => 'required|integer|unsigned',
-            'service_id' => 'required|integer|unsigned',
+            'languages' => 'required|string',
+            'images' => 'required|json|mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
         ];
     }
 }

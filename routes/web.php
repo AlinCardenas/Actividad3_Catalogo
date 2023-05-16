@@ -25,8 +25,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('users.index');
+}); 
+
+Route::get('/login',function(){
     return redirect()->route('dashboard');
 });
+
+Route::get('hotels/users',[HotelsController::class,'showAll'])->name('hotel.showAll');
 
 Route::get('/form', function(){
     return view('forms.register');
@@ -55,9 +61,11 @@ Route::middleware([
 
     //Ruta para crud de hoteles
     Route::resource('hotels', HotelsController::class);
-    Route::get('skip/{id}',[HotelsController::class,'skip'])->name('hotel.skip');
-    Route::get('back/{id}',[HotelsController::class,'back'])->name('hotel.back');
-    
+    Route::get('hotels/skip/{id}',[HotelsController::class,'skip'])->name('hotel.skip');
+    Route::get('hotels/back/{id}',[HotelsController::class,'back'])->name('hotel.back');
+
+    Route::resource('planes',PlaneController::class);
+
     //Ruta para servicios
     Route::resource('services', ServicesController::class);
 
@@ -75,6 +83,7 @@ Route::middleware([
     Route::get('destinos/', [DestinationsController::class, 'list'])->name('destinos.list');
     
 });
+
 
 
 

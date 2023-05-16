@@ -34,7 +34,7 @@ class ServicesController extends Controller
 
         $service= Service::create($request->all());
         
-        return redirect()->route('services.show',compact('service'));
+        return redirect()->route('services.index',compact('service'));
     }
 
     /**
@@ -71,4 +71,6 @@ class ServicesController extends Controller
         $service= Service::find($service)->delete();
         return redirect()->route('services.index');
     }
+
+    
 }
