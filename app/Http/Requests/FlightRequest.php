@@ -11,7 +11,7 @@ class FlightRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,12 +24,11 @@ class FlightRequest extends FormRequest
         return [
             'leave_date' => 'required|date',
             'arrive_date' => 'required|date',
-            'count_clients' => 'required|integer|min:1',
-            'duration' => 'required|time',
-            'price' => 'required|numeric|min:0',
-            'type_lunggage' => 'required|string|max:255',
+            'count_clients' => 'required',
+            'duration' => 'required',
+            'price' => 'required|integer',
             'plane_id' => 'required|exists:planes,id',
-            'airline_destination_id' => 'required|exists:airline_destinations,id',
+            // 'airline_destination_id' => 'required|exists:airline_destinations,id',
             
         ];
     }
