@@ -22,7 +22,10 @@ class AirlineRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'description' => 'required|text',
+            'ranking' => 'required|integer|min:1|max:2',
+            'logo' => 'required|mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
         ];
     }
 }
