@@ -33,22 +33,5 @@
 </div> 
 
 
-{{-- <div class="flex h-screen ">
-    <div class="w-64 bg-gray-200">
-        <ul class="py-4">
-            <li class="mb-4 px-6 py-2 text-gray-700 hover:bg-gray-300">
-                <a href="#">Inicio</a>
-            </li>
-            <li class="mb-4 px-6 py-2 text-gray-700 hover:bg-gray-300">
-                <a href="#">Aerolíneas</a>
-            </li>
-            <li class="mb-4 px-6 py-2 text-gray-700 hover:bg-gray-300">
-                <a href="#">Destinos</a>
-            </li>
-        </ul>
-    </div>
-    <div class="flex-grow">
-        {{$slot}}
-    </div>
-</div> --}}
+
 
