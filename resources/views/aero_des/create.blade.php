@@ -1,7 +1,7 @@
 <x-layout>
     <form class="w-5/12 mx-auto mt-9" method="POST" action="{{route('aero_des.store')}}" enctype="multipart/form-data">
         @csrf
-        <h1 class="font-bold text-4xl text-center " >Registro de destinos</h1>
+        <h1 class="font-bold text-3xl text-center ">Aerolineas, Destinos y Aeropuertos</h1>
 
         @include('aero_des.form')
     
