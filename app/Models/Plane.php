@@ -9,8 +9,11 @@ class Plane extends Model
 {
     use HasFactory;
 
-    public function flights()
-    {
-        return $this->hasMany('App\Models\Flight', 'flight_id', 'id');
-    }
+    protected $fillable = [
+        'cant',
+        'model', 
+        'type', 
+        'class', 
+    ];
+
 }
