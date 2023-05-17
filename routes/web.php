@@ -7,6 +7,7 @@ use App\Http\Controllers\FlightController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\VistaController;
 use App\Models\Destination;
 use App\Models\Hotel;
@@ -64,6 +65,8 @@ Route::middleware([
     Route::get('hotels/skip/{id}',[HotelsController::class,'skip'])->name('hotel.skip');
     Route::get('hotels/back/{id}',[HotelsController::class,'back'])->name('hotel.back');
 
+    Route::resource('services', ServicesController::class);
+
     Route::resource('planes',PlaneController::class);
 
 //Rutas para aerolinieas
@@ -86,6 +89,15 @@ Route::get('/airports/edit/{slug}', App\Http\Livewire\Airports\Edit::class)->nam
     // });
 
     Route::get('/flightsview', [FlightController::class, 'list'])->name('flights.list');
+
+    // Ruta de direcciones
+    Route::resource('addresses', AddressController::class);
+
+    Route::get('/old', function () {
+        return view('olddashboard');
+    });
+
+    // Rutas de vistas para usuario
 
 });
 

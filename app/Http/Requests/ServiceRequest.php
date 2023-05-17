@@ -11,7 +11,7 @@ class ServiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class ServiceRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'price' => 'required|integer|min:0',
-            'description' => 'required|text',
+            'description' => 'required|string',
             
         ];
     }

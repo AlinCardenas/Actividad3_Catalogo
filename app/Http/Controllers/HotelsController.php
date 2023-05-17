@@ -97,14 +97,14 @@ class HotelsController extends Controller
             $path = $file->storeAs('public/img', $filename);
             $name_img[] = $path;
         }
-
         $hotel->name =$request->name;
         $hotel->price =$request->price;
         $hotel->ranking =$request->ranking;
         $hotel->description =$request->description;
         $hotel->logo = $route_logo;
-        $hotel->image =json_encode($name_img);
-        $hotel->destino_id =$request->destino_id;
+        $hotel->image = json_encode($name_img);
+        $hotel->service_id =$request->service_id;
+        $hotel->address_id =$request->address_id;
         $hotel->save();
         return redirect()->route('hotels.show',compact('hotel'));
     }
