@@ -57,5 +57,12 @@
                 @endforeach
             </div>
         </div>
+
+        {{-- <x-butt mensaje="Hola" /> --}}
+        {{-- <x-input-hotels nombre="hola" name="name" type="text" /> --}}
+        <x-textarea-g name="uno" nombre="Aqui">
+            evjenrenevn
+        </x-textarea-g>
+
     </div>
 </x-guest-layout>

@@ -5,7 +5,9 @@
 
         <div class="grid grid-cols-4 gap-4 mb-6 mx-auto mt-5">
             @foreach ($hotels as $hotel)
-                <x-card :hotel="$hotel" />
+                <x-card :hotel="$hotel">
+                    {{-- Cosas --}}
+                </x-card>
             @endforeach
         </div> 
         
