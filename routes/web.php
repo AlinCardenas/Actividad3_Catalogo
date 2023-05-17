@@ -29,9 +29,9 @@ use App\Http\Livewire\Airline\Index;
 
 Route::get('/', [VistaController::class, 'showh']); 
 
-Route::get('/login',function(){
-    return redirect()->route('dashboard');
-});
+// Route::get('/login',function(){
+//     return redirect()->route('dashboard');
+// });
 
 Route::get('hotels/users',[HotelsController::class,'showAll'])->name('hotel.showAll');
 
