@@ -35,9 +35,7 @@
     </div>
     <x-select :list="$list" :object="(isset($object)) ? $object : $hotel" campo="service_id" />
     <x-select :list="$listados" :object="(isset($object)) ? $object : $hotel" campo="address_id" />
-    <div class="flex justify-center my-8">
-        <x-butt mensaje="Enviar" />
-    </div>
+    <x-butt mensaje="Enviar" />
     <ul>
         @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
