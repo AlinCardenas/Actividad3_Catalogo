@@ -30,8 +30,8 @@ use App\Http\Livewire\Airline\Index;
 Route::get('/', [VistaController::class, 'showh']); 
 
 Route::get('/login',function(){
-    return redirect()->route('dashboard');
-});
+    return view('auth.login');
+})->name('login');
 
 Route::get('hotels/users',[HotelsController::class,'showAll'])->name('hotel.showAll');
 
