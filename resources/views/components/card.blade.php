@@ -1,4 +1,4 @@
-@props(['registro', 'ruta_img'])
+@props(['registro', 'ruta_img'=>''])
 
 <div class="col-span-1">
     <div class="bg-white rounded-lg shadow-2xl p-[10px] h-[500px]">
