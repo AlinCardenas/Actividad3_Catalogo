@@ -1,42 +1,13 @@
-<x-layout title="Vuelos">
-<x-Navbar></x-Navbar>
-    <x-Container1>
-        <h1>Editar vuelos</h1>
-    
-        <div class="card-body">
-  <form action="{{ url('planes/' . $planes->id) }}" method="post">
-    {!! csrf_field() !!}
-    @method("PATCH")
-    <label for="" class="block">Id:</label>
-    <input class="form-input" type="text" value="{{ $planes->id }}" aria-label="Disabled input example" disabled> 
-    <label for="" class="block">Cantidad:</label>
-    <input class="form-input" type="text" id="cant" name="cant" value="{{ $planes->cant }}">
-    @error('cant')
-      <span class="text-red-600 font-semibold">{{$message}}</span>
-    @enderror
-    <label for="" class="block">Modelo:</label>
-    <input class="form-input" type="text" id="model" name="model" value="{{ $planes->model }}">
-    @error('model')
-      <span class="text-red-600 font-semibold">{{$message}}</span>
-    @enderror
-    <label for="" class="block">Tipo:</label>
-    <input class="form-input" type="text" id="type" name="type" value="{{ $planes->type }}">
-    @error('type')
-      <span class="text-red-600 font-semibold">{{$message}}</span>
-    @enderror
-    <label for="" class="block">Clase:</label>
-    <input class="form-input" type="text" id="class" name="class" value="{{ $planes->class }}">
-    @error('class')
-      <span class="text-red-600 font-semibold">{{$message}}</span>
-    @enderror
-    <div class="flex justify-between">
-      <a class="btn btn-danger m-3" href="/planes">Cancelar</a>
-      <button type="submit" class="btn btn-primary m-3" value="update">Guardar</button>
-    </div>
-  </form>
-</div>
+<x-guest-layout>
+    <div class="container max-w-6xl mx-auto mt-4">
 
-    
-    </x-Container1>
-    
-</x-layout>
+        <form action="{{ url('planes/' . $planes->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('put')
+            @include('planes.form')
+            
+        </form>
+
+    </div>
+
+</x-guest-layout>
