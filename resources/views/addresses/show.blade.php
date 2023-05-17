@@ -1,61 +1,35 @@
-<x-layout title="Dashboard">
-<x-Navbar>
-</x-Navbar>
-
- <x-menu-nav>
-
-    <x-container1>
-
-            <span><h1 class="text-4xl font-bold text-center text-[#ffffff]">Mostrar direcciones</h1></span>
-            <br>
-
-            <div class="bg-white shadow-md rounded-lg p-4">
-                <h2 class="text-xl font-semibold mb-2 px-4 py-2">Direccion</h2>
-                <table class="table-auto w-full">
-                    <thead>
-                        <tr>
-                            <th class="border-t-0 px-4 py-2">Datos</th>
-                            <th class="border-t-0 px-4 py-2">Informacion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="px-4 py-2">Id</td>
-                            <td class="px-4 py-2">{{$addresses->id}}</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-2">Calle</td>
-                            <td class="px-4 py-2">{{$addresses->street}}</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-2">Numero</td>
-                            <td class="px-4 py-2">{{$addresses->number}}</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-2">Codigo postal</td>
-                            <td class="px-4 py-2">{{$addresses->cp}}</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-2">Estado</td>
-                            <td class="px-4 py-2">{{$addresses->state}}</td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-2">Telefono</td>
-                            <td class="px-4 py-2">{{$addresses->phone}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                        <br>
-                        <a class="bg-[#77dd77] text-white px-4 py-2 rounded-md m-3" href="http://127.0.0.1:8000/addresses">
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </a>
+<x-guest-layout>
+    
+    <div class="container mx-auto mt-2">
+        
+        <div class="bg-white shadow-md rounded px-8 max-w-md mx-auto py-6 mb-4 ">
+            
+     
+            <div class="col-span-3">
+                <h1 class="text-3xl font-bold mb-4 ml-4 text-center">Direccion {{ $addresses->id }}</h1>
             </div>
 
-        
-
             
-    </x-container1>
+            <div>
+                <strong>Calle: </strong>{{$addresses->street}}
+            </div>
+            <div>
+                <strong>Numero: </strong>{{$addresses->number}}
+            </div>
+            <div>
+                <strong>Codigo postal: </strong>{{$addresses->cp}}
+            </div>
 
- </x-menu-nav>
- <x-footer></x-footer>
-</x-layout>
+            <div>
+                <strong>Estado: </strong>{{$addresses->state}}
+            </div>
+            <div>
+                <strong>Telefono: </strong>{{$addresses->phone}}
+            </div>
+            <div class="flex justify-end ">
+                <a href="{{ route('addresses.index') }}" class="font-bold text-purple-500 hover:text-purple-600 px-4"> Ir a inicio</a>
+            </div>
+            
+        </div>
+    </div>
+</x-guest-layout>
