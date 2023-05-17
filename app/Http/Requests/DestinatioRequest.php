@@ -22,8 +22,8 @@ class DestinatioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:20',
-            'ranking' => 'required|integer|min:1|max:10',
+            'name' => 'required|string|max:30',
+            'ranking' => 'required|integer|max:10',
             'description' => 'required|string',
             'languages' => 'required|string',
             'images' => 'required|array',
