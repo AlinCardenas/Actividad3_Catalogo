@@ -23,9 +23,9 @@ class AirDesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'destination_id' => 'required|integer|unsigned',
-            'airport_id' => 'required|integer|unsigned',
-            'airline_id' => 'required|integer|unsigned',
+            'destination_id' => 'required',
+            'airport_id' => 'required',
+            'airline_id' => 'required',
         ];
     }
 }
