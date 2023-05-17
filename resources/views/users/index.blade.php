@@ -1,7 +1,6 @@
 <x-guest-layout>
     <x-sidebar>
         <div class="bg-gray-200 pb-4">
-
             <header>
                 <div class="relative">
                     <img src="{{ asset('images/fondo.jpg') }}" alt=""
@@ -15,11 +14,18 @@
                                         class="text-white hover:text-gray-300 ml-8">Hoteles</a>
                                     <a href="{{route('destinos.list')}}"
                                         class="text-white hover:text-gray-300 ml-8">Destinos</a>
-                                    <a href="{{route('flights.list')}}"
-                                        class="text-white hover:text-gray-300 ml-8">Vuelos</a>
-                                    <a href="#" class="text-white hover:text-gray-300 ml-8 flex items-center">
-                                        Iniciar sesión
-                                    </a>
+                                    <a href="{{route('flights.list')}}" class="text-white hover:text-gray-300 ml-8">Vuelos</a>
+                                    @if (Auth::check())
+                                        <form method="POST" action="{{ route('logout') }}" x-data>
+                                            @csrf
+                                            <button type="submit" class="text-white hover:text-gray-300 ml-8 flex items-center">Cerrar sesión</button>
+                                        </form>
+                                    @else
+                                        <a href="{{route('login')}}" class="text-white hover:text-gray-300 ml-8 flex items-center">Iniciar sesión</a>    
+                                    @endif
+                                    
+                                    <p class="text-white">
+                                    </p>
                                 </div>
                             </div>
                         </div>

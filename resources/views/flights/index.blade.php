@@ -1,5 +1,5 @@
 <x-layout>
-    <x-table title="Registros de destinos">
+    <x-table title="Registros de vuelos">
         <x-slot name="btn">
             <x-link-id href="{{route('flights.create')}}" mensaje="Crear destino"
                 class="bg-slate-950 rounded-sm w-[165px] text-center" />
