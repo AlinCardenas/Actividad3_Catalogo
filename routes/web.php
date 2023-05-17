@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AirportController;
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\FlightController;
