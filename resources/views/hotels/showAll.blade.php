@@ -4,7 +4,7 @@
         <div class="grid grid-cols-4 gap-4 mb-6 mx-auto mt-5">
             @foreach ($hotels as $hotel)
             @php
-                $ruta = str_replace('public/img/', '', $hotel->logo)
+            $ruta = str_replace('public/img/', '', $hotel->logo)
             @endphp
             <x-card :registro="$hotel" :ruta_img="$ruta">
                 <p>
