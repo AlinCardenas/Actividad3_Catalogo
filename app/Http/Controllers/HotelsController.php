@@ -74,11 +74,11 @@ class HotelsController extends Controller
 
     public function edit(Hotel $hotel)
     {
-        $object = new Hotel();
-        $list= Destination::pluck('name','id');
-
+        // dump($hotel);
+        $list= Service::pluck('name','id');
+        $listados= Address::pluck('street','id');
         
-        return view('hotels.edit',compact('hotel','object','list'));
+        return view('hotels.edit',compact('hotel','list', 'listados'));
     }
 
     /**

@@ -69,17 +69,17 @@ Route::middleware([
 
     Route::resource('planes',PlaneController::class);
 
-//Rutas para aerolinieas
-
-Route::get('/airlines/create', Create::class)->name('airlines.create');
-Route::get('/airlines/index', Index::class)->name('airlines.index');
-Route::get('/airlines/edit/{slug}', Edit::class)->name('airlines.edit');
-
-//Rutas para aeropuertos
-
-Route::get('/airports/create', App\Http\Livewire\Airports\Create::class)->name('airports.create');
-Route::get('/airports', App\Http\Livewire\Airports\Index::class)->name('airports.index');
-Route::get('/airports/edit/{slug}', App\Http\Livewire\Airports\Edit::class)->name('airports.edit');
+    //Rutas para aerolinieas
+    
+    Route::get('/airlines/create', Create::class)->name('airlines.create');
+    Route::get('/airlines/index', Index::class)->name('airlines.index');
+    Route::get('/airlines/edit/{slug}', Edit::class)->name('airlines.edit');
+    
+    //Rutas para aeropuertos
+    
+    Route::get('/airports/create', App\Http\Livewire\Airports\Create::class)->name('airports.create');
+    Route::get('/airports', App\Http\Livewire\Airports\Index::class)->name('airports.index');
+    Route::get('/airports/edit/{slug}', App\Http\Livewire\Airports\Edit::class)->name('airports.edit');
 
     // Rutas de vistas para usuario
     Route::get('destinos/', [DestinationsController::class, 'list'])->name('destinos.list');
