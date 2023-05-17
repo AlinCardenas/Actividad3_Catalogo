@@ -18,7 +18,7 @@ class AirportFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'address' => $this->faker->sentence(3),
+            'address_ID' => $this->faker->numberBetween(1,45),
             'cant' => $this->faker->numberBetween(1, 10),
         ];
     }

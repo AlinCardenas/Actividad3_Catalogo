@@ -27,7 +27,6 @@
                     <img src="{{asset('images/flecha.png')}}" alt="" class="w-64 h-64 ">
                 </a>
             </div>
-
         </div>
     </div>
 </x-layout>

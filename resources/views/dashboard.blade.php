@@ -1,15 +1,36 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+<x-layout title="Dashboard">
+<x-Navbar>
+</x-Navbar>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome />
+ <x-menu-nav>
+
+    <x-container1>
+
+    <section class="bg-white px-4 py-2 ">
+        <h1 class="text-4xl font-bold text-center text-[#5086c1]">Comienza el viaje</h1>
+        <div class="flex">
+            <div class="w-1/4 ">
+  <img src="https://assetsio.reedpopcdn.com/kirbybig.png?width=1200&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="kirby de bacacion" class="px-4 py-2">
+</div>
+
+<div class="w-1/4">
+<img src="https://assetsio.reedpopcdn.com/kirbybig.png?width=1200&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="kirby de bacacion" class="px-4 py-2">
+</div>
+
+<div class="w-1/4">
+<img src="https://assetsio.reedpopcdn.com/kirbybig.png?width=1200&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="kirby de bacacion" class="px-4 py-2">
+</div>
+<div class="w-1/4">
+<img src="https://assetsio.reedpopcdn.com/kirbybig.png?width=1200&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="kirby de bacacion" class="px-4 py-2">
+</div>
+</div>
             </div>
         </div>
-    </div>
-</x-app-layout>
+    </section>
+</div>
+            
+    </x-container1>
+
+ </x-menu-nav>
+ <x-footer></x-footer>
+</x-layout>

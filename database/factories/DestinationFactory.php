@@ -24,7 +24,6 @@ class DestinationFactory extends Factory
 
         return [
             'name' => $this->faker->word(),
-            'address' => $this->faker->sentence(2),
             'ranking' => $this->faker->numberBetween(1,10),
             'description' => $this->faker->paragraph(),
             'languages' => $this->faker->sentence(3),
