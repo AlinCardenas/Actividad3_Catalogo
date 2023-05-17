@@ -27,14 +27,20 @@ use App\Http\Livewire\Airline\Index;
 |
 */
 
-Route::get('/', [VistaController::class, 'showh']); 
+//! Ruta principal
+Route::get('/', [VistaController::class, 'showh'])->name('showh'); 
 
+//! Rutas que muestran el listado de la pagina principal
+Route::get('hoteles/',[HotelsController::class,'showAll'])->name('hotel.showAll');
+Route::get('destinos/', [DestinationsController::class, 'list'])->name('destinos.list');
+Route::get('/flightsview', [FlightController::class, 'list'])->name('flights.list');
+
+//! Ruta que lleva al login
 Route::get('/login',function(){
     return view('auth.login');
 })->name('login');
 
-Route::get('hotels/users',[HotelsController::class,'showAll'])->name('hotel.showAll');
-
+//! Ruta de formulario de información
 Route::get('/form', function(){
     return view('forms.register');
 });
@@ -45,59 +51,48 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return redirect()->route('showh');
+        // return view('profile.show');
     })->name('dashboard');
     Route::post('enviar', [SendEmailController::class, 'envio'])->name('enviar');
 
-    // Ruta de vuelos
+    //******* Rutas resource */
+    // Flights
     Route::resource('flights', FlightController::class);
-
-    // Ruta de destinos
+    // AerolineasDestinos
+    Route::resource('aero_des', AeroDesController::class);
+    // Destinations
     Route::resource('destinations', DestinationsController::class);
+    // Servicios
+    Route::resource('services', ServicesController::class);
+    // Planes
+    Route::resource('planes', PlaneController::class);
+    // Address
+    Route::resource('addresses', AddressController::class);
+
+    //******** Rutas skip y back */
+    //! Destinos
     Route::get('destination/show-skip/{id}', [DestinationsController::class, 'skip'])->name('destinations.skip');
     Route::get('destination/show-back/{id}', [DestinationsController::class, 'back'])->name('destinations.back');
-
-    // Ruta de AerolineasDestinos
-    Route::resource('aero_des', AeroDesController::class);
-
-    //Ruta para crud de hoteles
+    //! Hoteles
     Route::resource('hotels', HotelsController::class);
     Route::get('hotels/skip/{id}',[HotelsController::class,'skip'])->name('hotel.skip');
     Route::get('hotels/back/{id}',[HotelsController::class,'back'])->name('hotel.back');
 
-    Route::resource('services', ServicesController::class);
 
-    Route::resource('planes',PlaneController::class);
 
-    //Rutas para aerolinieas
-    
+
+    //********************************************************************* */
+    //Rutas para aerolinieas    
     Route::get('/airlines/create', Create::class)->name('airlines.create');
     Route::get('/airlines/index', Index::class)->name('airlines.index');
     Route::get('/airlines/edit/{slug}', Edit::class)->name('airlines.edit');
-    
-    //Rutas para aeropuertos
-    
+    //Rutas para aeropuertos    
     Route::get('/airports/create', App\Http\Livewire\Airports\Create::class)->name('airports.create');
     Route::get('/airports', App\Http\Livewire\Airports\Index::class)->name('airports.index');
     Route::get('/airports/edit/{slug}', App\Http\Livewire\Airports\Edit::class)->name('airports.edit');
+    //********************************************************************* */
 
-    // Rutas de vistas para usuario
-    Route::get('destinos/', [DestinationsController::class, 'list'])->name('destinos.list');
-
-    // Route::get('/flightsview', function () {
-    //     return view('catalogue.flightsview');
-    // });
-
-    Route::get('/flightsview', [FlightController::class, 'list'])->name('flights.list');
-
-    // Ruta de direcciones
-    Route::resource('addresses', AddressController::class);
-
-    Route::get('/old', function () {
-        return view('olddashboard');
-    });
-
-    // Rutas de vistas para usuario
 
 });
 
