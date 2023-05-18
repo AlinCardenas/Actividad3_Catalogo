@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\AirlineController;
 use App\Http\Controllers\AirportController;
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\FlightController;
@@ -40,15 +40,16 @@ Route::get('/form', function(){
 });
 
 Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
+    // 'auth:sanctum',
+    // config('jetstream.auth_session'),
+    // 'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
     Route::post('enviar', [SendEmailController::class, 'envio'])->name('enviar');
 
+    
     // Ruta de vuelos
     Route::resource('flights', FlightController::class);
 
@@ -70,16 +71,15 @@ Route::middleware([
     Route::resource('planes',PlaneController::class);
 
     //Rutas para aerolinieas
-    
-    Route::get('/airlines/create', Create::class)->name('airlines.create');
-    Route::get('/airlines/index', Index::class)->name('airlines.index');
-    Route::get('/airlines/edit/{slug}', Edit::class)->name('airlines.edit');
-    
+    Route::resource('airline', AirlineController::class);
+    Route::get('airline/skip/{id}',[AirlineController::class,'skip'])->name('airline.skip');
+    Route::get('airline/back/{id}',[AirlineController::class,'back'])->name('airline.back');
+
     //Rutas para aeropuertos
-    
-    Route::get('/airports/create', App\Http\Livewire\Airports\Create::class)->name('airports.create');
-    Route::get('/airports', App\Http\Livewire\Airports\Index::class)->name('airports.index');
-    Route::get('/airports/edit/{slug}', App\Http\Livewire\Airports\Edit::class)->name('airports.edit');
+
+    Route::resource('airports', AirportController::class);
+    Route::get('airports/skip/{id}',[AirportController::class,'skip'])->name('airport.skip');
+    Route::get('airports/back/{id}',[AirportController::class,'back'])->name('airport.back');
 
     // Rutas de vistas para usuario
     Route::get('destinos/', [DestinationsController::class, 'list'])->name('destinos.list');

@@ -12,7 +12,7 @@ class AirportController extends Controller
      */
     public function index()
     {
-        $airports = Airport::all();
+        $airports = Airport::orderByDesc('id')->paginate(12);
         return view('airports.index',compact('airports'));
     }
 
@@ -29,30 +29,16 @@ class AirportController extends Controller
      */
     public function store(Request $request)
     {
-        //valide los atributos de mi formulario para validar los datos de conacto
-        //define las regalas que debe de tener cada atribito
-        $request->validate([
-            'nombre' => 'required',
-            'descripción' => 'required',
-            'valoracion' => 'required',
-            'destino' => 'required',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
-        ]);
-        $route_logo = $request->logo->store('public/img');
-        
-
+       
         //guarde el producto con la informacion del formulario
         $airports = new Airport();
-        $airports->nombre = $request->nombre;
-        $airports->descripción = $request->descripción;
-        $airports->valoracion = $request->valoracion;
-        $airports->destino = $request->destino;
-        $airports->logo = $route_logo;
+        $airports->name = $request->nombre;
+        $airports->address = $request->direccion;
+        $airports->cant = $request->cant;
         $airports->saveOrFail();
 
         //despues de guardar el prodcuto lo redireccione a la ruta home donde se muestra el prodcto que acabo de guardar
-        return redirect()->route("marcas.index")->with('status', 'Marca guardada correctamente!');
+        return redirect()->route("airports.index")->with('status', 'Aeropuerto guardado correctamente!');
     }
 
     /**
@@ -77,14 +63,47 @@ class AirportController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //actualizamos aeropuerto con la informacion del formulario
+        $airports = new Airport();
+        $airports->name = $request->nombre;
+        $airports->address = $request->direccion;
+        $airports->cant = $request->cant;
+        $airports->saveOrFail();
+        return redirect()->route('airports.show',compact('airports'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($airports)
     {
-        //
+        $airports= Airport::find($airports)->delete();
+        return redirect()->route('airports.index');
     }
+    public function skip($id)
+    {    
+        $ultimo = Airport::max('id');
+        $airports=null;
+
+        if ($ultimo==$id) {
+            $airports = Airport::first();
+        }else{
+            $airports = Airport::where('id', '>', $id)->firstOrFail();
+        }
+        return redirect()->route('airports.show', compact('airports'));
+    }
+    public function back($id)
+    {    
+        $primero = Airport::min('id');
+        $airports=null;
+
+        // dump($destination = );
+        if ($primero==$id) {
+            $airports = Airport::latest()->get()->first();
+        }else{
+            $airports = Airport::where('id', '<', $id)->orderBy('id', 'desc')->first();
+        }
+        return redirect()->route('airports.show', compact('airports'));
+    }
+
 }

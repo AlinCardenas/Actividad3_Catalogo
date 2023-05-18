@@ -1,23 +1,25 @@
 <x-guest-layout>
     <div class="container max-w-[7xl] mx-auto mt-4">
-        <h1 class="text-3xl text-center font-bold ">Aeropuertos</h1>
+        <h1 class="text-3xl text-center font-bold ">Aerolineas</h1>
         <div class="flex justify-end mt-2">
-            <a href="{{ route('airports.create') }}" class="font-bold text-purple-500 hover:text-purple-600 px-4"> Agregar Aeropuerto</a>
+            <a href="{{ route('airline.create') }}" class="font-bold text-purple-500 hover:text-purple-600 px-4"> Agregar Aerolineas</a>
         </div>
 
         <div class="grid grid-cols-4 gap-4 mb-6 mx-auto mt-5">
-            @foreach ($airports as $airport)
+            @foreach ($airline as $airlin)
                 <div class="col-span-1">
                     <div class="bg-white rounded-lg shadow-2xl p-[10px] h-[500px]">
-                        
+
+                        <img class="mx-auto mt-3" src="{{asset($airlin->logo)}}" width="250" height="250">
+
                         <div class="p-4">
-                            <a class="text-xl font-bold mb-4 hover:text-purple-500" href="{{route('airports.show', $airport->id)}}">{{$airport->name}} </a>
-                            <p class="text-gray-600 mb-2">Direccion: {{ $airport->address }}</p>
-                            <p class="text-gray-600 mb-2">Cantidad de pasajeros: {{ $airport->cant }}</p>
+                            <a class="text-xl font-bold mb-4 hover:text-purple-500" href="{{route('airline.show', $airlin->id)}}"> Nombre: {{$airlin->name}} </a>
+                            <p class="text-gray-600 mb-2">Descripcion: {{ $airlin->address }}</p>
+                            <p class="text-gray-600 mb-2">Valoracion: {{ $airlin->cant }}</p>
                             <div class="mt-2">
-                                <a href="{{ route('airports.edit', $airport->id) }}" class="font-bold text-blue-600 hover:text-blue-700">Editar</a>
+                                <a href="{{ route('airline.edit', $airlin->id) }}" class="font-bold text-blue-600 hover:text-blue-700">Editar</a>
                             </div>
-                            <form action="{{ route('airports.destroy', $airport->id) }}" method="post" class="inline">
+                            <form action="{{ route('airline.destroy', $airlin->id) }}" method="post" class="inline">
                                 @csrf
                                 @method('delete')
                                 <div class="mt-2">

@@ -1,10 +1,10 @@
 <x-guest-layout>
     <div class="container max-w-6xl mx-auto mt-4">
 
-        <form action="{{route('airports.update')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('airline.update',$airline->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
-            @include('airports.form')
+            @include('airline.form')
             
         </form>
 
