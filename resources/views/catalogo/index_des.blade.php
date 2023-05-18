@@ -1,10 +1,21 @@
-<x-layout>
-    <h1 class="text-3xl text-center mt-8 mb-8">Destinos recomendados ⭐</h1>
-    <div class="flex items-center justify-center">
-        <div class="w-10/12 ">
+<x-guest-layout>
+    <div class="container max-w-[7xl] mx-auto mt-4">
+        <h1 class="text-3xl text-center font-bold ">Destinos recomendados ⭐</h1>
+        <div class="grid grid-cols-4 gap-4 mb-6 mx-auto mt-5">
             @foreach ($registros as $item)
-                <x-card-destination :nombre="$item->name" :descripcion="$item->description" :puntuacion="$item->ranking" :id="$item->id"  />
+            <x-card :registro="$item">
+                <p>
+                    <span class="font-semibold">Nombre: </span> {{$item->name}}
+                </p>
+                <p>
+                    <span class="font-semibold">Precio: $</span> {{$item->ranking}}
+                </p>
+                <p>
+                    <span class="font-semibold">Descripción: </span> {{Str::limit($item->description, 140)}}
+                </p>
+            </x-card>
             @endforeach
         </div>
+        {{$registros->links()}}
     </div>
-</x-layout>
+</x-guest-layout>

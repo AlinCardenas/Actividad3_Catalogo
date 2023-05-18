@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AirDesRequest;
 use App\Models\Airline_Destination;
 use Illuminate\Http\Request;
-use App\Http\Requests\AirDesRequest;
 
 class AeroDesController extends Controller
 {

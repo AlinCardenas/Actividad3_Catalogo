@@ -22,15 +22,12 @@ class DestinatioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:20',
-            'ranking' => 'required|integer|min:1|max:10',
+            'name' => 'required|string|max:30',
+            'ranking' => 'required|integer|max:10',
             'description' => 'required|string',
             'languages' => 'required|string',
             'images' => 'required|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
-            
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',       
         ];
-
     }
-
 }

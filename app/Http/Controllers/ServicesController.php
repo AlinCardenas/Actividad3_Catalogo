@@ -22,7 +22,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        $object= new Service();
+        $object = new Service();
         return view('services.create', compact('object'));
     }
 
@@ -31,9 +31,7 @@ class ServicesController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-
-        $service= Service::create($request->all());
-        
+        $service = Service::create($request->all());   
         return redirect()->route('services.index',compact('service'));
     }
 
@@ -59,8 +57,7 @@ class ServicesController extends Controller
     public function update(ServiceRequest $request, Service $service)
     {
         $service->update($request->all());
-        
-        return redirect()->route('services.show',compact('service'));
+        return redirect()->route('services.index');
     }
 
     /**
@@ -68,7 +65,7 @@ class ServicesController extends Controller
      */
     public function destroy($service)
     {
-        $service= Service::find($service)->delete();
+        $service = Service::find($service)->delete();
         return redirect()->route('services.index');
     }
 
