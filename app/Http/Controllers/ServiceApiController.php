@@ -22,10 +22,12 @@ class ServiceApiController extends Controller
     public function store(Request $request)
     {
         $registro = new Service($request->input());
+        // dump($registro);
         $registro->save();
         return response()->json([
             'status' => true,
-            'message' => 'Servicio generado!!!'
+            'message' => 'Servicio generado!!!',
+            'data' => $registro,
         ], 400);
     }
 
