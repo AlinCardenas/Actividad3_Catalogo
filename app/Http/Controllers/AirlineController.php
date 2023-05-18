@@ -37,7 +37,7 @@ class AirlineController extends Controller
         $airline->name =$request->name;
         $airline->description =$request->description;
         $airline->ranking =$request->ranking;
-        $airline->logo = $path;
+        $airline->logo = 'airlines/'.$filename;
         $airline->save();
 
         return redirect()->route('airline.show',  $airline->id);
@@ -76,7 +76,7 @@ class AirlineController extends Controller
         $airline->description =$request->description;
         $airline->ranking =$request->ranking;
         if ($request->file('logo') != null) {
-            $airline->logo = $path;
+            $airline->logo = 'airlines/'.$filename;
         }
         $airline->update();
         return redirect()->route('airline.show',compact('airline'));

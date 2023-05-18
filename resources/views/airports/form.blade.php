@@ -9,10 +9,10 @@
                 @enderror
         </div>
         <div class="col-span-3">
-            <x-input-g nombre="Direccion" name="direccion" type="text" :value="(isset($airport)) ? $airport->address :  null" />
-            @error('direccion')
-                <span class="text-red-600 font-semibold">{{$message}}</span>
-            @enderror
+            <x-select-airport etiqueta="Selecciona un Aeropuerto" nombre="address" :list="$addresses" :value="(isset($selec)) ? $selec->destination_id : null" />
+                @error('destination_id')
+                    <span class="text-red-600 font-semibold">{{$message}}</span>
+                @enderror
         </div>
         <div>
             <x-input-g nombre="Cantidad de pasajeros" name="cant" type="number" :value="(isset($airport)) ? $airport->cant : null" />

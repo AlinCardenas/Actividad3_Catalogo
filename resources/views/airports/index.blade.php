@@ -12,7 +12,7 @@
                         
                         <div class="p-4">
                             <a class="text-xl font-bold mb-4 hover:text-purple-500" href="{{route('airports.show', $airport->id)}}">{{$airport->name}} </a>
-                            <p class="text-gray-600 mb-2">Direccion: {{ $airport->address }}</p>
+                            <p class="text-gray-600 mb-2">Direccion: {{ $airport->address->street }} {{ $airport->address->number }} {{ $airport->address->cp }} {{ $airport->address->state }} </p>
                             <p class="text-gray-600 mb-2">Cantidad de pasajeros: {{ $airport->cant }}</p>
                             <div class="mt-2">
                                 <a href="{{ route('airports.edit', $airport->id) }}" class="font-bold text-blue-600 hover:text-blue-700">Editar</a>

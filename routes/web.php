@@ -91,8 +91,8 @@ Route::middleware([
     //Rutas para aeropuertos
 
     Route::resource('airports', AirportController::class);
-    Route::get('airports/skip/{id}',[AirportController::class,'skip'])->name('airport.skip');
-    Route::get('airports/back/{id}',[AirportController::class,'back'])->name('airport.back');
+    Route::get('airports/skip/{id}',[AirportController::class,'skip'])->name('airports.skip');
+    Route::get('airports/back/{id}',[AirportController::class,'back'])->name('airports.back');
 
 
 });

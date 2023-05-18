@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Airport;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class AirportController extends Controller
      */
     public function create()
     {
-        return view('airports.create');
+        $addresses = Address::all();
+        return view('airports.create', compact('addresses'));
     }
 
     /**
@@ -32,9 +34,9 @@ class AirportController extends Controller
        
         //guarde el producto con la informacion del formulario
         $airports = new Airport();
-        $airports->name = $request->nombre;
-        $airports->address = $request->direccion;
+        $airports->name = $request->name;
         $airports->cant = $request->cant;
+        $airports->address_id = $request->address;
         $airports->saveOrFail();
 
         //despues de guardar el prodcuto lo redireccione a la ruta home donde se muestra el prodcto que acabo de guardar
@@ -46,8 +48,8 @@ class AirportController extends Controller
      */
     public function show(string $id)
     {
-        $airports = Airport::find($id);
-        return view('airports.show')->with('airport',$airports);
+        $airport = Airport::find($id);
+        return view('airports.show')->with('airport',$airport);
     }
 
     /**
@@ -55,7 +57,9 @@ class AirportController extends Controller
      */
     public function edit(string $id)
     {
-        return view('airports.edit');
+        $airport = Airport::find($id);
+        $addresses = Address::all();
+        return view('airports.edit',compact('airport','addresses'));
     }
 
     /**
@@ -64,12 +68,12 @@ class AirportController extends Controller
     public function update(Request $request, string $id)
     {
         //actualizamos aeropuerto con la informacion del formulario
-        $airports = new Airport();
-        $airports->name = $request->nombre;
-        $airports->address = $request->direccion;
-        $airports->cant = $request->cant;
-        $airports->saveOrFail();
-        return redirect()->route('airports.show',compact('airports'));
+        $airport = Airport::find($id);
+        $airport->name = $request->name;
+        $airport->cant = $request->cant;
+        $airport->address_id = $request->address;
+        $airport->saveOrFail();
+        return redirect()->route('airports.show',compact('airport'));
     }
 
     /**
@@ -83,27 +87,27 @@ class AirportController extends Controller
     public function skip($id)
     {    
         $ultimo = Airport::max('id');
-        $airports=null;
+        $airport=null;
 
         if ($ultimo==$id) {
-            $airports = Airport::first();
+            $airport = Airport::first();
         }else{
-            $airports = Airport::where('id', '>', $id)->firstOrFail();
+            $airport = Airport::where('id', '>', $id)->firstOrFail();
         }
-        return redirect()->route('airports.show', compact('airports'));
+        return redirect()->route('airports.show', compact('airport'));
     }
     public function back($id)
     {    
         $primero = Airport::min('id');
-        $airports=null;
+        $airport=null;
 
         // dump($destination = );
         if ($primero==$id) {
-            $airports = Airport::latest()->get()->first();
+            $airport = Airport::latest()->get()->first();
         }else{
-            $airports = Airport::where('id', '<', $id)->orderBy('id', 'desc')->first();
+            $airport = Airport::where('id', '<', $id)->orderBy('id', 'desc')->first();
         }
-        return redirect()->route('airports.show', compact('airports'));
+        return redirect()->route('airports.show', compact('airport'));
     }
 
 }
