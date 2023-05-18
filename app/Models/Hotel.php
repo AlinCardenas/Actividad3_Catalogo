@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hotel extends Model
 {
+    use HasFactory;
     protected $fillable=[
         'name',
         'price',
@@ -17,5 +18,5 @@ class Hotel extends Model
         'address_id',
         'service_id',
     ];
-    use HasFactory;
+    
 }

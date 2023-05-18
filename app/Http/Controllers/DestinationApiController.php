@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hotel;
+use App\Models\Destination;
 use Illuminate\Http\Request;
 
-class HotelsApiController extends Controller
+class DestinationApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $hotels = Hotel::paginate(20);
-        return response()->json($hotels);
+        $destination = Destination::paginate(15);
+        return response()->json($destination);
     }
 
     /**
@@ -21,20 +21,20 @@ class HotelsApiController extends Controller
      */
     public function store(Request $request)
     {
-        $registro = New Hotel($request->input());
+        $registro = New Destination($request->input());
         $registro->save();
         return response()->json([
             'status'=>true,
-            'message' =>'Registro guardado',
+            'message'=>'Registro guardado',
         ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show( $id)
+    public function show($id)
     {
-        $resp = Hotel::find($id);
+        $resp = Destination::find($id);
         return response()->json([
             'status'=>true,
             'data'=>$resp,
@@ -46,11 +46,11 @@ class HotelsApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $up = Hotel::find($id);
+        $up = Destination::find($id);
         $up->update($request->input());
         return response()->json([
             'status'=>true,
-            'message' =>'Registro actualizado',
+            'message'=>'Registro actualizado',
         ]);
     }
 
@@ -59,7 +59,7 @@ class HotelsApiController extends Controller
      */
     public function destroy($id)
     {
-        $del=Hotel::find($id);
+        $del = Destination::find($id);
         $del->delete();
         return response()->json([
             'status'=>true,
