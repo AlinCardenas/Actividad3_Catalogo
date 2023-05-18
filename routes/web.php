@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AirlineController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AeroDesController;
 use App\Http\Controllers\AirportController;
@@ -47,9 +48,9 @@ Route::get('/form', function(){
 });
 
 Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
+    // 'auth:sanctum',
+    // config('jetstream.auth_session'),
+    // 'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return redirect()->route('showh');
@@ -82,17 +83,16 @@ Route::middleware([
 
 
 
+    //Rutas para aerolinieas
+    Route::resource('airline', AirlineController::class);
+    Route::get('airline/skip/{id}',[AirlineController::class,'skip'])->name('airline.skip');
+    Route::get('airline/back/{id}',[AirlineController::class,'back'])->name('airline.back');
 
-    //********************************************************************* */
-    //Rutas para aerolinieas    
-    Route::get('/airlines/create', Create::class)->name('airlines.create');
-    Route::get('/airlines/index', Index::class)->name('airlines.index');
-    Route::get('/airlines/edit/{slug}', Edit::class)->name('airlines.edit');
-    //Rutas para aeropuertos    
-    Route::get('/airports/create', App\Http\Livewire\Airports\Create::class)->name('airports.create');
-    Route::get('/airports', App\Http\Livewire\Airports\Index::class)->name('airports.index');
-    Route::get('/airports/edit/{slug}', App\Http\Livewire\Airports\Edit::class)->name('airports.edit');
-    //********************************************************************* */
+    //Rutas para aeropuertos
+
+    Route::resource('airports', AirportController::class);
+    Route::get('airports/skip/{id}',[AirportController::class,'skip'])->name('airports.skip');
+    Route::get('airports/back/{id}',[AirportController::class,'back'])->name('airports.back');
 
 
 });

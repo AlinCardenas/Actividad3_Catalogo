@@ -1,26 +1,26 @@
-<x-layout>
-    <div class="grid justify-items-center items-center h-screen">
-        <div class="grid grid-cols-3 gap-[150px] justify-items-center">
-            <div class="grid justify-items-center items-center hover:opacity-25">
-                <a href="{{route('airports.create')}}">
-                    <img src="{{asset('images/flecha.png')}}" alt="" class="w-64 h-64 rotate-180">
-                </a>
+<x-guest-layout>
+    
+    <div class="container mx-auto mt-2">
+        
+        <div class="bg-white shadow-md rounded px-8 max-w-md mx-auto py-6 mb-4 ">
+            <div class="col-span-3">
+                <h1 class="text-3xl font-bold mb-4 ml-4 text-center">Aeropuertos: {{ $airport->name }}</h1>
             </div>
             <div>
-                <div class="bg-white rounded-lg shadow-2xl p-6 w-full border-4">
-                    <div class="grid justify-items-center items-center">
-                        <h1 class="text-xl font-bold my-2">Nombre: {{$airports->name}}</h1>
-                        <h2 class="font-semibold my-2">Descripción: {{$airports->description}}</h3>
-                        <h2 class="font-semibold my-2">Valoracion: {{$airports->valoracion}}</h3>
-                    </div>   
-                </div>
+                <strong>Direccion: </strong>{{$airport->address_id}}
             </div>
-            <div class="grid justify-items-center items-center hover:opacity-25">
-                <a href="{{route('destinations.skip', $airports->id)}}">
-                    <img src="{{asset('images/flecha.png')}}" alt="" class="w-64 h-64 ">
-                </a>
+            <div>
+                <strong>Cantidada de pasajeros: </strong>{{$airport->cant}}
             </div>
-
+            <div class="flex justify-end ">
+                <a href="{{ route('airports.index') }}" class="font-bold text-purple-500 hover:text-purple-600 px-4"> Ir a inicio</a>
+            </div>
+            <div class="flex justify-end ">
+                <a href="{{ route('airports.skip', $airport->id) }}" class="font-bold text-purple-500 hover:text-purple-600 px-4"> > </a>
+            </div>
+            <div class="flex justify-end ">
+                <a href="{{ route('airports.back', $airport->id) }}" class="font-bold text-purple-500 hover:text-purple-600 px-4"> Back</a>
+            </div>
         </div>
     </div>
-</x-layout>
+</x-guest-layout>

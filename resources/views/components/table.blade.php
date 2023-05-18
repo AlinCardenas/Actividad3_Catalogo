@@ -5,7 +5,7 @@
         </div>
         <div class="flex flex-row-reverse h-[45px] my-auto">
             {{-- ! Caja para btn create slot con nombre --}}
-            {{$btn}}
+            {{-- {{$btn}} --}}
         </div>
     </div>
     {{$slot}}

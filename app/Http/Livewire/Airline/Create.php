@@ -15,7 +15,6 @@ class Create extends Component
     public $valoracion;
     public $logo;
     public $identificador;
-    // public $image;
 
     public function mount(){
         $this->identificador = rand();

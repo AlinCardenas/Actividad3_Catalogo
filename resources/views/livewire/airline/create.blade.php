@@ -23,11 +23,6 @@
                         <strong class="font-bold">Imagen cargando!</strong>
                         <span class="block sm:inline">Espere un momento hasta que la imagen se haya procesado.</span>
                       </div>
-
-                    @if ($logo)
-                        <img class="mb-4" src="{{$logo->temporaryUrl()}}">
-                    @endif
-
                     <div class="col-span-6 ">
                         <x-label for="nombre" value="Nombre" />
                         <x-input id="nombre" type="text" class="mt-1 block w-full" wire:model.defer="nombre" autocomplete="nombre" />
@@ -48,6 +43,9 @@
                         <x-input id="{{$identificador}}" type="file" class="mt-1 block w-full" wire:model.defer="logo" autocomplete="logo" />
                         <x-input-error for="logo" class="mt-2" />
                     </div>
+                    @if ($logo)
+                        <img class="mb-4" src="{{$logo->temporaryUrl()}}">
+                    @endif
                 </x-slot>
             
                 <x-slot name="actions">
