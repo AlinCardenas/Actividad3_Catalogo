@@ -22,8 +22,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        $addresses = address::all('id');
-        return view('addresses.create', compact('addresses'));
+        return view('addresses.create');
     }
 
     /**
@@ -31,8 +30,7 @@ class AddressController extends Controller
      */
     public function store(AddressRequest $request)
     {
-        $input=$request->all();
-        address::create($input);
+        address::create($request->all());
         return redirect('addresses')->with('message','Se ha creado correctamente el campo');
     }
 
@@ -50,7 +48,6 @@ class AddressController extends Controller
      */
     public function edit(string $id)
     {
-        $addresses = address::all('id','state');
         $addresses = address::findOrFail($id); 
         return view('addresses.edit', compact('addresses'));
     }
@@ -61,8 +58,7 @@ class AddressController extends Controller
     public function update(AddressRequest $request, string $id)
     {
         $address = address::findOrFail($id);
-        $input=$request->all();
-        $address->update($input);
+        $address->update($request->all());
         return redirect('addresses')->with('info','Se ha actualizado el registro correctamente');
     }
 

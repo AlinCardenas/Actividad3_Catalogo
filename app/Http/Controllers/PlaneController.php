@@ -22,8 +22,7 @@ class PlaneController extends Controller
      */
     public function create()
     {
-        $planes = plane::all('id','model');
-        return view('planes.create', compact('planes'));
+        return view('planes.create');
     }
 
     /**
@@ -31,8 +30,7 @@ class PlaneController extends Controller
      */
     public function store(PlaneRequest $request)
     {
-        $input=$request->all();
-        plane::create($input);
+        plane::create($request->all());
         return redirect('planes')->with('message','Se ha creado correctamente el genero');
     }
 
@@ -50,7 +48,6 @@ class PlaneController extends Controller
      */
     public function edit(string $id)
     {
-        $planes = plane::all('id','model');
         $planes = plane::findOrFail($id); 
         return view('planes.edit', compact('planes'));
     }
@@ -61,8 +58,7 @@ class PlaneController extends Controller
     public function update(PlaneRequest $request, string $id)
     {
         $plane = plane::findOrFail($id);
-        $input=$request->all();
-        $plane->update($input);
+        $plane->update($request->all());
         return redirect('planes')->with('info','Se ha actualizado el registro correctamente');
     }
 
