@@ -17,5 +17,6 @@ class Destination extends Model
         'description',
         'languages',
         'images',
+        'address_id'
     ];
 }

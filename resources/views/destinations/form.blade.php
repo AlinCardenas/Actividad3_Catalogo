@@ -24,3 +24,5 @@
 @error('images')
 <span class="text-red-600 font-semibold">{{$message}}</span>
 @enderror
+
+<x-select :list="$listados" :object="(isset($object)) ? $object : $destination" campo="address_id" />

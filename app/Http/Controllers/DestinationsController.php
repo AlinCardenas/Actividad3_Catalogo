@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DestinatioRequest;
+use App\Models\Address;
 use App\Models\Destination;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,10 @@ class DestinationsController extends Controller
      */
     public function create()
     {
-        return view('destinations.create');
+        $object = new Destination();
+        $listados = Address::pluck('street','id');
+        // dd($listados);
+        return view('destinations.create', compact('object', 'listados'));
     }
 
     /**
@@ -46,6 +50,7 @@ class DestinationsController extends Controller
         $registro->ranking = $request->ranking;
         $registro->description = $request->description;
         $registro->languages = $request->languages;
+        $registro->address_id = $request->address_id;
         $registro->images = json_encode($filenames);
 
         $registro->save();
@@ -73,7 +78,8 @@ class DestinationsController extends Controller
      */
     public function edit(Destination $destination)
     {
-        return view('destinations.edit', compact('destination'));
+        $listados= Address::pluck('street','id');
+        return view('destinations.edit', compact('destination', 'listados'));
     }
 
     /**
@@ -94,6 +100,7 @@ class DestinationsController extends Controller
         $destination->ranking = $request->ranking;
         $destination->description = $request->description;
         $destination->languages = $request->languages;
+        $destination->address_id = $request->address_id;
         $destination->images = json_encode($filenames);
 
         $destination->update();
