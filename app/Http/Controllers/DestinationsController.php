@@ -36,24 +36,7 @@ class DestinationsController extends Controller
     public function store(DestinatioRequest $request)
     {
 
-        $registro = new Destination();
-
-        $filenames = [];
-
-        foreach ($request->file('images') as $file) {
-            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('public/images', $filename);
-            $filenames[] = $path;
-        }
-
-        $registro->name = $request->name;
-        $registro->ranking = $request->ranking;
-        $registro->description = $request->description;
-        $registro->languages = $request->languages;
-        $registro->address_id = $request->address_id;
-        $registro->images = json_encode($filenames);
-
-        $registro->save();
+        Destination::create($request->all());
         
         return redirect()->route('destinations.index');
     }
