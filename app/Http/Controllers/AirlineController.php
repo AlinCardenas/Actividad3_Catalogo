@@ -12,8 +12,8 @@ class AirlineController extends Controller
      */
     public function index()
     {
-        $airlines = Airline::orderByDesc('id')->paginate(12);
-        return view('airlines.index',compact('airlines'));
+        $airline = Airline::orderByDesc('id')->paginate(12);
+        return view('airline.index',compact('airline'));
     }
 
     /**
@@ -21,7 +21,7 @@ class AirlineController extends Controller
      */
     public function create()
     {
-        return view('airlines.create');
+        return view('airline.create');
     }
 
     /**
@@ -29,7 +29,18 @@ class AirlineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // genera el nombre de la imagen y las guarda
+        $filename = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+        $path = $request->file('logo')->storeAs('public/airlines', $filename);
+
+        $airline= new Airline();
+        $airline->name =$request->name;
+        $airline->description =$request->description;
+        $airline->ranking =$request->ranking;
+        $airline->logo = 'airlines/'.$filename;
+        $airline->save();
+
+        return redirect()->route('airline.show',  $airline->id);
     }
 
     /**
@@ -37,7 +48,8 @@ class AirlineController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $airline = Airline::find($id);
+        return view('airline.show')->with('airline',$airline);
     }
 
     /**
@@ -45,7 +57,8 @@ class AirlineController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $airline = Airline::find($id);
+        return view('airline.edit')->with('airline',$airline);
     }
 
     /**
@@ -53,14 +66,55 @@ class AirlineController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if ($request->file('logo') != null) {
+            // genera el nombre de la imagen y las guarda
+            $filename = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
+            $path = $request->file('logo')->storeAs('public/airlines', $filename);
+        }
+        $airline = Airline::find($id);
+        $airline->name =$request->name;
+        $airline->description =$request->description;
+        $airline->ranking =$request->ranking;
+        if ($request->file('logo') != null) {
+            $airline->logo = 'airlines/'.$filename;
+        }
+        $airline->update();
+        return redirect()->route('airline.show',compact('airline'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($airline)
     {
-        //
+        $airline= Airline::find($airline)->delete();
+        return redirect()->route('airline.index');
+    }
+
+    public function skip($id)
+    {    
+        $ultimo = Airline::max('id');
+        $airline=null;
+
+        if ($ultimo==$id) {
+            $airline = Airline::first();
+        }else{
+            $airline = Airline::where('id', '>', $id)->firstOrFail();
+        }
+        return redirect()->route('airline.show', compact('airline'));
+    }
+
+    public function back($id)
+    {    
+        $primero = Airline::min('id');
+        $airline=null;
+
+        // dump($destination = );
+        if ($primero==$id) {
+            $airline = Airline::latest()->get()->first();
+        }else{
+            $airline = Airline::where('id', '<', $id)->orderBy('id', 'desc')->first();
+        }
+        return redirect()->route('airline.show', compact('airline'));
     }
 }

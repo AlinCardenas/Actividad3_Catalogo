@@ -18,6 +18,11 @@
             
                 <x-slot name="form">
                     <!-- Name -->
+                    
+                    {{-- <div class="col-span-6 ">
+                        <x-label for="nombre" value="Imagen actual" />
+                        <img class="mb-4 w-64"  src="{{storage_public($imagenactual)}}">
+                    </div> --}}
                     <div class="col-span-6 ">
                         <x-label for="nombre" value="Nombre" />
                         <x-input id="nombre" type="text" class="mt-1 block w-full" wire:model.defer="nombre" autocomplete="nombre" />
@@ -33,11 +38,17 @@
                         <x-input id="valoracion" type="text" class="mt-1 block w-full" wire:model.defer="valoracion" autocomplete="valoracion" />
                         <x-input-error for="valoracion" class="mt-2" />
                     </div>
-                    {{-- <div class="col-span-6 ">
+                    <div class="col-span-6 ">
                         <x-label for="logo" value="Logo" />
                         <x-input id="logo" type="file" class="mt-1 block w-full" wire:model.defer="logo" autocomplete="logo" />
                         <x-input-error for="logo" class="mt-2" />
-                    </div> --}}
+                    </div>
+                    @if ($logo)
+                    <div class="col-span-6 ">
+                        <img class="mb-4 w-64"  src="{{$logo->temporaryUrl()}}">
+                    </div>    
+                    
+                    @endif
                 </x-slot>
             
                 <x-slot name="actions">

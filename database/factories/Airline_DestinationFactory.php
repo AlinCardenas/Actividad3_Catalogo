@@ -18,7 +18,7 @@ class Airline_DestinationFactory extends Factory
     {
         return [
             'destination_id' => $this->faker->numberBetween(1,45),
-            'airport_id' => $this->faker->numberBetween(1,45),
+            'airport_id' => $this->faker->numberBetween(1,20),
             'airline_id' => $this->faker->numberBetween(1,45),
         ];
     }

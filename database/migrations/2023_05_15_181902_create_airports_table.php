@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('cant');
             $table->bigInteger('address_id')->unsigned();
             $table->timestamps();
-
+            $table->softDeletes();
             $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
         });
     }
