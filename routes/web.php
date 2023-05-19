@@ -82,7 +82,6 @@ Route::middleware([
     Route::get('hotels/back/{id}',[HotelsController::class,'back'])->name('hotel.back');
 
 
-
     //Rutas para aerolinieas
     Route::resource('airline', AirlineController::class);
     Route::get('airline/skip/{id}',[AirlineController::class,'skip'])->name('airline.skip');
