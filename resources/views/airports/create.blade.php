@@ -5,7 +5,6 @@
         <form action="{{route('airports.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             @include('airports.form')
-            
         </form>
        
     </div>

@@ -13,7 +13,7 @@ class AirportController extends Controller
      */
     public function index()
     {
-        $airports = Airport::orderByDesc('id')->paginate(12);
+        $airports = Airport::paginate(12);
         return view('airports.index',compact('airports'));
     }
 

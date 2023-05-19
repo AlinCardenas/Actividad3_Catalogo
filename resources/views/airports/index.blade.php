@@ -30,7 +30,7 @@
             @endforeach
         </div> 
         
-        {{-- {{$airport->links()}} --}}
+        {{$airports->links()}}
 
     </div>
 </x-guest-layout>
