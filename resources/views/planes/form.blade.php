@@ -9,6 +9,7 @@
     nombre="Capacidad" 
     name="cant" 
     type="text" 
+    value="{{ $planes -> cant ?? old('cant') }}"
     ></x-input-g>
     @error('cant')
       <span class="text-red-600 font-semibold">{{$message}}</span>
@@ -17,6 +18,7 @@
     nombre="Modelo" 
     name="model" 
     type="text" 
+    value="{{ $planes -> model ?? old('model') }}"
     ></x-input-g>
     @error('model')
       <span class="text-red-600 font-semibold">{{$message}}</span>
@@ -25,6 +27,7 @@
     nombre="Tipo" 
     name="type" 
     type="text" 
+    value="{{ $planes -> type ?? old('type') }}"
     ></x-input-g>
     @error('type')
       <span class="text-red-600 font-semibold">{{$message}}</span>
@@ -33,6 +36,7 @@
     nombre="Clase" 
     name="class" 
     type="text" 
+    value="{{ $planes -> class ?? old('class') }}"
     ></x-input-g>
     @error('class')
       <span class="text-red-600 font-semibold">{{$message}}</span>
