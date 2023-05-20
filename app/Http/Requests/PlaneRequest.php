@@ -29,4 +29,14 @@ class PlaneRequest extends FormRequest
             
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'cant' => 'capacidad de pasajeros',
+            'model' => 'modelo del avion',
+            'type' => 'tipo de avión',
+            'class' => 'clase general del avión'
+        ];
+    }
 }
