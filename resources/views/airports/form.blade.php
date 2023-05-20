@@ -6,14 +6,13 @@
             <span class="text-red-600 font-semibold">{{$message}}</span>
         @enderror
     </x-input-g>
-    <x-input-g nombre="Cantidad de pasajeros" name="cant" type="number" :value="(isset($airport)) ? $airport->cant : null" >
+    <x-input-g nombre="Cantidad de pistas" name="cant" type="number" :value="(isset($airport)) ? $airport->cant : null" >
         @error('cant')
             <span class="text-red-600 font-semibold">{{$message}}</span>
         @enderror   
     </x-input-g>
 
     <x-select :list="$list" :object="(isset($object)) ? $object : $airport" campo="address_id" etiqueta="Elije un servicio"/>
-
     <x-butt mensaje="Enviar" />
 
 

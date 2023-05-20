@@ -27,4 +27,13 @@ class AirportRequest extends FormRequest
             'address_id' => 'required',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'nombre del aeropuerto',
+            'cant' => 'cantidad de pistas del aeropuerto',
+            'address_id' => 'dirección del aeropuerto'
+        ];
+    }
 }

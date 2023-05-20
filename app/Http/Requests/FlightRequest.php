@@ -27,9 +27,19 @@ class FlightRequest extends FormRequest
             'count_clients' => 'required',
             'duration' => 'required',
             'price' => 'required|integer',
-            'plane_id' => 'required|exists:planes,id',
-            // 'airline_destination_id' => 'required|exists:airline_destinations,id',
-            
+            'plane_id' => 'required|exists:planes,id',            
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'leave_date' => 'fecha de salida',
+            'arrive_date' => 'fecha de llegada',
+            'count_clients' => 'asientos disponibles',
+            'duration' => 'duración del vuelo',
+            'price' => 'precio',
+            'plane_id' => 'avión'
         ];
     }
 }
