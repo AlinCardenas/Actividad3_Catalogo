@@ -30,4 +30,15 @@ class AddressRequest extends FormRequest
             
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'street' => 'calle',
+            'number' => 'número de localidad',
+            'cp' => 'código postal',
+            'state' => 'estado',
+            'phone' => 'número telefonico'
+        ];
+    }
 }

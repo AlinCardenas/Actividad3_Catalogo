@@ -9,8 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Airport extends Model
 {
     use HasFactory;
-    // use SoftDeletes;
 
+    protected $fillable = [
+        'name',
+        'cant',
+        'address_id'
+    ];
 
     public function address(){
         return $this->belongsTo(Address::class);

@@ -10,46 +10,55 @@
     name="street" 
     type="text" 
     value="{{ $addresses -> street ?? old('street') }}"
-    ></x-input-g>
-    @error('street')
-      <span class="text-red-600 font-semibold">{{$message}}</span>
-    @enderror
+    >
+      @error('street')
+        <span class="text-red-600 font-semibold">{{$message}}</span>
+      @enderror
+    </x-input-g>
+
     <x-input-g
     nombre="Numero" 
     name="number" 
     type="number" 
     value="{{ $addresses -> number ?? old('number') }}"
-    ></x-input-g>
-    @error('number')
-      <span class="text-red-600 font-semibold">{{$message}}</span>
-    @enderror
+    >
+      @error('number')
+        <span class="text-red-600 font-semibold">{{$message}}</span>
+      @enderror
+    </x-input-g>
+
     <x-input-g
     nombre="Codigo postal" 
     name="cp" 
     type="number" 
     value="{{ $addresses -> cp ?? old('cp') }}"
-    ></x-input-g>
-    @error('cp')
-      <span class="text-red-600 font-semibold">{{$message}}</span>
-    @enderror
+    >
+      @error('cp')
+        <span class="text-red-600 font-semibold">{{$message}}</span>
+      @enderror
+    </x-input-g>
+
     <x-input-g
     nombre="Estado" 
     name="state" 
     type="text" 
     value="{{ $addresses -> state ?? old('state') }}"
-    ></x-input-g>
-    @error('state')
-      <span class="text-red-600 font-semibold">{{$message}}</span>
-    @enderror
+    >
+      @error('state')
+        <span class="text-red-600 font-semibold">{{$message}}</span>
+      @enderror
+    </x-input-g>
+
     <x-input-g
     nombre="Telefono" 
     name="phone" 
     type="number" 
     value="{{ $addresses -> phone ?? old('phone') }}"
-    ></x-input-g>
-    @error('phone')
-      <span class="text-red-600 font-semibold">{{$message}}</span>
-    @enderror
+    >
+      @error('phone')
+        <span class="text-red-600 font-semibold">{{$message}}</span>
+      @enderror
+    </x-input-g>
     <div>
     <x-butt mensaje="Registrar"></x-butt>
 

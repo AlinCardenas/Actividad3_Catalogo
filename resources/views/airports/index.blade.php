@@ -8,7 +8,7 @@
         <div class="grid grid-cols-4 gap-4 mb-6 mx-auto mt-5">
             @foreach ($airports as $airport)
                 <div class="col-span-1">
-                    <div class="bg-white rounded-lg shadow-2xl p-[10px] h-[500px]">
+                    <div class="bg-white rounded-lg shadow-2xl p-[10px] ">
                         
                         <div class="p-4">
                             <a class="text-xl font-bold mb-4 hover:text-purple-500" href="{{route('airports.show', $airport->id)}}">{{$airport->name}} </a>

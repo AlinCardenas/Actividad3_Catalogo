@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AirportRequest;
 use App\Models\Address;
 use App\Models\Airport;
 use Illuminate\Http\Request;
@@ -22,24 +23,18 @@ class AirportController extends Controller
      */
     public function create()
     {
-        $addresses = Address::all();
-        return view('airports.create', compact('addresses'));
+        $object = new Airport();
+        $list= Address::pluck('street','id');
+        return view('airports.create', compact('list', 'object'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AirportRequest $request)
     {
        
-        //guarde el producto con la informacion del formulario
-        $airports = new Airport();
-        $airports->name = $request->name;
-        $airports->cant = $request->cant;
-        $airports->address_id = $request->address;
-        $airports->saveOrFail();
-
-        //despues de guardar el prodcuto lo redireccione a la ruta home donde se muestra el prodcto que acabo de guardar
+        Airport::create($request->all());
         return redirect()->route("airports.index")->with('status', 'Aeropuerto guardado correctamente!');
     }
 
@@ -58,22 +53,19 @@ class AirportController extends Controller
     public function edit(string $id)
     {
         $airport = Airport::find($id);
-        $addresses = Address::all();
-        return view('airports.edit',compact('airport','addresses'));
+        $list= Address::pluck('street','id');
+
+        return view('airports.edit',compact('airport', 'list'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //actualizamos aeropuerto con la informacion del formulario
-        $airport = Airport::find($id);
-        $airport->name = $request->name;
-        $airport->cant = $request->cant;
-        $airport->address_id = $request->address;
-        $airport->saveOrFail();
-        return redirect()->route('airports.show',compact('airport'));
+        $registro = Airport::find($id);
+        $registro->update($request->all());
+        return redirect()->route('airports.index');
     }
 
     /**

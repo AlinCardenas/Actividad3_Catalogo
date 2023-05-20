@@ -11,7 +11,7 @@ class AirportRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,7 @@ class AirportRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'cant' => 'required|string|max:10',
-            'address_id' => 'required|exists:addresses,id',
-            
+            'address_id' => 'required',
         ];
     }
 }
