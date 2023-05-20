@@ -12,21 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('flights', function (Blueprint $table) {
-            $table->engine='InnoDB';
             $table->id();
             $table->date('leave_date');
             $table->date('arrive_date');
             $table->integer('count_clients');
             $table->time('duration');
             $table->integer('price');
-                        
-            $table->bigInteger('plane_id')->unsigned();
-            $table->bigInteger('airline_destination_id')->unsigned();
-
+            
+            $table->foreignId('plane_id')->constrained();
+            $table->foreignId('airline_destination_id')->references('id')->on('airline__destinations');
             $table->timestamps();
-
-            $table->foreign('plane_id')->references('id')->on('planes')->onDelete('cascade');
-            $table->foreign('airline_destination_id')->references('id')->on('airline__destinations');
         });
     }
 

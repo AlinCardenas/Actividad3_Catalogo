@@ -47,4 +47,10 @@ class Hotel extends Model
         );
     }
     
+    public function addresses(){
+        $this->hasOne(Address::class, 'id', 'address_id');
+    }
+    public function services(){
+        $this->hasOne(Service::class, 'id', 'service_id');
+    }
 }

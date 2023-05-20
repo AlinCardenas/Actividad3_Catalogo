@@ -21,10 +21,10 @@ class Flight extends Model
     ];
 
     public function planes(){
-        return $this->hasOne('App\Models\Plane', 'id', 'plane_id');
+        return $this->hasOne(Plane::class, 'id', 'plane_id');
     }
 
     public function airline__destinations(){
-        return $this->hasOne('App\Models\Airline_Destination', 'id', 'airline_destination_id');
+        return $this->hasOne(Airline_Destination::class, 'id', 'airline_destination_id');
     }
 }

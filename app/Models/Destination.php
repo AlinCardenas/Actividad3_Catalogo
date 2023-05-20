@@ -20,6 +20,7 @@ class Destination extends Model
         'address_id'
     ];
 
+    //* Mutador para imagenes
     protected function images(): Attribute
     {
         return new Attribute(
@@ -34,5 +35,10 @@ class Destination extends Model
                 return json_encode($filenames);
             }
         );
+    }
+
+    //* Llave foranea 
+    public function addresses(){
+        return $this->hasOne(Address::class, 'id', 'address_id');
     }
 }
