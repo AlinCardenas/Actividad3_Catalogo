@@ -15,7 +15,6 @@ class DestinationsController extends Controller
     public function index()
     {
         $registers = Destination::paginate(10);
-           
         return view('destinations.index', compact('registers'));
     }
 
@@ -26,7 +25,6 @@ class DestinationsController extends Controller
     {
         $object = new Destination();
         $listados = Address::pluck('street','id');
-        // dd($listados);
         return view('destinations.create', compact('object', 'listados'));
     }
 
@@ -35,9 +33,7 @@ class DestinationsController extends Controller
      */
     public function store(DestinatioRequest $request)
     {
-
         Destination::create($request->all());
-        
         return redirect()->route('destinations.index');
     }
 
@@ -68,25 +64,10 @@ class DestinationsController extends Controller
     /**
      * Actualizar registro
      */
-    public function update(DestinatioRequest $request, Destination $destination)
+    public function update(DestinatioRequest $request, $id)
     {
-
-        $filenames = [];
-
-        foreach ($request->file('images') as $file) {
-            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('public/images', $filename);
-            $filenames[] = $path;
-        }
-
-        $destination->name = $request->name;
-        $destination->ranking = $request->ranking;
-        $destination->description = $request->description;
-        $destination->languages = $request->languages;
-        $destination->address_id = $request->address_id;
-        $destination->images = json_encode($filenames);
-
-        $destination->update();
+        $registro = Destination::find($id);
+        $registro->update($request->all());
         
         return redirect()->route('destinations.index');
     }
@@ -129,7 +110,6 @@ class DestinationsController extends Controller
 
     public function list(){
         $registros = Destination::paginate(15);
-        // dump($registros);
         return view('catalogo.index_des', compact('registros'));
     }
     

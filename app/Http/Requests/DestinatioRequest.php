@@ -27,7 +27,20 @@ class DestinatioRequest extends FormRequest
             'description' => 'required|string',
             'languages' => 'required|string',
             'images' => 'required|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',       
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+            'address_id' => 'required'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Nombre del destino',
+            'ranking' => 'Valoración del detino',
+            'description' => 'Descripción del destino',
+            'languages' => 'Idiomas',
+            'images' => 'Imagenes del destino',
+            'address_id' => 'Dirección'
         ];
     }
 }
