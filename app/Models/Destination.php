@@ -17,5 +17,22 @@ class Destination extends Model
         'description',
         'languages',
         'images',
+        'address_id'
     ];
+
+    protected function images(): Attribute
+    {
+        return new Attribute(
+            set: function($images){
+                $filenames = [];
+                foreach ($images as $file) {
+                    $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+                    $path = $file->storeAs('public/images', $filename);
+                    $filenames[] = $path;
+
+                    return json_encode($filenames);
+                }
+            }
+        );
+    }
 }
