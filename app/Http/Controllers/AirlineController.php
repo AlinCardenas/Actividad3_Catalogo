@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AirlineRequest;
 use App\Models\Airline;
 use Illuminate\Http\Request;
 
@@ -27,26 +28,17 @@ class AirlineController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AirlineRequest $request)
     {
-        // genera el nombre de la imagen y las guarda
-        $filename = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
-        $path = $request->file('logo')->storeAs('public/airlines', $filename);
+        Airline::create($request->all());
 
-        $airline= new Airline();
-        $airline->name =$request->name;
-        $airline->description =$request->description;
-        $airline->ranking =$request->ranking;
-        $airline->logo = 'airlines/'.$filename;
-        $airline->save();
-
-        return redirect()->route('airline.show',  $airline->id);
+        return redirect()->route('airline.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( $id)
     {
         $airline = Airline::find($id);
         return view('airline.show')->with('airline',$airline);
@@ -55,7 +47,7 @@ class AirlineController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
         $airline = Airline::find($id);
         return view('airline.edit')->with('airline',$airline);
@@ -64,22 +56,11 @@ class AirlineController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AirlineRequest $request, $id)
     {
-        if ($request->file('logo') != null) {
-            // genera el nombre de la imagen y las guarda
-            $filename = uniqid() . '.' . $request->file('logo')->getClientOriginalExtension();
-            $path = $request->file('logo')->storeAs('public/airlines', $filename);
-        }
-        $airline = Airline::find($id);
-        $airline->name =$request->name;
-        $airline->description =$request->description;
-        $airline->ranking =$request->ranking;
-        if ($request->file('logo') != null) {
-            $airline->logo = 'airlines/'.$filename;
-        }
-        $airline->update();
-        return redirect()->route('airline.show',compact('airline'));
+        $registro = Airline::find($id);
+        $registro->update($request->all());
+        return redirect()->route('airline.index');
     }
 
     /**

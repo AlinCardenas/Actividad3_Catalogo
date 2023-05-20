@@ -14,7 +14,7 @@
 
                         <div class="p-4">
                             <a class="text-xl font-bold mb-4 hover:text-purple-500" href="{{route('airline.show', $airlin->id)}}"> Nombre: {{$airlin->name}} </a>
-                            <p class="text-gray-600 mb-2">Descripcion: {{ $airlin->description }}</p>
+                            <p class="text-gray-600 mb-2">Descripcion: {{ Str::limit($airlin->description, 50) }}</p>
                             <p class="text-gray-600 mb-2">Valoracion: {{ $airlin->ranking }}</p>
                             <div class="mt-2">
                                 <a href="{{ route('airline.edit', $airlin->id) }}" class="font-bold text-blue-600 hover:text-blue-700">Editar</a>
@@ -32,7 +32,7 @@
             @endforeach
         </div> 
         
-        {{-- {{$airport->links()}} --}}
+        {{$airline->links()}}
 
     </div>
 </x-guest-layout>
