@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FlightRequest;
 use App\Models\Airline;
 use App\Models\Airline_Destination;
+use App\Models\Airport;
+use App\Models\Destination;
 use App\Models\Flight;
 use App\Models\Plane;
 use Illuminate\Http\Request;
@@ -33,10 +35,12 @@ class FlightController extends Controller
      */
     public function create()
     {
-        $registro = Plane::all();
-        $registro1 = Airline_Destination::all();
+        $aviones = Plane::all();
+        $destinos = Destination::all();
+        $aeropuertos = Airport::all();
+        $aerolineas = Airline::all();
 
-        return view('flights.create', compact('registro', 'registro1'));
+        return view('flights.create', compact('aviones', 'destinos', 'aeropuertos', 'aerolineas'));
     }
 
     /**
@@ -44,23 +48,16 @@ class FlightController extends Controller
      */
     public function store(FlightRequest $request)
     {
-        $airlineDes = new Airline_Destination();
-        $airlineDes->destination_id = $request->destination_id;
-        $airlineDes->airport_id = $request->airport_id;
-        $airlineDes->airline_id = $request->airline_id;
+        $airlineDes = Airline_Destination::create($request->only('destination_id', 'airport_id', 'airline_id'));
+        
+        $valores = $request->only('leave_date','arrive_date','count_clients','duration','price','plane_id');
 
-        $airlineDes->save();
+        $id = $airlineDes->id;
 
-        $vuelo = new Flight();
-        $vuelo->leave_date = $request->leave_date;
-        $vuelo->arrive_date = $request->arrive_date;
-        $vuelo->count_clients = $request->count_clients;
-        $vuelo->duration = $request->duration;
-        $vuelo->price = $request->price;
-        $vuelo->plane_id = $request->plane_id;
-        $vuelo->airline_destination_id = $airlineDes->id;
-        $vuelo->save();
-        dump("Generado");
+        $valores['airline_destination_id'] = $id;
+
+        Flight::create($valores);
+
         return redirect()->route('flights.index');
     }
 
@@ -77,40 +74,34 @@ class FlightController extends Controller
      */
     public function edit($id)
     {
-        $registro = Plane::all();
-        $registro1 = Airline_Destination::all();
+        $aviones = Plane::all();
+        $destinos = Destination::all();
+        $aeropuertos = Airport::all();
+        $aerolineas = Airline::all();
         
         $flight = Flight::find($id);
-        // dump($flight);
-
-        $select = Airline_Destination::find($flight->airline_destination_id);
-        // dump($select);
-        return view('flights.edit', compact('flight', 'select', 'registro', 'registro1'));
+        
+        return view('flights.edit', compact('aviones', 'destinos', 'aeropuertos', 'aerolineas', 'flight'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(FlightRequest $request, Flight $flight)
+    public function update(FlightRequest $request, $inden)
     {
-        // dump();
-        // dump($id);
-        $airlineDes = Airline_Destination::find($flight->airline_destination_id);
-        $airlineDes->destination_id = $request->destination_id;
-        $airlineDes->airport_id = $request->airport_id;
-        $airlineDes->airline_id = $request->airline_id;
 
-        $airlineDes->save();
+        $airlineDes = Airline_Destination::create($request->only('destination_id', 'airport_id', 'airline_id'));
+        
+        $valores = $request->only('leave_date','arrive_date','count_clients','duration','price','plane_id');
 
-        $flight->leave_date = $request->leave_date;
-        $flight->arrive_date = $request->arrive_date;
-        $flight->count_clients = $request->count_clients;
-        $flight->duration = $request->duration;
-        $flight->price = $request->price;
-        $flight->plane_id = $request->plane_id;
-        $flight->airline_destination_id = $airlineDes->id;
-        $flight->save();
-        dump("Actualizado");
+        $id = $airlineDes->id;
+
+        $valores['airline_destination_id'] = $id;
+
+        $registro = Flight::find($inden);
+
+        $registro->update($valores);
+
         return redirect()->route('flights.index');
     }
 
