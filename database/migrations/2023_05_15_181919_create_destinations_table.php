@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('languages');
             $table->json('images');
+            $table->foreignId('address_id')->constrained();
             $table->timestamps();
         });
     }

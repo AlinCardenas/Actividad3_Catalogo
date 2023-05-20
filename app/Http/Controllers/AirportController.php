@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Airport;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class AirportController extends Controller
      */
     public function index()
     {
-        $airports = Airport::all();
+        $airports = Airport::paginate(12);
         return view('airports.index',compact('airports'));
     }
 
@@ -21,7 +22,8 @@ class AirportController extends Controller
      */
     public function create()
     {
-        return view('airports.create');
+        $addresses = Address::all();
+        return view('airports.create', compact('addresses'));
     }
 
     /**
@@ -29,30 +31,16 @@ class AirportController extends Controller
      */
     public function store(Request $request)
     {
-        //valide los atributos de mi formulario para validar los datos de conacto
-        //define las regalas que debe de tener cada atribito
-        $request->validate([
-            'nombre' => 'required',
-            'descripción' => 'required',
-            'valoracion' => 'required',
-            'destino' => 'required',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
-        ]);
-        $route_logo = $request->logo->store('public/img');
-        
-
+       
         //guarde el producto con la informacion del formulario
         $airports = new Airport();
-        $airports->nombre = $request->nombre;
-        $airports->descripción = $request->descripción;
-        $airports->valoracion = $request->valoracion;
-        $airports->destino = $request->destino;
-        $airports->logo = $route_logo;
+        $airports->name = $request->name;
+        $airports->cant = $request->cant;
+        $airports->address_id = $request->address;
         $airports->saveOrFail();
 
         //despues de guardar el prodcuto lo redireccione a la ruta home donde se muestra el prodcto que acabo de guardar
-        return redirect()->route("marcas.index")->with('status', 'Marca guardada correctamente!');
+        return redirect()->route("airports.index")->with('status', 'Aeropuerto guardado correctamente!');
     }
 
     /**
@@ -60,8 +48,8 @@ class AirportController extends Controller
      */
     public function show(string $id)
     {
-        $airports = Airport::find($id);
-        return view('airports.show')->with('airport',$airports);
+        $airport = Airport::find($id);
+        return view('airports.show')->with('airport',$airport);
     }
 
     /**
@@ -69,7 +57,9 @@ class AirportController extends Controller
      */
     public function edit(string $id)
     {
-        return view('airports.edit');
+        $airport = Airport::find($id);
+        $addresses = Address::all();
+        return view('airports.edit',compact('airport','addresses'));
     }
 
     /**
@@ -77,14 +67,47 @@ class AirportController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //actualizamos aeropuerto con la informacion del formulario
+        $airport = Airport::find($id);
+        $airport->name = $request->name;
+        $airport->cant = $request->cant;
+        $airport->address_id = $request->address;
+        $airport->saveOrFail();
+        return redirect()->route('airports.show',compact('airport'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($airports)
     {
-        //
+        $airports= Airport::find($airports)->delete();
+        return redirect()->route('airports.index');
     }
+    public function skip($id)
+    {    
+        $ultimo = Airport::max('id');
+        $airport=null;
+
+        if ($ultimo==$id) {
+            $airport = Airport::first();
+        }else{
+            $airport = Airport::where('id', '>', $id)->firstOrFail();
+        }
+        return redirect()->route('airports.show', compact('airport'));
+    }
+    public function back($id)
+    {    
+        $primero = Airport::min('id');
+        $airport=null;
+
+        // dump($destination = );
+        if ($primero==$id) {
+            $airport = Airport::latest()->get()->first();
+        }else{
+            $airport = Airport::where('id', '<', $id)->orderBy('id', 'desc')->first();
+        }
+        return redirect()->route('airports.show', compact('airport'));
+    }
+
 }

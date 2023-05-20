@@ -5,16 +5,11 @@
                 <div class="relative">
                     <img src="{{ asset('images/fondo.jpg') }}" alt=""
                         class="w-screen h-screen inset-0 bg-black bg-opacity-5">
-                    <nav class="absolute top-0 left-0 w-full bg-transparent">
+                    <nav class="absolute top-0 left-0 w-full bg-transparent ">
                         <div class="container mx-auto px-4">
                             <div class="flex items-center justify-end py-4">
                                 <div class="flex items-center">
                                     <a href="#" class="text-white hover:text-gray-300 ml-8">Inicio</a>
-                                    <a href="{{route('hotel.showAll')}}"
-                                        class="text-white hover:text-gray-300 ml-8">Hoteles</a>
-                                    <a href="{{route('destinos.list')}}"
-                                        class="text-white hover:text-gray-300 ml-8">Destinos</a>
-                                    <a href="{{route('flights.list')}}" class="text-white hover:text-gray-300 ml-8">Vuelos</a>
                                     @if (Auth::check())
                                         <form method="POST" action="{{ route('logout') }}" x-data>
                                             @csrf

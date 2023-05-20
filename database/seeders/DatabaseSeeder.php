@@ -29,11 +29,13 @@ class DatabaseSeeder extends Seeder
 
         Plane::factory(45)->create();
         Address::factory(45)->create();
-        Airport::factory(45)->create();
+        Airport::factory(20)->create();
         Airline::factory(45)->create();
         Destination::factory(45)->create();
         Airline_Destination::factory(45)->create();
         Flight::factory(45)->create();
+        Service::factory(45)->create();
         Hotel::factory(45)->create();
+
     }
 }

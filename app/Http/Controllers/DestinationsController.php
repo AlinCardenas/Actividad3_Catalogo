@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DestinatioRequest;
+use App\Models\Address;
 use App\Models\Destination;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,6 @@ class DestinationsController extends Controller
     public function index()
     {
         $registers = Destination::paginate(10);
-           
         return view('destinations.index', compact('registers'));
     }
 
@@ -23,7 +23,9 @@ class DestinationsController extends Controller
      */
     public function create()
     {
-        return view('destinations.create');
+        $object = new Destination();
+        $listados = Address::pluck('street','id');
+        return view('destinations.create', compact('object', 'listados'));
     }
 
     /**
@@ -31,25 +33,7 @@ class DestinationsController extends Controller
      */
     public function store(DestinatioRequest $request)
     {
-
-        $registro = new Destination();
-
-        $filenames = [];
-
-        foreach ($request->file('images') as $file) {
-            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('public/images', $filename);
-            $filenames[] = $path;
-        }
-
-        $registro->name = $request->name;
-        $registro->ranking = $request->ranking;
-        $registro->description = $request->description;
-        $registro->languages = $request->languages;
-        $registro->images = json_encode($filenames);
-
-        $registro->save();
-        
+        Destination::create($request->all());
         return redirect()->route('destinations.index');
     }
 
@@ -73,30 +57,17 @@ class DestinationsController extends Controller
      */
     public function edit(Destination $destination)
     {
-        return view('destinations.edit', compact('destination'));
+        $listados= Address::pluck('street','id');
+        return view('destinations.edit', compact('destination', 'listados'));
     }
 
     /**
      * Actualizar registro
      */
-    public function update(DestinatioRequest $request, Destination $destination)
+    public function update(DestinatioRequest $request, $id)
     {
-
-        $filenames = [];
-
-        foreach ($request->file('images') as $file) {
-            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('public/images', $filename);
-            $filenames[] = $path;
-        }
-
-        $destination->name = $request->name;
-        $destination->ranking = $request->ranking;
-        $destination->description = $request->description;
-        $destination->languages = $request->languages;
-        $destination->images = json_encode($filenames);
-
-        $destination->update();
+        $registro = Destination::find($id);
+        $registro->update($request->all());
         
         return redirect()->route('destinations.index');
     }
@@ -139,7 +110,6 @@ class DestinationsController extends Controller
 
     public function list(){
         $registros = Destination::paginate(15);
-        // dump($registros);
         return view('catalogo.index_des', compact('registros'));
     }
     

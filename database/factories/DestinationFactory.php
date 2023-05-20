@@ -28,6 +28,7 @@ class DestinationFactory extends Factory
             'description' => $this->faker->paragraph(),
             'languages' => $this->faker->sentence(3),
             'images' => $valor,
+            'address_id' => $this->faker->numberBetween(1, 20),
         ];
     }
 }
