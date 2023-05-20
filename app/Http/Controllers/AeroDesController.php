@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AirDesRequest;
+use App\Models\Airline;
 use App\Models\Airline_Destination;
+use App\Models\Airport;
+use App\Models\Destination;
 use Illuminate\Http\Request;
 
 class AeroDesController extends Controller
@@ -22,9 +25,11 @@ class AeroDesController extends Controller
      */
     public function create()
     {
-        $registro = Airline_Destination::all();
+        $destinos = Destination::get();
+        $aeropuertos = Airport::get();
+        $aerolineas = Airline::get();
 
-        return view('aero_des.create', compact('registro'));
+        return view('aero_des.create', compact('destinos', 'aeropuertos', 'aerolineas'));
     }
 
     /**
@@ -51,11 +56,13 @@ class AeroDesController extends Controller
      */
     public function edit($id)
     {
-        // dump($id);
         $selec = Airline_Destination::find($id);
 
-        $registro = Airline_Destination::all();
-        return view('aero_des.edit', compact('registro', 'selec'));
+        $destinos = Destination::get();
+        $aeropuertos = Airport::get();
+        $aerolineas = Airline::get();
+
+        return view('aero_des.edit', compact('destinos', 'aeropuertos', 'aerolineas', 'selec'));
     }
 
     /**
@@ -63,7 +70,6 @@ class AeroDesController extends Controller
      */
     public function update(AirDesRequest $request, $id)
     {
-        // dump($id);
         $registro = Airline_Destination::find($id);
         $registro->update($request->all());
 
