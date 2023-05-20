@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class HotelsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Crear registro
      */
     public function index()
     {
@@ -22,7 +22,7 @@ class HotelsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Ir al formulario de registro
      */
     public function create()
     {
@@ -33,35 +33,16 @@ class HotelsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guardar registro
      */
     public function store(HotelsRequest $request)
     {
-        $name_img=[];
-        $route_logo = $request->logo->store('public/img');
-        
-        $hotel= new Hotel();
-
-        // genera el nombre de la imagen y las guarda
-        foreach ($request->file('image') as $file) {
-            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('public/img', $filename);
-            $name_img[] = $path;
-        }
-        $hotel->name =$request->name;
-        $hotel->price =$request->price;
-        $hotel->ranking =$request->ranking;
-        $hotel->description =$request->description;
-        $hotel->logo = $route_logo;
-        $hotel->image = json_encode($name_img);
-        $hotel->service_id =$request->service_id;
-        $hotel->address_id =$request->address_id;
-        $hotel->save();
-        return redirect()->route('hotels.show',compact('hotel'));
+        Hotel::create($request->all());
+        return redirect()->route('hotels.index');
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar registro particular
      */
     public function show(Hotel $hotel)
     {
@@ -69,12 +50,11 @@ class HotelsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Ir al formulario de actualizar
      */
 
     public function edit(Hotel $hotel)
     {
-        // dump($hotel);
         $list= Service::pluck('name','id');
         $listados= Address::pluck('street','id');
         
@@ -82,35 +62,17 @@ class HotelsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar registro
      */
-    public function update(HotelsRequest $request, Hotel $hotel)
+    public function update(HotelsRequest $request, $id)
     {
-        $name_img=[];
-        $route_logo = $request->logo->store('public/img');
-        
-        $hotel= new Hotel();
-
-        // genera el nombre de la imagen y las guarda
-        foreach ($request->file('image') as $file) {
-            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('public/img', $filename);
-            $name_img[] = $path;
-        }
-        $hotel->name =$request->name;
-        $hotel->price =$request->price;
-        $hotel->ranking =$request->ranking;
-        $hotel->description =$request->description;
-        $hotel->logo = $route_logo;
-        $hotel->image = json_encode($name_img);
-        $hotel->service_id =$request->service_id;
-        $hotel->address_id =$request->address_id;
-        $hotel->save();
-        return redirect()->route('hotels.show',compact('hotel'));
+        $registro = Hotel::find($id);
+        $registro->update($request->all());
+        return redirect()->route('hotels.index');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar registro
      */
     public function destroy($hotel)
     {
@@ -118,6 +80,9 @@ class HotelsController extends Controller
         return redirect()->route('hotels.index');
     }
 
+    /*
+        Skip para show
+    */
     public function skip($id)
     {    
         $ultimo = Hotel::max('id');
@@ -131,6 +96,9 @@ class HotelsController extends Controller
         return redirect()->route('hotels.show', compact('hotel'));
     }
 
+    /*
+        Back para show
+    */
     public function back($id)
     {    
         $primero = Hotel::min('id');
@@ -145,10 +113,12 @@ class HotelsController extends Controller
         return redirect()->route('hotels.show', compact('hotel'));
     }
 
+    /*
+        Mostrar listado paginado
+    */
     public function showAll()
     {
         $hotels= Hotel::paginate(12);
         return view('hotels.showAll',compact('hotels'));
     }
-
 }

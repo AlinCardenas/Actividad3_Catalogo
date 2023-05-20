@@ -35,12 +35,12 @@ class DestinatioRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Nombre del destino',
-            'ranking' => 'Valoración del detino',
-            'description' => 'Descripción del destino',
-            'languages' => 'Idiomas',
-            'images' => 'Imagenes del destino',
-            'address_id' => 'Dirección'
+            'name' => 'nombre del destino',
+            'ranking' => 'valoración del detino',
+            'description' => 'descripción del destino',
+            'languages' => 'idiomas',
+            'images' => 'imagenes del destino',
+            'address_id' => 'dirección'
         ];
     }
 }
