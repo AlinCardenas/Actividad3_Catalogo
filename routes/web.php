@@ -11,12 +11,8 @@ use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\VistaController;
-use App\Models\Destination;
-use App\Models\Hotel;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Airline\Create;
-use App\Http\Livewire\Airline\Edit;
-use App\Http\Livewire\Airline\Index;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,9 +44,6 @@ Route::get('/form', function(){
 });
 
 Route::middleware([
-    // 'auth:sanctum',
-    // config('jetstream.auth_session'),
-    // 'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return redirect()->route('showh');
@@ -92,8 +85,6 @@ Route::middleware([
     Route::resource('airports', AirportController::class);
     Route::get('airports/skip/{id}',[AirportController::class,'skip'])->name('airports.skip');
     Route::get('airports/back/{id}',[AirportController::class,'back'])->name('airports.back');
-
-
 });
 
 Route::get('/old', function () {

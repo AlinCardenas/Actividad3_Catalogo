@@ -25,7 +25,15 @@ class ServiceRequest extends FormRequest
             'name' => 'required|string|max:255',
             'price' => 'required|integer|min:0',
             'description' => 'required|string',
-            
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'nombre del servicio',
+            'price' => 'precio del servicio',
+            'description' => 'descripción del servicio'
         ];
     }
 }

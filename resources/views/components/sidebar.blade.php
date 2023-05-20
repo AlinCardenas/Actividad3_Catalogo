@@ -18,6 +18,7 @@
                 <x-link href="{{ route('services.index') }}" mensaje="Servicios" />
                 <x-link href="{{ route('airline.index') }}" mensaje="Aerolineas" />
                 <x-link href="{{ route('hotels.index') }}" mensaje="Hoteles" />
+                <x-link href="{{ route('aero_des.index') }}" mensaje="Enlaces" />
             </div>
             @endif
         </div>
