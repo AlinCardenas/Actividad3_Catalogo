@@ -29,6 +29,22 @@ class HotelsRequest extends FormRequest
             'logo' => 'required|mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
             'image' => 'required|array',
             'image.*' => 'mimes:jpeg,png,jpg,gif|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+            'service_id' => 'required',
+            'destino_id'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'nombre del hotel',
+            'price' => 'precio por habitacón',
+            'ranking' => 'evaluación del hotel',
+            'description' => 'descripción del hotel',
+            'logo' => 'logo del hotel',
+            'image' => 'imagenes del hotel',
+            'service_id' => 'servicio del hotel',
+            'address_id' => 'dirección del hotel'
         ];
     }
 }
