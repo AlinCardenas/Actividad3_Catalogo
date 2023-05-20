@@ -12,16 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('airline__destinations', function (Blueprint $table) {
-            $table->engine='InnoDB';
             $table->id();
-            $table->bigInteger('destination_id')->unsigned();
-            $table->bigInteger('airport_id')->unsigned();
-            $table->bigInteger('airline_id')->unsigned();
+            $table->foreignId('destination_id')->constrained();
+            $table->foreignId('airport_id')->constrained();
+            $table->foreignId('airline_id')->constrained();
             $table->timestamps();
-
-            $table->foreign('destination_id')->references('id')->on('destinations')->onDelete('cascade');
-            $table->foreign('airport_id')->references('id')->on('airports')->onDelete('cascade');
-            $table->foreign('airline_id')->references('id')->on('airlines')->onDelete('cascade');
         });
     }
 

@@ -16,7 +16,8 @@ class Airport extends Model
         'address_id'
     ];
 
-    public function address(){
-        return $this->belongsTo(Address::class);
+    //* Llave foranea 
+    public function addresses(){
+        return $this->hasOne(Address::class, 'id', 'address_id');
     }
 }

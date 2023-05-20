@@ -20,12 +20,9 @@ return new class extends Migration
             $table->text('description');
             $table->string('logo');
             $table->json('image');
-            $table->bigInteger('address_id')->unsigned();
-            $table->bigInteger('service_id')->unsigned();
+            $table->foreignId('address_id')->constrained();
+            $table->foreignId('service_id')->constrained();
             $table->timestamps();
-
-            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
     }
 

@@ -16,12 +16,12 @@ class Airline_Destination extends Model
     ];
 
     public function destinations(){
-        return $this->hasOne('App\Models\Destination', 'id', 'destination_id');
+        return $this->hasOne(Destination::class, 'id', 'destination_id');
     }
     public function airports(){
-        return $this->hasOne('App\Models\Airport', 'id', 'airport_id');
+        return $this->hasOne(Airport::class, 'id', 'airport_id');
     }
     public function airlines(){
-        return $this->hasOne('App\Models\Airline', 'id', 'airline_id');
+        return $this->hasOne(Airline::class, 'id', 'airline_id');
     }
 }
