@@ -47,7 +47,6 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         return redirect()->route('showh');
-        // return view('profile.show');
     })->name('dashboard');
     Route::post('enviar', [SendEmailController::class, 'envio'])->name('enviar');
 
