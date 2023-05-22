@@ -19,14 +19,14 @@ class Airline extends Model
         'logo'
     ];
 
-    // protected function logo(): Attribute
-    // {
-    //     return new Attribute(
-    //         set: function($logo)
-    //         {
-    //             $route_logo = $logo->store('public/img');                
-    //             return $route_logo;
-    //         }
-    //     );
-    // }
+    protected function logo(): Attribute
+    {
+        return new Attribute(
+            set: function($logo)
+            {
+                $route_logo = $logo->store('public/img');                
+                return $route_logo;
+            }
+        );
+    }
 }
