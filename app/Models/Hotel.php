@@ -20,7 +20,7 @@ class Hotel extends Model
         'service_id',
     ];
 
-    protected function logo(): Attribute
+    /* protected function logo(): Attribute
     {
         return new Attribute(
             set: function($logo)
@@ -45,6 +45,6 @@ class Hotel extends Model
                 return json_encode($name_img);
             }
         );
-    }
+    } */
     
 }

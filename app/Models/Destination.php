@@ -20,7 +20,7 @@ class Destination extends Model
         'address_id'
     ];
 
-    protected function images(): Attribute
+    /* protected function images(): Attribute
     {
         return new Attribute(
             set: function($images){
@@ -34,5 +34,5 @@ class Destination extends Model
                 return json_encode($filenames);
             }
         );
-    }
+    } */
 }

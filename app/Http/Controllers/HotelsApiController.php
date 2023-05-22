@@ -12,8 +12,7 @@ class HotelsApiController extends Controller
      */
     public function index()
     {
-        $hotels = Hotel::paginate(20);
-        return response()->json($hotels);
+        return response()->json(Hotel::paginate(20));
     }
 
     /**
