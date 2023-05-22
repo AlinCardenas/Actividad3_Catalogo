@@ -20,32 +20,32 @@ class Hotel extends Model
         'service_id',
     ];
 
-    protected function logo(): Attribute
-    {
-        return new Attribute(
-            set: function($logo)
-            {
-                $route_logo = $logo->store('public/img');                
-                return $route_logo;
-            }
-        );
-    }
+    // protected function logo(): Attribute
+    // {
+    //     return new Attribute(
+    //         set: function($logo)
+    //         {
+    //             $route_logo = $logo->store('public/img');                
+    //             return $route_logo;
+    //         }
+    //     );
+    // }
 
-    protected function image(): Attribute
-    {
-        return new Attribute(
-            set: function($image)
-            {
-                $name_img=[];                        
-                foreach ($image as $file) {
-                    $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-                    $path = $file->storeAs('public/img', $filename);
-                    $name_img[] = $path;
-                }
-                return json_encode($name_img);
-            }
-        );
-    }
+    // protected function image(): Attribute
+    // {
+    //     return new Attribute(
+    //         set: function($image)
+    //         {
+    //             $name_img=[];                        
+    //             foreach ($image as $file) {
+    //                 $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+    //                 $path = $file->storeAs('public/img', $filename);
+    //                 $name_img[] = $path;
+    //             }
+    //             return json_encode($name_img);
+    //         }
+    //     );
+    // }
     
     public function addresses(){
         $this->hasOne(Address::class, 'id', 'address_id');

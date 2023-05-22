@@ -13,6 +13,8 @@ use App\Models\Flight;
 use App\Models\Hotel;
 use App\Models\Plane;
 use App\Models\Service;
+use App\Models\User;
+use App\Models\UserFlight;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,8 +26,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         //Crear carpeta posts donde se guardaran las imagenes
-        Storage::deleteDirectory('airlines');
-        Storage::makeDirectory('airlines');
+        // Storage::deleteDirectory('airlines');
+        // Storage::makeDirectory('airlines');
 
         Plane::factory(45)->create();
         Address::factory(45)->create();
@@ -36,6 +38,8 @@ class DatabaseSeeder extends Seeder
         Flight::factory(45)->create();
         Service::factory(45)->create();
         Hotel::factory(45)->create();
+        User::factory(45)->create();
+        UserFlight::factory(45)->create();
 
     }
 }
