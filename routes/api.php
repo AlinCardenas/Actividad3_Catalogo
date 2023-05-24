@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AirlinesApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DestinationApiController;
 use App\Http\Controllers\FlightsApiController;
@@ -35,3 +36,4 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 Route::resource('flights', FlightsApiController::class);
 Route::resource('hotels',HotelsApiController::class);
 Route::resource('destinations',DestinationApiController::class);
+Route::resource('airlines', AirlinesApiController::class);
