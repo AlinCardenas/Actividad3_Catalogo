@@ -12,7 +12,7 @@ class FlightsApiController extends Controller
      */
     public function index()
     {
-        $flights = Flight::select('*')->with(['planes', 'airline__destinations'])->get();;
+        $flights = Flight::select('*')->with(['planes', 'airline__destinations.destinations','airline__destinations.airlines', 'airline__destinations.airports'])->get();;
         return response()->json($flights);
     }
 
