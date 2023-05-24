@@ -7,10 +7,13 @@
 
         <div class="grid grid-cols-4 gap-4 mb-6 mx-auto mt-5">
             @foreach ($airline as $airlin)
+            @php
+                $ruta = str_replace('public/img/', '', $airlin->logo);
+            @endphp
                 <div class="col-span-1">
                     <div class="bg-white rounded-lg shadow-2xl p-[10px] h-[500px]">
 
-                        <img class="mx-auto mt-3" src="{{asset($airlin->logo)}}" width="250" height="250">
+                        <img class="mx-auto mt-3" src="{{asset('storage/img/' . $ruta)}}" width="250" height="250">
 
                         <div class="p-4">
                             <a class="text-xl font-bold mb-4 hover:text-purple-500" href="{{route('airline.show', $airlin->id)}}"> Nombre: {{$airlin->name}} </a>
