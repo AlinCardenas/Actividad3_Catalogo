@@ -12,7 +12,7 @@ class DestinationApiController extends Controller
      */
     public function index()
     {
-        $destination = Destination::paginate(15);
+        $destination = Destination::all()->with('addresses')->get();
         return response()->json($destination);
     }
 

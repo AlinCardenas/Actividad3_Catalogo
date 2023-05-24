@@ -33,5 +33,5 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 });
 
 Route::resource('flights', FlightsApiController::class);
-Route::resource('Hotels',HotelsApiController::class);
-Route::resource('destination',DestinationApiController::class);
+Route::resource('hotels',HotelsApiController::class);
+Route::resource('destinations',DestinationApiController::class);

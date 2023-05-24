@@ -12,7 +12,7 @@ class HotelsApiController extends Controller
      */
     public function index()
     {
-        $hotels = Hotel::paginate(20);
+        $hotels = Hotel::select('*')->with(['addresses', 'services'])->get();
         return response()->json($hotels);
     }
 
