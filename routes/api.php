@@ -40,7 +40,7 @@ Route::resource('flights', FlightsApiController::class);
 Route::resource('hotels',HotelsApiController::class);
 Route::resource('destinations',DestinationApiController::class);
 Route::resource('airlines', AirlinesApiController::class);
-Route::resource('users', UserApiController::class);
+Route::resource('usersflights', UserApiController::class);
 
 
 // Route::get('/test', [ApiController::class, 'vuelos']);
