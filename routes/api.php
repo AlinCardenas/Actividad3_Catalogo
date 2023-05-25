@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AirlinesApiController;
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DestinationApiController;
 use App\Http\Controllers\FlightsApiController;
@@ -37,3 +38,5 @@ Route::resource('flights', FlightsApiController::class);
 Route::resource('hotels',HotelsApiController::class);
 Route::resource('destinations',DestinationApiController::class);
 Route::resource('airlines', AirlinesApiController::class);
+
+Route::get('/test', [ApiController::class, 'vuelos']);
