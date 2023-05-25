@@ -7,6 +7,7 @@ use App\Http\Controllers\DestinationApiController;
 use App\Http\Controllers\FlightsApiController;
 use App\Http\Controllers\HotelsApiController;
 use App\Http\Controllers\HotelsController;
+use App\Http\Controllers\UserApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -39,5 +40,7 @@ Route::resource('flights', FlightsApiController::class);
 Route::resource('hotels',HotelsApiController::class);
 Route::resource('destinations',DestinationApiController::class);
 Route::resource('airlines', AirlinesApiController::class);
+Route::resource('users', UserApiController::class);
+
 
 // Route::get('/test', [ApiController::class, 'vuelos']);
