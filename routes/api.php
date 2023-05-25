@@ -22,17 +22,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 Route::post('/iniciar', [AuthController::class, 'login']);
 Route::post('/registro', [AuthController::class, 'register']);
 Route::get('getuser', [AuthController::class, 'userProfile']);
-
+Route::get('/misvuelos/{id}', [UserApiController::class, 'details']);
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
-    // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
     
 });
 
@@ -41,6 +37,3 @@ Route::resource('hotels',HotelsApiController::class);
 Route::resource('destinations',DestinationApiController::class);
 Route::resource('airlines', AirlinesApiController::class);
 Route::resource('usersflights', UserApiController::class);
-
-
-// Route::get('/test', [ApiController::class, 'vuelos']);

@@ -68,4 +68,9 @@ class UserApiController extends Controller
             'message' =>'Registro eliminado',
         ]);
     }
+
+    public function details($id){
+        $misvuelos = UserFlight::select('*')->where('user_id', $id)->with(['flights', 'users', 'flights.airline__destinations', 'flights.airline__destinations.airports', 'flights.airline__destinations.destinations','flights.airline__destinations.airports.addresses'])->get();
+        return response()->json($misvuelos);
+    }
 }

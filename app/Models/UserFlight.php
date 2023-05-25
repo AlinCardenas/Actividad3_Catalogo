@@ -18,9 +18,9 @@ class UserFlight extends Model
     ];
 
     public function users(){
-        $this->hasOne(User::class, 'id', 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
     public function flights(){
-        $this->hasOne(Flight::class, 'id', 'flight_id');
+        return $this->hasOne(Flight::class, 'id', 'flight_id');
     }
 }
