@@ -25,14 +25,14 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::post('/auth/login', [AuthController::class, 'login'])->name('api.login');
-Route::post('register', [AuthController::class, 'register'])->name('api.register');
-Route::get('getuser', [AuthController::class, 'getUserDetails']);
+Route::post('/iniciar', [AuthController::class, 'login']);
+Route::post('/registro', [AuthController::class, 'register']);
+Route::get('getuser', [AuthController::class, 'userProfile']);
+
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
-    Route::get('/', [AuthController::class, 'getUser'])->name('getUser');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
+    // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
 });
 
 Route::resource('flights', FlightsApiController::class);
@@ -40,4 +40,4 @@ Route::resource('hotels',HotelsApiController::class);
 Route::resource('destinations',DestinationApiController::class);
 Route::resource('airlines', AirlinesApiController::class);
 
-Route::get('/test', [ApiController::class, 'vuelos']);
+// Route::get('/test', [ApiController::class, 'vuelos']);
