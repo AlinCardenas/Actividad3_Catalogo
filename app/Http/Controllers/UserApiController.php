@@ -23,7 +23,8 @@ class UserApiController extends Controller
      */
     public function store(Request $request)
     {
-        $registro = UserFlight::create($request->input());
+        $registro = New UserFlight($request->input());
+        $registro -> save();
         return response()->json([
             'status'=>true,
             'message'=>'Registro guardado' . $registro,

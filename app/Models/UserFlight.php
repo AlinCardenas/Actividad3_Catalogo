@@ -12,7 +12,9 @@ class UserFlight extends Model
     protected $fillable = [
         'user_id',
         'flight_id',
-        'numAsiento'
+        'numAsiento',
+        'leave_date',
+        'arrive_date'
     ];
 
     public function users(){
