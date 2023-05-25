@@ -19,7 +19,7 @@ class Airline extends Model
         'logo'
     ];
 
-    /* protected function logo(): Attribute
+    protected function logo(): Attribute
     {
         return new Attribute(
             set: function($logo)
@@ -28,5 +28,5 @@ class Airline extends Model
                 return $route_logo;
             }
         );
-    } */
+    }
 }
