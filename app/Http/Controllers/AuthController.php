@@ -9,11 +9,17 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     //* Usuario "No funcional"
-    public function getUser(Request $request)
+    public function getUserDetails(Request $request)
     {
-        return response([
-            $request->user()
-        ]);
+        $accessToken = $request->header('Authorization');
+
+        $user = User::where('access_token', $accessToken)->first();
+
+        if ($user) {
+            return response()->json($user);
+        } else {
+            return response()->json(['error' => 'Usuario no encontrado'], 404);
+        }
     }
 
     //* Registrar usuario
