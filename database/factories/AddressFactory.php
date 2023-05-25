@@ -21,6 +21,7 @@ class AddressFactory extends Factory
             'number' => $this->faker->numberBetween(1,1000),
             'cp' => $this->faker->numberBetween(500,2000),
             'state' => $this->faker->word(),
+            'country' => $this->faker->word(),
             'phone' => $this->faker->phoneNumber(),
             
         ];

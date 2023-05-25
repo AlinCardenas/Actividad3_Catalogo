@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DestinatioRequest;
 use App\Models\Address;
 use App\Models\Destination;
-use Illuminate\Http\Request;
 
 class DestinationsController extends Controller
 {
@@ -15,6 +14,7 @@ class DestinationsController extends Controller
     public function index()
     {
         $registers = Destination::paginate(10);
+        
         return view('destinations.index', compact('registers'));
     }
 

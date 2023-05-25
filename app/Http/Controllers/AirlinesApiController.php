@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Destination;
+use App\Models\Airline;
 use Illuminate\Http\Request;
 
-class DestinationApiController extends Controller
+class AirlinesApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $destination = Destination::select('*')->with('addresses')->get();
+        $destination = Airline::all();
         return response()->json($destination);
     }
 
@@ -21,7 +21,7 @@ class DestinationApiController extends Controller
      */
     public function store(Request $request)
     {
-        $registro = New Destination($request->input());
+        $registro = New Airline($request->input());
         $registro->save();
         return response()->json([
             'status'=>true,
@@ -34,7 +34,7 @@ class DestinationApiController extends Controller
      */
     public function show($id)
     {
-        $resp = Destination::find($id);
+        $resp = Airline::find($id);
         return response()->json([
             'status'=>true,
             'data'=>$resp,
@@ -46,7 +46,7 @@ class DestinationApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $up = Destination::find($id);
+        $up = Airline::find($id);
         $up->update($request->input());
         return response()->json([
             'status'=>true,
@@ -59,7 +59,7 @@ class DestinationApiController extends Controller
      */
     public function destroy($id)
     {
-        $del = Destination::find($id);
+        $del = Airline::find($id);
         $del->delete();
         return response()->json([
             'status'=>true,

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AirlinesApiController;
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DestinationApiController;
 use App\Http\Controllers\FlightsApiController;
@@ -23,15 +25,19 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::post('register', [AuthController::class, 'register'])->name('register');
+Route::post('/iniciar', [AuthController::class, 'login']);
+Route::post('/registro', [AuthController::class, 'register']);
+Route::get('getuser', [AuthController::class, 'userProfile']);
+
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
-    Route::get('/', [AuthController::class, 'getUser'])->name('getUser');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
+    // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
 });
 
 Route::resource('flights', FlightsApiController::class);
-Route::resource('Hotels',HotelsApiController::class);
-Route::resource('destination',DestinationApiController::class);
+Route::resource('hotels',HotelsApiController::class);
+Route::resource('destinations',DestinationApiController::class);
+Route::resource('airlines', AirlinesApiController::class);
+
+// Route::get('/test', [ApiController::class, 'vuelos']);

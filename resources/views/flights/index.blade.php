@@ -9,11 +9,12 @@
             @foreach ($registers as $item)
             <div class="col-span-1">
                 <div class="bg-white rounded-lg shadow-2xl p-[10px] h-[500px]">
+                    
                     @php
-                    // 1.Rempazar nombre imagen
-                    $ruta_logo = str_replace('public/img/', '', $item->images);
+                        $contenedor = json_decode($item->airline__destinations->destinations->images);
+                        $ruta = str_replace('public/images/', '', $contenedor[0]);
                     @endphp
-                    <img class="mx-auto mt-3" src="{{asset('storage/img/'.$ruta_logo)}}" width="250" height="250">
+                    <img class="mx-auto mt-3" src="{{asset('storage/images/'.$ruta)}}" width="250" height="250">
                     <div class="p-4">
                         <a class="text-xl font-bold mb-4 hover:text-purple-500" href="{{route('flights.show', $item->id)}}">Destino: {{$item->airline__destinations->destinations->name}} </a>
                         <p class="text-gray-600 mb-2">Salida: {{ $item->arrive_date }}</p>
