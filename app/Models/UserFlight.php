@@ -9,6 +9,12 @@ class UserFlight extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'flight_id',
+        'numAsiento'
+    ];
+
     public function users(){
         $this->hasOne(User::class, 'id', 'user_id');
     }

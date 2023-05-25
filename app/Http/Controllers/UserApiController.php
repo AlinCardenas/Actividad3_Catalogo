@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserFlight;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\New_;
 
@@ -13,8 +14,8 @@ class UserApiController extends Controller
      */
     public function index()
     {
-        $user=User::paginate(12);
-        return response()->json([$user]);
+        $userFlight= UserFlight::all();
+        return response()->json($userFlight);
     }
 
     /**
@@ -22,11 +23,10 @@ class UserApiController extends Controller
      */
     public function store(Request $request)
     {
-        $registro = New User($request->input());
-        $registro -> save();
+        $registro = UserFlight::create($request->input());
         return response()->json([
             'status'=>true,
-            'message'=>'Registro guardado',
+            'message'=>'Registro guardado' . $registro,
         ]);
     }
 
@@ -35,7 +35,7 @@ class UserApiController extends Controller
      */
     public function show($id)
     {
-        $resp =User::find($id);
+        $resp = UserFlight::find($id);
         return response()->json([
             'status'=>true,
             'data'=>$resp,
@@ -47,11 +47,11 @@ class UserApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $up = User::find($id);
+        $up = UserFlight::find($id);
         $up->update($request->input());
         return response()->json([
             'status'=>true,
-            'message'=>'Registro actualizado',
+            'message'=>'Registro actualizado' . $up,
         ]);
     }
 
@@ -60,7 +60,7 @@ class UserApiController extends Controller
      */
     public function destroy($id)
     {
-        $del = User::find($id);
+        $del = UserFlight::find($id);
         $del->delete();
         return response()->json([
             'status'=>true,
