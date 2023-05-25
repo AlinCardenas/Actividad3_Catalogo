@@ -13,6 +13,7 @@ class Address extends Model
         'number', 
         'cp', 
         'state',
-        'phone'
+        'phone',
+        'country'
     ];
 }
