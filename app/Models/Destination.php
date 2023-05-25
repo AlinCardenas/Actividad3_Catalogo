@@ -20,22 +20,22 @@ class Destination extends Model
         'address_id'
     ];
 
-    //* Mutador para imagenes
-    protected function images(): Attribute
-    {
-        return new Attribute(
-            set: function($images){
+    // //* Mutador para imagenes
+    // protected function images(): Attribute
+    // {
+    //     return new Attribute(
+    //         set: function($images){
                 
-                $filenames = [];
-                foreach ($images as $file) {
-                    $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-                    $path = $file->storeAs('public/images', $filename);
-                    $filenames[] = $path;
-                }
-                return json_encode($filenames);
-            }
-        );
-    }
+    //             $filenames = [];
+    //             foreach ($images as $file) {
+    //                 $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+    //                 $path = $file->storeAs('public/images', $filename);
+    //                 $filenames[] = $path;
+    //             }
+    //             return json_encode($filenames);
+    //         }
+    //     );
+    // }
 
     //* Llave foranea 
     public function addresses(){

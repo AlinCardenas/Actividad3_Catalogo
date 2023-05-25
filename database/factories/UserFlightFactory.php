@@ -20,6 +20,8 @@ class UserFlightFactory extends Factory
             'user_id' => $this->faker->numberBetween(1,45),
             'flight_id' => $this->faker->numberBetween(1,45),
             'numAsiento' => $this->faker->numberBetween(1, 50),
+            'leave_date' => $this->faker->dateTimeBetween('-2 years', 'now'),
+            'arrive_date' => $this->faker->dateTimeBetween('-1 years', 'now'),
         ];
     }
 }
